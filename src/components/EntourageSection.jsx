@@ -17,7 +17,7 @@ const EntourageSection = () => {
           Entourage
         </h3>
         <p className="mt-4 text-sm sm:text-base md:text-lg font-albert text-obsidian/85 max-w-2xl mx-auto">
-          Meet the family and friends who will walk with us and witness our special day.
+          To the family and friends who have been our constants: thank you for walking this path with us
         </p>
         <div className="mt-8 flex justify-center">
           <SecondaryButton

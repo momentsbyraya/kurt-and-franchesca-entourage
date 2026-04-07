@@ -22,6 +22,43 @@ const GiftRegistry = () => {
             As we blend our two houses into one, we have all the belongings we could need. For those who wish to
             give, a gift of cash to help us build our first home together would be a wonderful blessing.
           </p>
+
+          <div className="mt-10 sm:mt-12 w-full">
+            <p className="mb-3 text-center text-xs font-albert text-forest/55 sm:text-sm md:hidden">
+              Swipe sideways to view Maribank and GCash
+            </p>
+            <div
+              role="region"
+              aria-label="Payment QR codes — scroll horizontally"
+              className="flex w-full flex-row gap-6 overflow-x-auto overflow-y-hidden scroll-smooth px-4 pb-3 pt-1 [-webkit-overflow-scrolling:touch] [scrollbar-width:thin] snap-x snap-mandatory sm:gap-10 sm:px-8 sm:pb-4 md:justify-center"
+              style={{ scrollbarColor: 'rgba(170, 141, 90, 0.45) transparent' }}
+            >
+              <div className="flex w-[min(280px,calc(100vw-2.5rem))] shrink-0 snap-center flex-col items-center gap-3 sm:w-64">
+                <p className="font-foglihten text-xl sm:text-2xl md:text-3xl text-forest tracking-wide">
+                  Maribank
+                </p>
+                <img
+                  src="/assets/images/qr/mari.qr.png"
+                  alt="Maribank InstaPay QR code"
+                  className="h-48 w-48 shrink-0 object-contain rounded-xl border-2 border-gold/35 bg-white p-3 shadow-[0_8px_30px_-8px_rgba(16,66,16,0.2)] sm:h-56 sm:w-56"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div className="flex w-[min(280px,calc(100vw-2.5rem))] shrink-0 snap-center flex-col items-center gap-3 sm:w-64">
+                <p className="font-foglihten text-xl sm:text-2xl md:text-3xl text-forest tracking-wide">
+                  GCash
+                </p>
+                <img
+                  src="/assets/images/qr/qr.gcash.png"
+                  alt="GCash QR code"
+                  className="h-48 w-48 shrink-0 object-contain rounded-xl border-2 border-gold/35 bg-white p-3 shadow-[0_8px_30px_-8px_rgba(16,66,16,0.2)] sm:h-56 sm:w-56"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

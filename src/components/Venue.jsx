@@ -28,8 +28,9 @@ const Venue = () => {
 
   const venueSlides = [
     { src: ceremonyPhoto, alt: 'Ceremony venue', venue: ceremony },
-    { src: '/assets/images/venues/for%20envelopes%20%2819%29.png', alt: 'Venue map', venue: ceremony },
   ]
+
+  const showCarouselChrome = venueSlides.length > 1
 
   const nextImage = () => {
     setCurrentIndex((prev) => (prev + 1) % venueSlides.length)
@@ -150,13 +151,15 @@ const Venue = () => {
               onMouseLeave={() => setCarouselPaused(false)}
             >
               <div className="w-full flex justify-center items-center gap-2">
-                <button
-                  onClick={prevImage}
-                  className="flex items-center justify-center transition-opacity duration-200 z-10 flex-shrink-0 hover:opacity-70"
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft className="w-8 h-8 text-forest" />
-                </button>
+                {showCarouselChrome && (
+                  <button
+                    onClick={prevImage}
+                    className="flex items-center justify-center transition-opacity duration-200 z-10 flex-shrink-0 hover:opacity-70"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="w-8 h-8 text-forest" />
+                  </button>
+                )}
                 <div
                   className="w-full max-w-[220px] sm:max-w-[240px] aspect-square relative venue-image-container overflow-hidden rounded-full"
                   onTouchStart={handleTouchStart}
@@ -186,26 +189,30 @@ const Venue = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                    {venueSlides.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentIndex(index)}
-                        className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                          index === currentIndex ? 'bg-burgundy-wine w-6' : 'bg-white/60'
-                        }`}
-                        aria-label={`Go to image ${index + 1}`}
-                      />
-                    ))}
-                  </div>
+                  {showCarouselChrome && (
+                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                      {venueSlides.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentIndex(index)}
+                          className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                            index === currentIndex ? 'bg-burgundy-wine w-6' : 'bg-white/60'
+                          }`}
+                          aria-label={`Go to image ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
-                <button
-                  onClick={nextImage}
-                  className="flex items-center justify-center transition-opacity duration-200 z-10 flex-shrink-0 hover:opacity-70"
-                  aria-label="Next image"
-                >
-                  <ChevronRight className="w-8 h-8 text-forest" />
-                </button>
+                {showCarouselChrome && (
+                  <button
+                    onClick={nextImage}
+                    className="flex items-center justify-center transition-opacity duration-200 z-10 flex-shrink-0 hover:opacity-70"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="w-8 h-8 text-forest" />
+                  </button>
+                )}
               </div>
 
               {/* Dynamic content: updates with current slide */}
@@ -238,9 +245,11 @@ const Venue = () => {
               onMouseLeave={() => setCarouselPaused(false)}
             >
               <div className="w-full flex justify-center items-center gap-4">
-                <button onClick={prevImage} className="hover:opacity-70" aria-label="Previous image">
-                  <ChevronLeft className="w-8 h-8 text-forest" />
-                </button>
+                {showCarouselChrome && (
+                  <button onClick={prevImage} className="hover:opacity-70" aria-label="Previous image">
+                    <ChevronLeft className="w-8 h-8 text-forest" />
+                  </button>
+                )}
                 <div
                   className="w-full max-w-[300px] md:max-w-[340px] lg:max-w-[380px] xl:max-w-[420px] aspect-square relative venue-image-container overflow-hidden rounded-full flex items-center justify-center bg-white/90 border-2 border-gold/20"
                   onTouchStart={handleTouchStart}
@@ -262,22 +271,26 @@ const Venue = () => {
                     ))}
                   </div>
                 </div>
-                <button onClick={nextImage} className="hover:opacity-70" aria-label="Next image">
-                  <ChevronRight className="w-8 h-8 text-forest" />
-                </button>
+                {showCarouselChrome && (
+                  <button onClick={nextImage} className="hover:opacity-70" aria-label="Next image">
+                    <ChevronRight className="w-8 h-8 text-forest" />
+                  </button>
+                )}
               </div>
-              <div className="flex gap-2">
-                {venueSlides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                      index === currentIndex ? 'bg-burgundy-wine w-6' : 'bg-black/25'
-                    }`}
-                    aria-label={`Go to image ${index + 1}`}
-                  />
-                ))}
-              </div>
+              {showCarouselChrome && (
+                <div className="flex gap-2">
+                  {venueSlides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                        index === currentIndex ? 'bg-burgundy-wine w-6' : 'bg-black/25'
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
               <div className="flex flex-col gap-2 text-center">
                 <div className="text-lg sm:text-xl lg:text-2xl font-boska" style={{ color: '#b88917' }}>
                   {ceremony.name}

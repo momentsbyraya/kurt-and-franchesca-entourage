@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
-import { prenupImages } from '../data/prenupImages'
 
-const openingBg = prenupImages.openingScreenBackgrounds
+const OPENING_TEXTURE_BG = '/assets/images/graphics/textured-bg-2.png'
 
 function OpeningScreen({ onEnvelopeOpen }) {
   const envelopeRef = useRef(null)
@@ -88,29 +87,21 @@ function OpeningScreen({ onEnvelopeOpen }) {
       ref={openingSectionRef}
       className="fixed inset-0 z-[9999] flex items-center justify-center opening-section"
     >
-      <div className="absolute inset-0 flex min-h-0 flex-col">
-        {openingBg.map((src, i) => (
-          <div
-            key={src}
-            className="relative min-h-0 flex-1 basis-0 overflow-hidden"
-          >
-            <img
-              src={src}
-              alt=""
-              draggable={false}
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover grayscale"
-              style={{
-                objectPosition: i === 2 ? 'center 45%' : 'center 20%',
-              }}
-            />
-          </div>
-        ))}
-      </div>
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${OPENING_TEXTURE_BG})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+        aria-hidden
+      />
       <div className="absolute inset-0 bg-black/20 z-[1]" />
       <section className="cssletter flex flex-col items-center relative z-10 w-full py-8" style={{ minHeight: 'auto', height: 'auto' }}>
         <div ref={clickMeRef} className="mb-4 sm:mb-6 md:mb-8 lg:mb-10 text-center click-me-container">
           <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-foglihten uppercase leading-tight" style={{ color: '#EDEDDD' }}>
-            YOU ARE GRACIOUSLY
+            YOU ARE CORDIALLY
           </p>
           <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-tight" style={{ fontFamily: 'Pinyon Script, cursive', color: '#F5F5DC' }}>
             Invited

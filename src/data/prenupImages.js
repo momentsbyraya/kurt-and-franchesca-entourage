@@ -8,54 +8,74 @@ const fullBleedAfterSchedule = prenup('3rd picture.jpeg')
 const fullBleedAfterLoveStory = prenup('4th picture.jpeg')
 const fullBleedAfterDressCode = prenup('5th picture.jpeg')
 
+/** Modal order: Desk Mates → Study Buddies → Best Friends → Furparents → Partners for Life */
 const loveStory = [
-  prenup('Bestfriends pictures (love story section).jpeg'),
   prenup('Deskmates picture (lovestory section).jpeg'),
+  prenup('Study Buddies picture (love story section).jpeg'),
+  prenup('Bestfriends pictures (love story section).jpeg'),
   prenup('Furparents pictures (love story section).png'),
   prenup('Partners for life picture (love story section).jpeg'),
-  prenup('Study Buddies picture (love story section).jpeg'),
 ]
 
+/** Every prenup asset — order: main set → love story → extra gallery shots → save-the-date */
 const gallery = [
+  prenup('1st picture.jpeg'),
+  prenup('2nd picture.jpeg'),
+  prenup('3rd picture.jpeg'),
+  prenup('4th picture.jpeg'),
+  prenup('5th picture.jpeg'),
+  prenup('Deskmates picture (lovestory section).jpeg'),
+  prenup('Study Buddies picture (love story section).jpeg'),
+  prenup('Bestfriends pictures (love story section).jpeg'),
+  prenup('Furparents pictures (love story section).png'),
+  prenup('Partners for life picture (love story section).jpeg'),
   prenup('include in gallery(1).jpeg'),
   prenup('include in gallery.jpeg'),
   prenup('iclude in gallery.jpeg'),
   prenup('include in gallery3.jpeg'),
+  prenup('Save the date or Countdown picture.jpeg'),
 ]
 
-/** Same order as `gallery`: CSS object-position for thumbnails (object-cover), not the grid cell. */
+/**
+ * Same order as `gallery`: object-position for grid thumbs (object-cover).
+ * Tuned from actual frames: top-anchored when heads are high; lower % when subjects sit in bottom half.
+ */
 const galleryThumbObjectPosition = [
-  'center center',
-  'center center',
-  'center center',
-  /** include in gallery3 — tall/selfie-style shot: keep top of frame (faces) visible; high % was cropping foreheads */
   'center top',
+  'center 68%',
+  'center 18%',
+  'center 34%',
+  'center 14%',
+  'center 24%',
+  'center 24%',
+  '78% 22%',
+  'center 44%',
+  '48% 12%',
+  '38% 48%',
+  'center 22%',
+  'center top',
+  'center top',
+  'center 54%',
 ]
 
 const countdownBackground = prenup('Save the date or Countdown picture.jpeg')
 
-/** Opening screen triptych: top → middle → bottom row */
-const openingScreenBackgrounds = [
-  prenup('Partners for life picture (love story section).jpeg'),
-  prenup('iclude in gallery.jpeg'),
-  prenup('5th picture.jpeg'),
-]
-
-/** Pool for other features (e.g. Moments grid, random picks). */
+/** Pool for other features (e.g. Moments grid, preload). Order preserved, duplicates removed. */
 const pool = [
-  hero,
-  fullBleedAfterVenue,
-  fullBleedAfterSchedule,
-  fullBleedAfterLoveStory,
-  fullBleedAfterDressCode,
-  ...loveStory,
-  ...gallery,
-  countdownBackground,
+  ...new Set([
+    hero,
+    fullBleedAfterVenue,
+    fullBleedAfterSchedule,
+    fullBleedAfterLoveStory,
+    fullBleedAfterDressCode,
+    ...loveStory,
+    ...gallery,
+    countdownBackground,
+  ]),
 ]
 
 export const prenupImages = {
   pool,
-  openingScreenBackgrounds,
   hero,
   fullBleedAfterVenue,
   fullBleedAfterSchedule,

@@ -1,5 +1,6 @@
 import React from 'react'
 import Hero from './Hero'
+import GuestMessage from './GuestMessage'
 import Venue from './Venue'
 import Schedule from './Schedule'
 import DressCode from './DressCode'
@@ -28,6 +29,9 @@ const Home = ({ onOpenRSVP }) => {
     <div className="relative w-full bg-sage">
       {/* 1. First page — photo, date & names (Hero; venue not shown) */}
       <Hero />
+
+      {/* 1b. Note to guests — between hero and venue */}
+      <GuestMessage />
 
       {/* 2. Where to go — venue, directions, time */}
       <div
@@ -130,7 +134,7 @@ const Home = ({ onOpenRSVP }) => {
 
       {/* 7. Our Love Story */}
       <div style={bgSectionStyle}>
-        <div className="relative z-20 flex items-center justify-center py-10 sm:py-12 md:py-16">
+        <div className="relative z-20 flex items-center justify-center py-6 sm:py-8 md:py-10">
           <div className="site-content-width">
             <LoveStory />
           </div>

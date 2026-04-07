@@ -1,23 +1,45 @@
 {
   "title": "Our Love Story",
-  "content": "It all began as schoolmates, sharing simple moments in classrooms and hallways until friendship slowly became something deeper.\n\nAs workmates, we discovered how strong we were as a team. Through busy days and long hours, we kept showing up for each other.\n\nWe became food buddies, turning ordinary meals into little celebrations and collecting memories one bite at a time.\n\nThen came our adventures as travel buddies, exploring new places, chasing sunsets, and choosing each other in every journey.\n\nNow, as proud furr parents, our home is fuller, happier, and filled with love. From schoolmates to soulmates, every chapter led us here.",
+  "chapters": [
+    {
+      "title": "Desk Mates",
+      "text": "We started as colleagues, sharing ideas, coffee breaks and lunch in the office."
+    },
+    {
+      "title": "Study Buddies",
+      "text": "We became schoolmates and allies, supporting each other as working students and proud family breadwinners."
+    },
+    {
+      "title": "Best Friends",
+      "text": "That mutual support blossomed into a deep friendship. We found our favorite travel companion, dinner date, and confidant in one another."
+    },
+    {
+      "title": "Furparents",
+      "text": "The love grew, and so did our family, with the addition of our beloved paws!"
+    },
+    {
+      "title": "Now... Partners for Life",
+      "text": "From desks to diplomas, through life's joys, challenges, and adventures, we've arrived here. We can't wait to continue our journey as husband and wife."
+    }
+  ],
+  "content": "We started as colleagues, sharing ideas, coffee breaks and lunch in the office.\n\nWe became schoolmates and allies, supporting each other as working students and proud family breadwinners.\n\nThat mutual support blossomed into a deep friendship. We found our favorite travel companion, dinner date, and confidant in one another.\n\nThe love grew, and so did our family, with the addition of our beloved paws!\n\nFrom desks to diplomas, through life's joys, challenges, and adventures, we've arrived here. We can't wait to continue our journey as husband and wife.",
   "timeline": [
     {
-      "title": "Schoolmates",
+      "title": "Desk Mates",
       "date": "The Beginning",
-      "description": "It all began as schoolmates, sharing simple moments in classrooms and hallways until friendship slowly became something deeper.",
+      "description": "We started as colleagues, sharing ideas, coffee breaks and lunch in the office.",
       "image": "couple2"
     },
     {
-      "title": "Workmates and Food Buddies",
+      "title": "Study Buddies",
       "date": "Growing Together",
-      "description": "As workmates, we became a team, and as food buddies, we turned ordinary meals into unforgettable memories.",
+      "description": "We became schoolmates and allies, supporting each other as working students and proud family breadwinners.",
       "image": "couple4"
     },
     {
-      "title": "Travel and Furr Family",
+      "title": "Best Friends",
       "date": "Our Story",
-      "description": "As travel buddies and now furr parents, we built a life full of adventure, warmth, and love that keeps growing every day.",
+      "description": "That mutual support blossomed into a deep friendship. We found our favorite travel companion, dinner date, and confidant in one another.",
       "image": "couple7"
     }
   ]

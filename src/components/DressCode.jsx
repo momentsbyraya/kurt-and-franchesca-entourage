@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { dresscode } from '../data'
@@ -14,26 +14,14 @@ const DressCode = () => {
   const category1Ref = useRef(null)
   const category2Ref = useRef(null)
   
-  // State for tooltip visibility
-  const [activeTooltip, setActiveTooltip] = useState(null)
-  
-  const EMERALD_GREEN = '#2E7D32'
-  const SAGE_GREEN = '#9CAF88'
-  const OLIVE_GREEN = '#6B8E23'
-  const BROWN = '#8B5E3C'
-  const BEIGE = '#DCC7A1'
-
-  const sponsorColors = [EMERALD_GREEN, SAGE_GREEN]
-
-  const guestColors = [EMERALD_GREEN, SAGE_GREEN, OLIVE_GREEN, BROWN, BEIGE]
-
-  const colorNames = {
-    [EMERALD_GREEN]: 'Emerald Green',
-    [SAGE_GREEN]: 'Sage Green',
-    [OLIVE_GREEN]: 'Olive Green',
-    [BROWN]: 'Brown',
-    [BEIGE]: 'Beige',
-  }
+  /** Guest palette — circular swatches + lowercase labels (invitation-style). */
+  const invitationGuestPalette = [
+    { color: '#013624', name: 'emerald green' },
+    { color: '#9daf89', name: 'sage green' },
+    { color: '#53604c', name: 'olive green' },
+    { color: '#846552', name: 'brown' },
+    { color: '#dfd3c3', name: 'beige' },
+  ]
 
   useEffect(() => {
     // Dress Code Title animation
@@ -189,35 +177,14 @@ const DressCode = () => {
                         {/* Category Name */}
                         <div className="text-lg sm:text-xl md:text-2xl font-boska mb-2 text-right lg-custom:text-left" style={{ color: '#b88917' }}>
                           {section.title}
-            </div>
-            
+                        </div>
+
                         {/* Description */}
                         {section.description && (
                           <p className="text-sm sm:text-base font-albert font-thin italic text-forest mb-3 text-right lg-custom:text-left">
                             {section.description}
                           </p>
                         )}
-                        
-                        {/* Color Swatches */}
-                        <div className="flex gap-2 justify-end lg-custom:justify-start">
-                          {sponsorColors.map((color, index) => (
-                    <div 
-                              key={index}
-                              className="relative group"
-                              onMouseEnter={() => setActiveTooltip(`sponsors-${index}`)}
-                              onMouseLeave={() => setActiveTooltip(null)}
-                              onClick={() => setActiveTooltip(activeTooltip === `sponsors-${index}` ? null : `sponsors-${index}`)}
-                    >
-                              <div className="w-6 h-6 sm:w-8 sm:h-8 border border-gray-300 rounded cursor-pointer" style={{ backgroundColor: color }}></div>
-                              {activeTooltip === `sponsors-${index}` && (
-                                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-forest text-white text-xs rounded whitespace-nowrap z-[9999] pointer-events-none color-swatch-tooltip" style={{ position: 'absolute' }}>
-                                  {colorNames[color]}
-                                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1 border-4 border-transparent border-t-forest"></div>
-                      </div>
-                              )}
-                    </div>
-                  ))}
-                        </div>
                       </div>
                     </div>
                     
@@ -225,20 +192,20 @@ const DressCode = () => {
                     {section.image && (
                       <div className="w-1/2 min-w-0 lg-custom:w-full order-2 lg-custom:order-1">
                         <div className="w-full relative dresscode-image-container">
-                          <img 
-                            src={section.image} 
-                            alt={section.title} 
-                            className="w-full h-full object-cover rounded"
-              />
-            </div>
+                          <img
+                            src={section.image}
+                            alt={section.title}
+                            className="h-full w-full rounded object-cover"
+                          />
+                        </div>
                       </div>
                     )}
                   </div>
                 </div>
               </div>
-                </div>
-              );
-            })()}
+            </div>
+          );
+        })()}
             
         {/* Vertical Divider - Hidden on mobile, shown on 992px and above */}
         {dresscode.sections && dresscode.sections.length > 1 && (
@@ -275,50 +242,59 @@ const DressCode = () => {
                       </div>
                     )}
                     
-                    {/* Category Details - Second category: left aligned on mobile, bottom on desktop */}
-                    <div className="w-1/2 min-w-0 lg-custom:w-full flex flex-col justify-between text-left lg-custom:text-left dresscode-image-container">
-                      {/* Category Name and Description Container */}
+                    {/* Category Details - title + description only (palette sits below the row) */}
+                    <div className="w-1/2 min-w-0 lg-custom:w-full flex flex-col text-left lg-custom:text-left">
                       <div>
-                        {/* Category Name */}
                         <div className="text-lg sm:text-xl md:text-2xl font-boska mb-2 text-left lg-custom:text-left" style={{ color: '#b88917' }}>
                           {section.title}
                         </div>
-                        
-                        {/* Short General Description */}
+
                         {section.shortDescription && (
-                          <p className="text-sm sm:text-base font-albert font-thin italic text-forest mb-3 text-left lg-custom:text-left">
+                          <p className="text-sm sm:text-base font-albert font-thin italic text-forest text-left lg-custom:text-left">
                             {section.shortDescription}
                           </p>
                         )}
-                        
-                        {/* Color Swatches */}
-                        <div className="flex gap-2 justify-start lg-custom:justify-start">
-                          {guestColors.map((color, index) => (
-                            <div
-                              key={index}
-                              className="relative group"
-                              onMouseEnter={() => setActiveTooltip(`guests-${index}`)}
-                              onMouseLeave={() => setActiveTooltip(null)}
-                              onClick={() => setActiveTooltip(activeTooltip === `guests-${index}` ? null : `guests-${index}`)}
-                            >
-                              <div className="w-6 h-6 sm:w-8 sm:h-8 border border-gray-300 rounded cursor-pointer" style={{ backgroundColor: color }}></div>
-                              {activeTooltip === `guests-${index}` && (
-                                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-forest text-white text-xs rounded whitespace-nowrap z-[9999] pointer-events-none color-swatch-tooltip" style={{ position: 'absolute' }}>
-                                  {colorNames[color]}
-                                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1 border-4 border-transparent border-t-forest"></div>
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
                       </div>
                     </div>
                   </div>
-                      </div>
+
+                  <div className="mt-6 flex w-full min-w-0 flex-col items-center text-center sm:mt-8">
+                    <h4
+                      className="mb-5 font-foglihten text-2xl italic sm:mb-6 sm:text-3xl"
+                      style={{ color: '#1a2e1a' }}
+                    >
+                      Color Palette
+                    </h4>
+                    <div
+                      className="flex w-full max-w-full flex-row flex-nowrap items-start justify-center gap-3 overflow-x-auto overflow-y-visible py-1 [scrollbar-width:thin] sm:gap-6 md:gap-8"
+                      aria-label="Wedding color palette for guests"
+                    >
+                      {invitationGuestPalette.map((swatch) => (
+                        <div
+                          key={swatch.color}
+                          className="flex w-[3.5rem] shrink-0 flex-col items-center gap-2 sm:w-[4.75rem] md:w-[5.25rem]"
+                        >
+                          <button
+                            type="button"
+                            className="h-10 w-10 shrink-0 rounded-full shadow-[0_2px_10px_rgba(26,46,26,0.12)] outline-none ring-1 ring-[#1a2e1a]/12 transition-transform duration-200 hover:scale-[1.04] focus-visible:ring-2 focus-visible:ring-[#1a2e1a] focus-visible:ring-offset-2 sm:h-[3.25rem] sm:w-[3.25rem] md:h-14 md:w-14"
+                            style={{ backgroundColor: swatch.color }}
+                            aria-label={swatch.name}
+                          />
+                          <span
+                            className="text-center font-boska text-[11px] italic leading-snug sm:text-xs"
+                            style={{ color: '#1a2e1a' }}
+                          >
+                            {swatch.name}
+                          </span>
+                        </div>
+                      ))}
                     </div>
+                  </div>
                 </div>
-              );
-            })()}
+              </div>
+            </div>
+          );
+        })()}
       </div>
     </div>
   )

@@ -16,9 +16,13 @@ const LoveStory = () => {
   const [storyModalOpen, setStoryModalOpen] = useState(false)
   const [teaserIndex, setTeaserIndex] = useState(0)
 
-  const paragraphs = loveStory.content.split('\n\n').filter((p) => p.trim())
-  const summaryText =
-    'From schoolmates to workmates, food and travel buddies, and now proud furr parents.'
+  const chapters =
+    Array.isArray(loveStory.chapters) && loveStory.chapters.length > 0
+      ? loveStory.chapters
+      : null
+  const paragraphs = chapters
+    ? chapters.map((c) => c.text)
+    : loveStory.content.split('\n\n').filter((p) => p.trim())
 
   const polaroidImages = prenupImages.loveStory
 
@@ -268,6 +272,7 @@ const LoveStory = () => {
 
   const storySegments = paragraphs.map((paragraph, i) => ({
     paragraph,
+    title: chapters?.[i]?.title ?? null,
     index: i,
     imageCount: polaroidImages[i] ? 1 : 0,
     imageIndices: polaroidImages[i] ? [i] : [],
@@ -289,29 +294,26 @@ const LoveStory = () => {
   }
 
   return (
-    <div className="relative pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-20 md:pb-24">
-      <div className="text-center mb-12 sm:mb-16">
-        <div className="flex justify-center mb-4">
+    <div className="relative pt-6 sm:pt-8 md:pt-10 pb-10 sm:pb-12 md:pb-14">
+      <div className="text-center mb-4 sm:mb-6">
+        <div className="flex justify-center mb-2 sm:mb-3">
           <img
             src="/assets/images/graphics/heart.png"
             alt="Heart decoration"
-            className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
+            className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 object-contain"
           />
         </div>
-        <h3 ref={titleRef} className="relative inline-block px-6 py-3">
+        <h3 ref={titleRef} className="relative inline-block px-4 py-1 sm:py-1.5">
           <span className="love-story-title love-story-title--section text-3xl sm:text-4xl md:text-5xl lg:text-6xl inline-block leading-tight">
             {loveStory.title}
           </span>
         </h3>
-        <p className="text-base sm:text-lg font-albert font-thin text-forest leading-relaxed text-center max-w-3xl mx-auto mt-3">
-          {summaryText}
-        </p>
 
         {/* Thread + polaroid; CTA sits on polaroid caption strip */}
         {polaroidImages[0] ? (
-          <div className="relative mx-auto mt-10 w-full max-w-[220px] sm:max-w-[240px] px-2">
-            <ThreadHanger className="pointer-events-none absolute left-1/2 top-0 z-0 h-[9.5rem] w-[5.5rem] max-w-[30%] -translate-x-1/2 -translate-y-1 sm:h-[10.5rem] sm:w-24" />
-            <div className="relative z-10 flex flex-col items-center pt-12 sm:pt-14">
+          <div className="relative mx-auto mt-4 w-full max-w-[220px] sm:max-w-[240px] px-2 sm:mt-5">
+            <ThreadHanger className="pointer-events-none absolute left-1/2 top-0 z-0 h-[6.75rem] w-[4.5rem] max-w-[28%] -translate-x-1/2 -translate-y-0.5 sm:h-[7.5rem] sm:w-[5.25rem]" />
+            <div className="relative z-10 flex flex-col items-center pt-7 sm:pt-8">
               <span className="sr-only" aria-live="polite">
                 Story photo {teaserIndex + 1} of {polaroidImages.length}
               </span>
@@ -330,13 +332,13 @@ const LoveStory = () => {
                     onClick={() => setStoryModalOpen(true)}
                     className="w-full max-w-[11.5rem] rounded-full bg-forest px-3 py-2 text-center font-albert text-xs sm:text-sm font-medium text-white shadow-sm transition-colors duration-200 hover:bg-gold hover:text-forest"
                   >
-                    Read full story
+                    Read story
                   </button>
                 }
               />
               {polaroidImages.length > 1 && (
                 <div
-                  className="mt-3 flex justify-center gap-1.5"
+                  className="mt-2 flex justify-center gap-1.5"
                   aria-hidden
                 >
                   {polaroidImages.map((_, i) => (
@@ -352,13 +354,13 @@ const LoveStory = () => {
             </div>
           </div>
         ) : (
-          <div className="mt-5 flex justify-center">
+          <div className="mt-4 flex justify-center">
             <button
               type="button"
               onClick={() => setStoryModalOpen(true)}
               className="px-5 py-2 rounded-full bg-forest text-white hover:bg-gold hover:text-forest transition-colors duration-200 font-albert text-sm sm:text-base"
             >
-              Read full story
+              Read story
             </button>
           </div>
         )}
@@ -422,7 +424,7 @@ const LoveStory = () => {
                 className="love-story-modal love-story-modal-body min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-6 text-white sm:px-6 sm:py-8"
               >
                 <div className="relative z-10 space-y-12 sm:space-y-16 md:space-y-20">
-                  {storySegments.map(({ paragraph, index, imageCount, imageIndices }) => {
+                  {storySegments.map(({ paragraph, title, index, imageCount, imageIndices }) => {
                     const isLast = index === paragraphs.length - 1
 
                     return (
@@ -486,6 +488,11 @@ const LoveStory = () => {
                             <div
                               className={`text-center sm:text-left ${imageCount > 0 ? 'flex-1' : 'w-full'}`}
                             >
+                              {title ? (
+                                <h3 className="mb-3 font-boska text-lg leading-snug text-[#e8dcc4] sm:mb-3 sm:text-xl">
+                                  {title}
+                                </h3>
+                              ) : null}
                               <p className="text-base font-albert font-thin leading-relaxed text-white sm:text-lg">
                                 {formatParagraph(paragraph)}
                               </p>
