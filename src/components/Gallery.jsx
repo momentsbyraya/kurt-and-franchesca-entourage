@@ -176,7 +176,7 @@ const Gallery = () => {
           >
             <span
               className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl inline-block leading-none capitalize"
-              style={{ color: '#CBCBC0' }}
+              style={{ color: '#f7f1ed' }}
             >
               Gallery
             </span>

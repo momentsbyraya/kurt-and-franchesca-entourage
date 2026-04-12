@@ -1,16 +1,15 @@
-/* Vintage invitation — guest message fills entire section (no outer forest frame) */
+/* Vintage invitation — guest message fills entire section */
 
 .guest-message-section-full {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   width: 100%;
-  background: linear-gradient(180deg, #faf7f0 0%, #f2ebe0 48%, #e8e2d4 100%);
-  /* Soft recessed “inner card” feel across the full band */
+  background: linear-gradient(180deg, #fdf8f9 0%, #f7f1ed 48%, #f0e4e8 100%);
   box-shadow:
     inset 0 0 100px rgba(255, 255, 255, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(74, 90, 70, 0.07);
+    inset 0 -1px 0 rgba(92, 36, 56, 0.06);
 }
 
 .guest-message-section-full::before {
@@ -37,8 +36,8 @@
     0deg,
     transparent,
     transparent 2px,
-    rgba(74, 90, 70, 0.06) 2px,
-    rgba(74, 90, 70, 0.06) 3px
+    rgba(92, 36, 56, 0.05) 2px,
+    rgba(92, 36, 56, 0.05) 3px
   );
 }
 
@@ -54,13 +53,12 @@
   line-height: 1.15;
   background-image: linear-gradient(
     118deg,
-    #6b5420 0%,
-    #9a7829 16%,
-    #d4bc6a 34%,
-    #f0e4b8 48%,
-    #c9a43a 62%,
-    #8a6e28 88%,
-    #5c4818 100%
+    #4a1d2d 0%,
+    #6d2f3f 18%,
+    #c9959e 42%,
+    #e8c4ca 52%,
+    #b87a8a 72%,
+    #5c2438 100%
   );
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -69,14 +67,13 @@
   -webkit-text-fill-color: transparent;
   color: transparent;
   padding-bottom: 0.06em;
-  /* Foil depth (restored) — section scroll reveal is opacity-only so gradient + filter stay stable */
-  filter: drop-shadow(0 1px 1px rgba(62, 48, 18, 0.14));
+  filter: drop-shadow(0 1px 1px rgba(74, 29, 45, 0.14));
 }
 
 @supports not (-webkit-background-clip: text) {
   .guest-message-names {
-    color: #8a6e28;
-    -webkit-text-fill-color: #8a6e28;
+    color: #5c2438;
+    -webkit-text-fill-color: #5c2438;
     background: none;
   }
 }
@@ -86,7 +83,7 @@
   width: 100%;
   height: auto;
   max-height: 2.25rem;
-  color: #b8943a;
+  color: #c9959e;
   opacity: 0.88;
 }
 

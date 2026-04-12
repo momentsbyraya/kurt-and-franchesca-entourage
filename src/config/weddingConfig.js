@@ -22,18 +22,18 @@ export const weddingConfig = {
 
   // RSVP Information
   rsvp: {
-    deadline: "2026-05-04",
+    deadline: "2026-05-24",
     email: "",
     phone: "",
     website: "",
-    message: "Please RSVP by May 4th, 2026"
+    message: "Please RSVP by May 24th, 2026"
   },
 
-  // Theme and Styling - Burgundy Red Wine
+  // Theme — blush pink, ivory, wine burgundy
   theme: {
-    primaryColor: "forest",
-    secondaryColor: "gold",
-    accentColor: "gold",
+    primaryColor: "wine",
+    secondaryColor: "blush",
+    accentColor: "blush",
     fontFamily: "serif",
     style: "elegant" // Options: elegant, modern, rustic, vintage
   },
@@ -52,18 +52,18 @@ export const weddingConfig = {
 
   // Additional Information
   details: {
-    hashtag: "#JohnsonWilliams2024",
-    website: "https://johnsonwilliams.com",
-    registry: "https://registry.example.com",
+    hashtag: "#EarlwinAndFrancezka2026",
+    website: "",
+    registry: "",
     message: "We're excited to celebrate our special day with you!",
     covidInfo: "We're following local health guidelines. Please stay home if you're feeling unwell."
   },
 
   // Social Media
   social: {
-    instagram: "@johnsonwilliams",
-    facebook: "JohnsonWilliamsWedding",
-    twitter: "@johnsonwilliams"
+    instagram: "",
+    facebook: "",
+    twitter: ""
   }
 };
 

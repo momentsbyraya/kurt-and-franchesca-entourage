@@ -203,7 +203,7 @@ const LoveStory = () => {
                   style={{
                     maxWidth: photoMax.w,
                     maxHeight: photoMax.h,
-                    border: '2px solid #CBCBC0',
+                    border: '2px solid rgba(247, 241, 237, 0.85)',
                     borderBottom: 'none',
                   }}
                 />
@@ -220,7 +220,7 @@ const LoveStory = () => {
                   style={{
                     maxWidth: photoMax.w,
                     maxHeight: photoMax.h,
-                    border: '2px solid #CBCBC0',
+                    border: '2px solid rgba(247, 241, 237, 0.85)',
                     borderBottom: 'none',
                   }}
                 />
@@ -239,7 +239,7 @@ const LoveStory = () => {
           />
         </div>
         {footer ? (
-          <div className="border-t border-[#CBCBC0]/40 bg-white px-2 py-2.5 sm:py-3 flex justify-center items-center min-h-[3rem]">
+          <div className="border-t border-forest/15 bg-white px-2 py-2.5 sm:py-3 flex justify-center items-center min-h-[3rem]">
             {footer}
           </div>
         ) : null}
@@ -384,7 +384,7 @@ const LoveStory = () => {
               ref={panelRef}
               className="love-story-modal-panel relative z-10 flex max-h-[min(92vh,900px)] w-full max-w-3xl flex-col overflow-hidden rounded-t-2xl shadow-2xl sm:max-h-[85vh] sm:rounded-2xl border border-gold/30"
             >
-              <div className="love-story-modal-banner relative shrink-0 border-b border-[#dbcf9f]/25 px-4 py-4 sm:px-5 sm:py-5">
+              <div className="love-story-modal-banner relative shrink-0 border-b border-[#f0e4e8]/25 px-4 py-4 sm:px-5 sm:py-5">
                 <h2
                   id="love-story-modal-title"
                   className="love-story-title text-center text-lg leading-tight sm:text-xl md:text-2xl"
@@ -394,14 +394,14 @@ const LoveStory = () => {
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-[#dbcf9f] transition-colors hover:bg-black/20 hover:text-[#f0e8c8] sm:right-3"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-[#f0e4e8] transition-colors hover:bg-black/20 hover:text-white sm:right-3"
                   aria-label="Close story"
                 >
                   <X className="h-6 w-6" strokeWidth={1.75} />
                 </button>
               </div>
               <div
-                className="love-story-modal-banner shrink-0 border-b border-[#dbcf9f]/20 px-2 py-1"
+                className="love-story-modal-banner shrink-0 border-b border-[#f0e4e8]/20 px-2 py-1"
                 aria-hidden
               >
                 <svg
@@ -412,7 +412,7 @@ const LoveStory = () => {
                   <path
                     d="M0 7 Q120 2 240 7 T480 7"
                     fill="none"
-                    stroke="rgba(219,207,159,0.4)"
+                    stroke="rgba(240,228,232,0.45)"
                     strokeWidth="1.15"
                     strokeLinecap="round"
                     strokeDasharray="4 5"
@@ -489,7 +489,7 @@ const LoveStory = () => {
                               className={`text-center sm:text-left ${imageCount > 0 ? 'flex-1' : 'w-full'}`}
                             >
                               {title ? (
-                                <h3 className="mb-3 font-boska text-lg leading-snug text-[#e8dcc4] sm:mb-3 sm:text-xl">
+                                <h3 className="mb-3 font-boska text-lg leading-snug text-[#f0e4e8] sm:mb-3 sm:text-xl">
                                   {title}
                                 </h3>
                               ) : null}

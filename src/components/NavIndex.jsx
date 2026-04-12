@@ -171,7 +171,7 @@ const NavIndex = ({ onOpenRSVP }) => {
     <div className="min-h-screen w-full flex items-center justify-center bg-forest overflow-hidden relative">
       {/* Background texture (subtle on forest) */}
       <div className="absolute inset-0 bg-cover bg-no-repeat nav-index-bg opacity-25" />
-      <div className="absolute inset-0 bg-gradient-to-b from-forest via-forest/95 to-[#162018]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-forest via-forest/95 to-[#2a111b]" />
       
       <div 
         ref={navRef}
@@ -256,7 +256,7 @@ const NavIndex = ({ onOpenRSVP }) => {
             <div 
               ref={polaroidRef}
                className="bg-white relative polaroid-container border-8 flex flex-col p-2"
-               style={{ borderColor: '#AA8D5A', transform: 'none' }}
+               style={{ borderColor: '#c9959e', transform: 'none' }}
              >
               {/* Date, Month, Year at Top */}
               <div className="flex justify-between items-center w-full mb-2">

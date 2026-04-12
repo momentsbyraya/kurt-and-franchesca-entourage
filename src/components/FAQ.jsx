@@ -154,7 +154,7 @@ const FAQ = () => {
         <h3 ref={faqTitleRef} className="relative inline-block px-6 py-3 mb-12 text-center w-full">
           <span 
             className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl inline-block leading-none capitalize"
-            style={{ color: '#CBCBC0' }}
+            style={{ color: '#f7f1ed' }}
           >
             Frequently Asked Questions
           </span>
@@ -169,10 +169,10 @@ const FAQ = () => {
                   className="border-b border-white/30 pb-6 pt-6 first:pt-0 last:border-b-0"
                 >
                   <div className="mb-2">
-                    <p className="text-base sm:text-lg font-albert text-[#CBCBC0] mb-2 faq-question-bold">
+                    <p className="text-base sm:text-lg font-albert text-[#f7f1ed] mb-2 faq-question-bold">
                       Q: {text}
                     </p>
-                    <p className="text-sm sm:text-base font-albert font-thin text-[#CBCBC0]/90 whitespace-pre-line">
+                    <p className="text-sm sm:text-base font-albert font-thin text-[#f7f1ed]/90 whitespace-pre-line">
                       A: {parseAnswerWithPhoneNumbers(item.answer)}
                     </p>
                   </div>

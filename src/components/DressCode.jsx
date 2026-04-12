@@ -14,14 +14,16 @@ const DressCode = () => {
   const category1Ref = useRef(null)
   const category2Ref = useRef(null)
   
-  /** Guest palette — circular swatches + lowercase labels (invitation-style). */
-  const invitationGuestPalette = [
-    { color: '#013624', name: 'emerald green' },
-    { color: '#9daf89', name: 'sage green' },
-    { color: '#53604c', name: 'olive green' },
-    { color: '#846552', name: 'brown' },
-    { color: '#dfd3c3', name: 'beige' },
+  /** Formal attire palette — gray, navy, pink, burgundy */
+  const formalAttirePalette = [
+    { color: '#6B7280', name: 'gray' },
+    { color: '#1E3A5F', name: 'navy blue' },
+    { color: '#D9A5AD', name: 'pink' },
+    { color: '#722F37', name: 'burgundy' },
   ]
+
+  const sections = dresscode.sections || []
+  const singleSectionMode = sections.length === 1
 
   useEffect(() => {
     // Dress Code Title animation
@@ -80,8 +82,8 @@ const DressCode = () => {
       }
     }
 
-    // Category 2 animation - animate image and content separately
-    if (category2Ref.current) {
+    // Category 2 animation (two-section layout only)
+    if (!singleSectionMode && category2Ref.current) {
       const category2Container = category2Ref.current
       const flexContainer = category2Container.querySelector('.flex.flex-row')
       if (flexContainer) {
@@ -158,38 +160,34 @@ const DressCode = () => {
 
       {/* Dress Code Content */}
       <div className="flex flex-col lg-custom:flex-row gap-4 md:gap-6 lg-custom:gap-4 items-stretch min-w-0">
-        {/* Principal Sponsors Category */}
-        {dresscode.sections && dresscode.sections[0] && (() => {
-          const section = dresscode.sections[0];
+        {sections[0] && (() => {
+          const section = sections[0]
+          const textColClass = singleSectionMode
+            ? 'w-full min-w-0 flex flex-col text-center lg-custom:text-center'
+            : 'w-1/2 min-w-0 lg-custom:w-full flex flex-col text-right lg-custom:text-left order-1 lg-custom:order-2'
           return (
             <div className="relative overflow-visible flex-1">
               <div className="relative overflow-visible">
-                <div 
+                <div
                   ref={category1Ref}
                   className="transition-opacity duration-500 ease-in-out"
                 >
-                  {/* Category Image and Details - Side by side on mobile, stacked on 992px+ */}
                   <div className="flex flex-row lg-custom:flex-col gap-6 md:gap-8 lg-custom:gap-6 items-start min-w-0">
-                    {/* Category Details - First category: right aligned on mobile, left aligned on 992px+ */}
-                    <div className="w-1/2 min-w-0 lg-custom:w-full flex flex-col text-right lg-custom:text-left order-1 lg-custom:order-2">
-                      {/* Category Name and Description Container */}
+                    <div className={textColClass}>
                       <div className="w-full">
-                        {/* Category Name */}
-                        <div className="text-lg sm:text-xl md:text-2xl font-boska mb-2 text-right lg-custom:text-left" style={{ color: '#b88917' }}>
+                        <div
+                          className="text-lg sm:text-xl md:text-2xl font-boska mb-2 text-gold"
+                        >
                           {section.title}
                         </div>
-
-                        {/* Description */}
                         {section.description && (
-                          <p className="text-sm sm:text-base font-albert font-thin italic text-forest mb-3 text-right lg-custom:text-left">
+                          <p className="text-sm sm:text-base font-albert font-thin italic text-forest mb-3">
                             {section.description}
                           </p>
                         )}
                       </div>
                     </div>
-                    
-                    {/* Category Image - First category: right on mobile, top on desktop */}
-                    {section.image && (
+                    {section.image ? (
                       <div className="w-1/2 min-w-0 lg-custom:w-full order-2 lg-custom:order-1">
                         <div className="w-full relative dresscode-image-container">
                           <img
@@ -199,56 +197,78 @@ const DressCode = () => {
                           />
                         </div>
                       </div>
-                    )}
+                    ) : null}
                   </div>
+
+                  {singleSectionMode && (
+                    <div className="mt-8 flex w-full min-w-0 flex-col items-center text-center sm:mt-10">
+                      <h4 className="mb-5 font-foglihten text-2xl italic sm:mb-6 sm:text-3xl text-forest">
+                        Color palette
+                      </h4>
+                      <div
+                        className="flex w-full max-w-full flex-row flex-nowrap items-start justify-center gap-3 overflow-x-auto overflow-y-visible py-1 [scrollbar-width:thin] sm:gap-6 md:gap-8"
+                        aria-label="Suggested colors for formal attire"
+                      >
+                        {formalAttirePalette.map((swatch) => (
+                          <div
+                            key={swatch.color}
+                            className="flex w-[3.5rem] shrink-0 flex-col items-center gap-2 sm:w-[4.75rem] md:w-[5.25rem]"
+                          >
+                            <button
+                              type="button"
+                              className="h-10 w-10 shrink-0 rounded-full shadow-[0_2px_10px_rgba(92,36,56,0.12)] outline-none ring-1 ring-forest/15 transition-transform duration-200 hover:scale-[1.04] focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 sm:h-[3.25rem] sm:w-[3.25rem] md:h-14 md:w-14"
+                              style={{ backgroundColor: swatch.color }}
+                              aria-label={swatch.name}
+                            />
+                            <span className="text-center font-boska text-[11px] italic leading-snug text-forest sm:text-xs">
+                              {swatch.name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
-          );
+          )
         })()}
-            
-        {/* Vertical Divider - Hidden on mobile, shown on 992px and above */}
-        {dresscode.sections && dresscode.sections.length > 1 && (
+
+        {sections.length > 1 && (
           <>
-            <div className="hidden lg-custom:block w-px bg-forest opacity-40 self-stretch"></div>
+            <div className="hidden lg-custom:block w-px bg-forest opacity-40 self-stretch" />
             <div className="lg-custom:hidden w-full">
               <Line />
             </div>
           </>
         )}
 
-        {/* Guests Category */}
-        {dresscode.sections && dresscode.sections[1] && (() => {
-          const section = dresscode.sections[1];
-              return (
+        {sections[1] && (() => {
+          const section = sections[1]
+          return (
             <div className="relative overflow-visible flex-1">
               <div className="relative overflow-visible">
-                <div 
+                <div
                   ref={category2Ref}
                   className="text-center transition-opacity duration-500 ease-in-out"
                 >
-                  {/* Category Image and Details - Side by side on mobile, stacked on 992px+ */}
                   <div className="flex flex-row lg-custom:flex-col gap-6 md:gap-8 lg-custom:gap-6 items-start min-w-0">
-                    {/* Category Image - Second category: left on mobile, top on desktop */}
                     {section.image && (
                       <div className="w-1/2 min-w-0 lg-custom:w-full">
                         <div className="w-full relative dresscode-image-container">
-                          <img 
-                            src={section.image} 
-                            alt={section.title} 
+                          <img
+                            src={section.image}
+                            alt={section.title}
                             className="w-full h-full object-cover rounded"
                           />
                         </div>
                       </div>
                     )}
-                    
-                    {/* Category Details - title + description only (palette sits below the row) */}
                     <div className="w-1/2 min-w-0 lg-custom:w-full flex flex-col text-left lg-custom:text-left">
                       <div>
-                        <div className="text-lg sm:text-xl md:text-2xl font-boska mb-2 text-left lg-custom:text-left" style={{ color: '#b88917' }}>
+                        <div className="text-lg sm:text-xl md:text-2xl font-boska mb-2 text-left lg-custom:text-left text-gold">
                           {section.title}
                         </div>
-
                         {section.shortDescription && (
                           <p className="text-sm sm:text-base font-albert font-thin italic text-forest text-left lg-custom:text-left">
                             {section.shortDescription}
@@ -257,33 +277,26 @@ const DressCode = () => {
                       </div>
                     </div>
                   </div>
-
                   <div className="mt-6 flex w-full min-w-0 flex-col items-center text-center sm:mt-8">
-                    <h4
-                      className="mb-5 font-foglihten text-2xl italic sm:mb-6 sm:text-3xl"
-                      style={{ color: '#1a2e1a' }}
-                    >
-                      Color Palette
+                    <h4 className="mb-5 font-foglihten text-2xl italic sm:mb-6 sm:text-3xl text-forest">
+                      Color palette
                     </h4>
                     <div
                       className="flex w-full max-w-full flex-row flex-nowrap items-start justify-center gap-3 overflow-x-auto overflow-y-visible py-1 [scrollbar-width:thin] sm:gap-6 md:gap-8"
                       aria-label="Wedding color palette for guests"
                     >
-                      {invitationGuestPalette.map((swatch) => (
+                      {formalAttirePalette.map((swatch) => (
                         <div
                           key={swatch.color}
                           className="flex w-[3.5rem] shrink-0 flex-col items-center gap-2 sm:w-[4.75rem] md:w-[5.25rem]"
                         >
                           <button
                             type="button"
-                            className="h-10 w-10 shrink-0 rounded-full shadow-[0_2px_10px_rgba(26,46,26,0.12)] outline-none ring-1 ring-[#1a2e1a]/12 transition-transform duration-200 hover:scale-[1.04] focus-visible:ring-2 focus-visible:ring-[#1a2e1a] focus-visible:ring-offset-2 sm:h-[3.25rem] sm:w-[3.25rem] md:h-14 md:w-14"
+                            className="h-10 w-10 shrink-0 rounded-full shadow-[0_2px_10px_rgba(92,36,56,0.12)] outline-none ring-1 ring-forest/15 transition-transform duration-200 hover:scale-[1.04] focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 sm:h-[3.25rem] sm:w-[3.25rem] md:h-14 md:w-14"
                             style={{ backgroundColor: swatch.color }}
                             aria-label={swatch.name}
                           />
-                          <span
-                            className="text-center font-boska text-[11px] italic leading-snug sm:text-xs"
-                            style={{ color: '#1a2e1a' }}
-                          >
+                          <span className="text-center font-boska text-[11px] italic leading-snug text-forest sm:text-xs">
                             {swatch.name}
                           </span>
                         </div>
@@ -293,7 +306,7 @@ const DressCode = () => {
                 </div>
               </div>
             </div>
-          );
+          )
         })()}
       </div>
     </div>

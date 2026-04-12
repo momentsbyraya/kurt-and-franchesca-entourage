@@ -5,11 +5,11 @@ import { ExternalLink, X } from 'lucide-react'
 import { couple, prenupImages } from '../data'
 
 const RSVP_FORM_URL =
-  couple.rsvpFormUrl || 'https://forms.gle/QAoaTgLSTwBc3qod6'
+  couple.rsvpFormUrl || 'https://forms.gle/Batx8bEHr1td7yMS9'
 
 const RSVP_FORM_EMBED_URL =
   couple.rsvpGoogleFormEmbedUrl ||
-  'https://docs.google.com/forms/d/e/1FAIpQLSfZh7wz4dWMxadz6mUQ8sh9t3HkrCOcpZtqU3OL_FFh4QQQAg/viewform?embedded=true'
+  'https://docs.google.com/forms/d/e/1FAIpQLSfR86MQDJlaDf_TEg83nvoi4ZrRdMujcgn31BS0oVYZDgkr7Q/viewform?embedded=true'
 
 const RSVPModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null)

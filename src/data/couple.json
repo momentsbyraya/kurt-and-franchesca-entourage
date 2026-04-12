@@ -1,30 +1,30 @@
 {
   "bride": {
-    "firstName": "Patricia Ann",
-    "lastName": "B. Historillo",
-    "fullName": "PATRICIA ANN B. HISTORILLO"
+    "firstName": "Francezka Laurabel",
+    "lastName": "S. Eusebio",
+    "fullName": "FRANCEZKA LAURABEL S. EUSEBIO"
   },
   "groom": {
-    "firstName": "Dom-Nikko",
-    "lastName": "O. Negrite",
-    "fullName": "DOM-NIKKO O. NEGRITE"
+    "firstName": "Earlwin Czar I.",
+    "lastName": "Cantillo",
+    "fullName": "EARLWIN CZAR I. CANTILLO"
   },
-  "together": "Dom & Patricia",
-  "nickname": "Dom & Patricia",
+  "together": "Earlwin & Francezka",
+  "nickname": "Earlwin & Francezka",
   "wedding": {
-    "date": "2026-06-28",
+    "date": "2026-06-05",
     "time": "2:00 PM",
-    "dayOfWeek": "Sunday",
+    "dayOfWeek": "Friday",
     "month": "June",
-    "day": "28",
+    "day": "5",
     "year": "2026"
   },
   "rsvpDeadline": {
-    "date": "2026-05-04",
+    "date": "2026-05-24",
     "month": "May",
-    "day": "4",
+    "day": "24",
     "year": "2026"
   },
-  "rsvpFormUrl": "https://forms.gle/QAoaTgLSTwBc3qod6",
-  "rsvpGoogleFormEmbedUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfZh7wz4dWMxadz6mUQ8sh9t3HkrCOcpZtqU3OL_FFh4QQQAg/viewform?embedded=true"
+  "rsvpFormUrl": "https://forms.gle/Batx8bEHr1td7yMS9",
+  "rsvpGoogleFormEmbedUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfR86MQDJlaDf_TEg83nvoi4ZrRdMujcgn31BS0oVYZDgkr7Q/viewform?embedded=true"
 }

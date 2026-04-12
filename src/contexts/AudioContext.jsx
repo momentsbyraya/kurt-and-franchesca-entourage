@@ -21,11 +21,12 @@ export const AudioProvider = ({ children }) => {
       console.warn('Failed to create URL for audio, using direct path:', error)
       audioRef.current = new Audio(audio.background)
     }
-    audioRef.current.loop = false
+    const loopEnd = typeof audio.loopEnd === 'number' ? audio.loopEnd : null
+    // Custom segment loop uses timeupdate; otherwise honor `audio.loop` on the element
+    audioRef.current.loop = loopEnd == null && Boolean(audio.loop)
     audioRef.current.volume = audio.volume
 
     const loopStart = typeof audio.loopStart === 'number' ? audio.loopStart : 0
-    const loopEnd = typeof audio.loopEnd === 'number' ? audio.loopEnd : null
 
     const handleTimeUpdate = () => {
       if (!audioRef.current || loopEnd == null) return

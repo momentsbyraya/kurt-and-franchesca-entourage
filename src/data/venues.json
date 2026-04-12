@@ -1,27 +1,27 @@
 {
   "ceremony": {
     "ceremonyPhoto": "/assets/images/venues/ceremony.jpg",
-    "name": "Mango Grove Events Place",
+    "name": "St. Benedict Parish Church",
     "address": "",
     "city": "",
     "state": "",
     "zip": "",
     "time": "2:00 PM",
-    "details": "Schedule: 2:00 PM",
-    "googleMapsUrl": "https://www.google.com/maps/place/Mango+Grove+Events+Place/@14.3018552,120.9809974,17z/data=!3m1!4b1!4m6!3m5!1s0x3397d5de43bb995b:0xa4f79f0396bb4681!8m2!3d14.30185!4d120.9835723!16s%2Fg%2F11c7sr9r_r?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D",
-    "directionsUrl": "https://www.google.com/maps/place/Mango+Grove+Events+Place/@14.3018552,120.9809974,17z/data=!3m1!4b1!4m6!3m5!1s0x3397d5de43bb995b:0xa4f79f0396bb4681!8m2!3d14.30185!4d120.9835723!16s%2Fg%2F11c7sr9r_r?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D"
+    "details": "Ceremony begins at 2:00 PM",
+    "googleMapsUrl": "https://maps.app.goo.gl/1FBYZh76BC5gnLJJ7",
+    "directionsUrl": "https://maps.app.goo.gl/1FBYZh76BC5gnLJJ7"
   },
   "reception": {
     "receptionPhoto": "/assets/images/venues/reception.png",
-    "name": "Mango Grove Events Place",
+    "name": "Farm Hills Garden",
     "address": "",
     "city": "",
     "state": "",
     "zip": "",
     "time": "5:00 PM",
-    "details": "Schedule: 5:00 PM onwards",
-    "landmark": "Same venue as ceremony",
-    "googleMapsUrl": "https://www.google.com/maps/place/Mango+Grove+Events+Place/@14.3018552,120.9809974,17z/data=!3m1!4b1!4m6!3m5!1s0x3397d5de43bb995b:0xa4f79f0396bb4681!8m2!3d14.30185!4d120.9835723!16s%2Fg%2F11c7sr9r_r?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D",
-    "directionsUrl": "https://www.google.com/maps/place/Mango+Grove+Events+Place/@14.3018552,120.9809974,17z/data=!3m1!4b1!4m6!3m5!1s0x3397d5de43bb995b:0xa4f79f0396bb4681!8m2!3d14.30185!4d120.9835723!16s%2Fg%2F11c7sr9r_r?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D"
+    "details": "Reception at 5:00 PM",
+    "landmark": "",
+    "googleMapsUrl": "https://maps.app.goo.gl/1FBYZh76BC5gnLJJ7",
+    "directionsUrl": "https://maps.app.goo.gl/1FBYZh76BC5gnLJJ7"
   }
 }

@@ -6,9 +6,9 @@ import './GuestMessage.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-/** Muted moss / forest — body copy */
-const mossPrimary = '#4a5a48'
-const mossSecondary = '#5d6e5a'
+/** Wine & blush — body copy */
+const mossPrimary = '#5c2438'
+const mossSecondary = '#6d4a55'
 
 /** Vintage invitation graphic — optional watermark (encoded path) */
 const vintageInvitationSrc = `/assets/images/graphics/${encodeURIComponent(
@@ -29,11 +29,11 @@ function VintageDivider({ idSuffix = 'a' }) {
     >
       <defs>
         <linearGradient id={gid} x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#7a6220" />
-          <stop offset="28%" stopColor="#c9a84a" />
-          <stop offset="52%" stopColor="#f2e6b8" />
-          <stop offset="72%" stopColor="#c9a84a" />
-          <stop offset="100%" stopColor="#7a6220" />
+          <stop offset="0%" stopColor="#4a1d2d" />
+          <stop offset="28%" stopColor="#a67580" />
+          <stop offset="52%" stopColor="#f0e4e8" />
+          <stop offset="72%" stopColor="#c9959e" />
+          <stop offset="100%" stopColor="#5c2438" />
         </linearGradient>
       </defs>
       <g
@@ -73,12 +73,12 @@ function CornerFloralsTopRight() {
         className="h-auto w-full drop-shadow-sm"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <ellipse cx="158" cy="38" rx="28" ry="18" fill="#c4a5a8" opacity="0.55" transform="rotate(-18 158 38)" />
-        <ellipse cx="172" cy="52" rx="14" ry="22" fill="#dcc8c4" opacity="0.5" transform="rotate(12 172 52)" />
+        <ellipse cx="158" cy="38" rx="28" ry="18" fill="#dcb8c0" opacity="0.55" transform="rotate(-18 158 38)" />
+        <ellipse cx="172" cy="52" rx="14" ry="22" fill="#e8d0d5" opacity="0.5" transform="rotate(12 172 52)" />
         <path
           d="M120 8c28 12 48 36 52 68-16-24-40-40-68-48 20 4 36 16 44 34-18-14-38-22-60-24 22 8 38 24 46 44"
           fill="none"
-          stroke="#6b7f62"
+          stroke="#8b5a66"
           strokeWidth="1.2"
           strokeLinecap="round"
           opacity="0.85"
@@ -86,13 +86,13 @@ function CornerFloralsTopRight() {
         <path
           d="M132 24c12 8 20 20 22 34M148 18c10 14 14 30 10 46M165 28c-4 18-2 36 8 52"
           fill="none"
-          stroke="#8a9c7e"
+          stroke="#c9959e"
           strokeWidth="0.9"
           strokeLinecap="round"
           opacity="0.75"
         />
-        <ellipse cx="175" cy="42" rx="22" ry="14" fill="#9aae8f" opacity="0.35" transform="rotate(-35 175 42)" />
-        <ellipse cx="188" cy="72" rx="16" ry="10" fill="#7d9072" opacity="0.4" transform="rotate(25 188 72)" />
+        <ellipse cx="175" cy="42" rx="22" ry="14" fill="#c9959e" opacity="0.35" transform="rotate(-35 175 42)" />
+        <ellipse cx="188" cy="72" rx="16" ry="10" fill="#a67580" opacity="0.4" transform="rotate(25 188 72)" />
       </svg>
     </div>
   )
@@ -112,7 +112,7 @@ function CornerFloralsBottomLeft() {
         <path
           d="M8 120c22-8 40-24 48-46-14 12-32 18-52 18 18-6 34-18 42-36-12 10-28 16-44 16"
           fill="none"
-          stroke="#6b7f62"
+          stroke="#8b5a66"
           strokeWidth="1.1"
           strokeLinecap="round"
           opacity="0.82"
@@ -120,12 +120,12 @@ function CornerFloralsBottomLeft() {
         <path
           d="M18 108c14-6 26-16 32-30M28 118c10-8 18-18 22-30"
           fill="none"
-          stroke="#8a9c7e"
+          stroke="#c9959e"
           strokeWidth="0.85"
           strokeLinecap="round"
           opacity="0.7"
         />
-        <ellipse cx="42" cy="98" rx="18" ry="11" fill="#9aae8f" opacity="0.32" transform="rotate(22 42 98)" />
+        <ellipse cx="42" cy="98" rx="18" ry="11" fill="#dcb8c0" opacity="0.32" transform="rotate(22 42 98)" />
       </svg>
     </div>
   )

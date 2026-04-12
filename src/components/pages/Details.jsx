@@ -42,15 +42,23 @@ const Details = () => {
       'Wedding Ceremony Location': MapPin,
       'Wedding Reception Location': UtensilsCrossed,
       'What time is the wedding?': Clock,
+      'What time should I arrive?': Clock,
       'What is the wedding theme and dress code?': Palette,
       'Can I bring a plus one?': Users,
       'What to wear?': Palette,
       "Where's the reception?": UtensilsCrossed,
       'Is RSVP required?': Mail,
       'Are children allowed?': Baby,
+      'Are children invited?': Baby,
       'Is parking available?': Car,
+      'Will there be parking available?': Car,
+      'What happens after the ceremony?': UtensilsCrossed,
       'Can guests take photos or videos during the ceremony?': Camera,
+      'Can I take photos during the ceremony?': Camera,
+      'Will there be food and drinks?': UtensilsCrossed,
       'Is there a gift registry?': Gift,
+      'Do you have a gift registry?': Gift,
+      'Who can I contact for questions on the day?': Mail,
       'Final Reminder': Heart
     }
     
@@ -425,7 +433,7 @@ const Details = () => {
       <div className="relative z-20 faq-section faq-section--botanical">
         <div ref={faqRef} className="faq-section__inner relative z-10 w-full px-8 sm:px-12 md:px-8 lg:px-16">
           <h3 ref={faqTitleRef} className="relative inline-block px-6 py-3 mb-12 text-center w-full">
-            <span className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase text-[#dbcf9f] drop-shadow-sm">
+            <span className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase text-[#f0e4e8] drop-shadow-sm">
               Frequently Asked Questions
             </span>
           </h3>
@@ -439,10 +447,10 @@ const Details = () => {
                     className="border-b border-white/25 pb-6 pt-6 first:pt-0 last:border-b-0"
                   >
                     <div className="mb-2">
-                      <p className="text-base sm:text-lg font-albert text-[#CBCBC0] mb-2 faq-question-bold">
+                      <p className="text-base sm:text-lg font-albert text-[#f7f1ed] mb-2 faq-question-bold">
                         Q: {text}
                       </p>
-                      <p className="text-sm sm:text-base font-albert font-thin text-[#CBCBC0]/90 whitespace-pre-line">
+                      <p className="text-sm sm:text-base font-albert font-thin text-[#f7f1ed]/90 whitespace-pre-line">
                         A: {parseAnswerWithPhoneNumbers(item.answer)}
                       </p>
                     </div>
