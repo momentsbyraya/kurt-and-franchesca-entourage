@@ -368,6 +368,32 @@
   transition: transform 1.5s ease-in-out;
 }
 
+/* Light blush envelope (--envelope-bg from theme secondary-bg): very soft depth */
+.opening-section .envelope {
+  box-shadow:
+    inset 0 0 14px -9px rgba(184, 110, 126, 0.2),
+    0 0 10px -4px rgba(184, 110, 126, 0.06),
+    0 5px 14px rgba(184, 110, 126, 0.04),
+    0 1px 5px rgba(114, 47, 55, 0.03);
+}
+
+.opening-section .envelope-flap::before,
+.opening-section .envelope-left::before,
+.opening-section .envelope-right::before,
+.opening-section .envelope-bottom::before {
+  box-shadow:
+    0 0 10px -5px rgba(184, 110, 126, 0.1),
+    0 0 6px -2px rgba(184, 110, 126, 0.06),
+    0 3px 10px rgba(184, 110, 126, 0.04);
+}
+
+.opening-section .envelope.active .envelope-flap::before {
+  box-shadow:
+    inset 0 0 16px -8px rgba(184, 110, 126, 0.14),
+    0 0 8px -3px rgba(184, 110, 126, 0.06),
+    0 4px 12px rgba(184, 110, 126, 0.035);
+}
+
 /* Opening screen — blush copy on the letter */
 .opening-section .envelope-letter,
 .opening-section .envelope-letter p {

@@ -7,8 +7,18 @@ gsap.registerPlugin(ScrollTrigger)
 
 /**
  * Single photo spanning the viewport width; no margin/padding on the strip.
+ * `splitLayout`: half-width column (e.g. beside schedule at lg-custom+) — full bleed of column, not viewport.
+ * `splitObjectNudgeLeftLg` / `splitObjectNudgeRightLg`: at lg-custom+, nudge object-position (split only; use one).
+ * `nudgeTopLg`: at lg-custom+, nudge full-width strip focal point slightly up (non-split only).
  */
-const FullBleedPhoto = ({ src, alt = '' }) => {
+const FullBleedPhoto = ({
+  src,
+  alt = '',
+  splitLayout = false,
+  splitObjectNudgeLeftLg = false,
+  splitObjectNudgeRightLg = false,
+  nudgeTopLg = false,
+}) => {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const wrapRef = useRef(null)
 
@@ -38,14 +48,34 @@ const FullBleedPhoto = ({ src, alt = '' }) => {
     <>
       <div
         ref={wrapRef}
-        className="m-0 p-0 max-w-none overflow-x-clip"
-        style={{ width: '100vw', margin: 0, padding: 0 }}
+        className={
+          splitLayout
+            ? 'm-0 p-0 w-full min-w-0 flex flex-col overflow-hidden lg-custom:flex-1 lg-custom:min-h-0'
+            : 'm-0 p-0 max-w-none overflow-x-clip'
+        }
+        style={
+          splitLayout
+            ? { margin: 0, padding: 0, width: '100%' }
+            : { width: '100vw', margin: 0, padding: 0 }
+        }
       >
         <img
           src={src}
           alt={alt}
-          className="m-0 p-0 border-0 align-middle block h-auto max-w-none cursor-pointer"
-          style={{ width: '100vw', margin: 0, padding: 0, display: 'block' }}
+          className={
+            splitLayout
+              ? `m-0 p-0 border-0 align-middle block min-h-[min(40vh,320px)] w-full max-w-none cursor-pointer object-cover object-center lg-custom:h-full lg-custom:min-h-0 lg-custom:flex-1 ${
+                  splitObjectNudgeLeftLg
+                    ? 'lg-custom:object-[32%_center]'
+                    : splitObjectNudgeRightLg
+                      ? 'lg-custom:object-[58%_center]'
+                      : ''
+                }`
+              : `m-0 p-0 border-0 align-middle block h-auto w-screen max-w-none cursor-pointer object-cover object-center lg-custom:max-h-[500px] lg-custom:object-cover ${
+                  nudgeTopLg ? 'lg-custom:object-[center_42%]' : 'lg-custom:object-center'
+                }`
+          }
+          style={{ margin: 0, padding: 0, display: 'block' }}
           loading="lazy"
           decoding="async"
           role="button"

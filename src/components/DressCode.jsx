@@ -14,7 +14,7 @@ const DressCode = () => {
   const category1Ref = useRef(null)
   const category2Ref = useRef(null)
   
-  /** Formal attire palette — gray, navy, pink, burgundy */
+  /** Suggested guest colors — gray, navy, pink, burgundy */
   const formalAttirePalette = [
     { color: '#6B7280', name: 'gray' },
     { color: '#1E3A5F', name: 'navy blue' },
@@ -165,6 +165,12 @@ const DressCode = () => {
           const textColClass = singleSectionMode
             ? 'w-full min-w-0 flex flex-col text-center lg-custom:text-center'
             : 'w-1/2 min-w-0 lg-custom:w-full flex flex-col text-right lg-custom:text-left order-1 lg-custom:order-2'
+          const imageAboveSwatchesOnly = Boolean(singleSectionMode && section.image?.trim())
+          const hasTopContent = Boolean(
+            section.title?.trim() ||
+              section.description?.trim() ||
+              (section.image?.trim() && !imageAboveSwatchesOnly)
+          )
           return (
             <div className="relative overflow-visible flex-1">
               <div className="relative overflow-visible">
@@ -172,42 +178,55 @@ const DressCode = () => {
                   ref={category1Ref}
                   className="transition-opacity duration-500 ease-in-out"
                 >
-                  <div className="flex flex-row lg-custom:flex-col gap-6 md:gap-8 lg-custom:gap-6 items-start min-w-0">
-                    <div className={textColClass}>
-                      <div className="w-full">
-                        <div
-                          className="text-lg sm:text-xl md:text-2xl font-boska mb-2 text-gold"
-                        >
-                          {section.title}
+                  {hasTopContent ? (
+                    <div className="flex flex-row lg-custom:flex-col gap-6 md:gap-8 lg-custom:gap-6 items-start min-w-0">
+                      <div className={textColClass}>
+                        <div className="w-full">
+                          {section.title?.trim() ? (
+                            <div className="text-lg sm:text-xl md:text-2xl font-boska mb-2 text-gold">
+                              {section.title}
+                            </div>
+                          ) : null}
+                          {section.description?.trim() ? (
+                            <p className="text-sm sm:text-base font-albert font-thin italic text-forest mb-3">
+                              {section.description}
+                            </p>
+                          ) : null}
                         </div>
-                        {section.description && (
-                          <p className="text-sm sm:text-base font-albert font-thin italic text-forest mb-3">
-                            {section.description}
-                          </p>
-                        )}
                       </div>
+                      {section.image ? (
+                        <div className="w-1/2 min-w-0 lg-custom:w-full order-2 lg-custom:order-1">
+                          <div className="w-full relative dresscode-image-container">
+                            <img
+                              src={section.image}
+                              alt={section.title || 'Dress code'}
+                              className="h-full w-full rounded object-cover"
+                            />
+                          </div>
+                        </div>
+                      ) : null}
                     </div>
-                    {section.image ? (
-                      <div className="w-1/2 min-w-0 lg-custom:w-full order-2 lg-custom:order-1">
-                        <div className="w-full relative dresscode-image-container">
-                          <img
-                            src={section.image}
-                            alt={section.title}
-                            className="h-full w-full rounded object-cover"
-                          />
-                        </div>
-                      </div>
-                    ) : null}
-                  </div>
+                  ) : null}
 
                   {singleSectionMode && (
-                    <div className="mt-8 flex w-full min-w-0 flex-col items-center text-center sm:mt-10">
+                    <div
+                      className={`flex w-full min-w-0 flex-col items-center text-center sm:mt-10 ${hasTopContent ? 'mt-8' : 'mt-0'}`}
+                    >
                       <h4 className="mb-5 font-foglihten text-2xl italic sm:mb-6 sm:text-3xl text-forest">
-                        Color palette
+                        Guests
                       </h4>
+                      {section.image?.trim() ? (
+                        <div className="mb-6 sm:mb-8 w-full max-w-[220px] sm:max-w-[260px] md:max-w-[300px] mx-auto px-2">
+                          <img
+                            src={section.image}
+                            alt={section.imageAlt || 'Guest dress code'}
+                            className="w-full h-auto object-contain rounded-xl border border-gold/25"
+                          />
+                        </div>
+                      ) : null}
                       <div
                         className="flex w-full max-w-full flex-row flex-nowrap items-start justify-center gap-3 overflow-x-auto overflow-y-visible py-1 [scrollbar-width:thin] sm:gap-6 md:gap-8"
-                        aria-label="Suggested colors for formal attire"
+                        aria-label="Suggested colors for guests"
                       >
                         {formalAttirePalette.map((swatch) => (
                           <div
@@ -279,11 +298,11 @@ const DressCode = () => {
                   </div>
                   <div className="mt-6 flex w-full min-w-0 flex-col items-center text-center sm:mt-8">
                     <h4 className="mb-5 font-foglihten text-2xl italic sm:mb-6 sm:text-3xl text-forest">
-                      Color palette
+                      Guests
                     </h4>
                     <div
                       className="flex w-full max-w-full flex-row flex-nowrap items-start justify-center gap-3 overflow-x-auto overflow-y-visible py-1 [scrollbar-width:thin] sm:gap-6 md:gap-8"
-                      aria-label="Wedding color palette for guests"
+                      aria-label="Suggested colors for guests"
                     >
                       {formalAttirePalette.map((swatch) => (
                         <div

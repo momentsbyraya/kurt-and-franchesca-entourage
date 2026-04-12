@@ -12,7 +12,7 @@ const RSVPSection = ({ onOpenRSVP }) => {
     <section
       id="rsvp"
       data-section="rsvp"
-      className="w-full pt-24 pb-16 sm:pt-28 sm:pb-20"
+      className="w-full"
     >
       <div className="w-full text-center">
         <h3 className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-none capitalize text-forest">

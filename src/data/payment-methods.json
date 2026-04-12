@@ -2,15 +2,14 @@
   "intro": "Your presence is already a gift to us. If you wish to bless us further, a small monetary gift would be greatly appreciated.",
   "accounts": [
     {
-      "title": "Chinabank Corporation",
-      "lines": [
-        "Account no. 157802040314",
-        "Cantillo, Francezka Laurabel Eusebio or Cantillo, Earlwin Czar Inso"
-      ]
+      "bankName": "Chinabank Corporation",
+      "accountNumber": "157802040314",
+      "accountName": "Cantillo, Francezka Laurabel Eusebio or Cantillo, Earlwin Czar Inso"
     },
     {
-      "title": "GCash & Maya",
-      "lines": ["09159173681 — Francezka Laurabel E. Cantillo"]
+      "bankName": "GCash & Maya",
+      "accountNumber": "09159173681",
+      "accountName": "Francezka Laurabel E. Cantillo"
     }
   ],
   "paymentMethods": []

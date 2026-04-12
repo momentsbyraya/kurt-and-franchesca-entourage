@@ -10,7 +10,7 @@ const EntourageSection = () => {
     <section
       id="entourage"
       data-section="entourage"
-      className="w-full py-16 sm:py-20"
+      className="w-full pb-16 sm:pb-20"
     >
       <div className="w-full text-center">
         <h3 className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-none capitalize text-forest">

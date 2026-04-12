@@ -360,15 +360,18 @@ const Details = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 flex items-center justify-center pt-12">
-        <div className="site-content-width">
-          {/* Schedule Section */}
+      <div className="relative z-20 flex flex-col items-center justify-center pt-12 gap-10 sm:gap-12">
+        <div
+          className="site-content-width w-full rounded-2xl sm:rounded-3xl px-2 sm:px-4"
+          style={{ backgroundColor: themeConfig.cssVariables['--secondary-bg'] }}
+        >
           <Schedule />
+        </div>
 
-          {/* Entourage Section */}
+        <div className="site-content-width w-full">
           <EntourageDetailsSection />
-                    </div>
-                </div>
+        </div>
+      </div>
 
       {/* Curved Line Divider */}
       {/* <div ref={curvedDivider2Ref} className="relative w-full py-8 flex items-center justify-center">
@@ -433,7 +436,7 @@ const Details = () => {
       <div className="relative z-20 faq-section faq-section--botanical">
         <div ref={faqRef} className="faq-section__inner relative z-10 w-full px-8 sm:px-12 md:px-8 lg:px-16">
           <h3 ref={faqTitleRef} className="relative inline-block px-6 py-3 mb-12 text-center w-full">
-            <span className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase text-[#f0e4e8] drop-shadow-sm">
+            <span className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase text-forest drop-shadow-sm">
               Frequently Asked Questions
             </span>
           </h3>
@@ -444,13 +447,13 @@ const Details = () => {
                 return (
                   <div
                     key={index}
-                    className="border-b border-white/25 pb-6 pt-6 first:pt-0 last:border-b-0"
+                    className="border-b border-gold/35 pb-6 pt-6 first:pt-0 last:border-b-0"
                   >
                     <div className="mb-2">
-                      <p className="text-base sm:text-lg font-albert text-[#f7f1ed] mb-2 faq-question-bold">
+                      <p className="text-base sm:text-lg font-albert text-obsidian mb-2 faq-question-bold">
                         Q: {text}
                       </p>
-                      <p className="text-sm sm:text-base font-albert font-thin text-[#f7f1ed]/90 whitespace-pre-line">
+                      <p className="text-sm sm:text-base font-albert font-thin text-obsidian/90 whitespace-pre-line">
                         A: {parseAnswerWithPhoneNumbers(item.answer)}
                       </p>
                     </div>

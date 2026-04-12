@@ -8,8 +8,6 @@ import './pages/Details.css'
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
 
-const FAQ_MONOGRAM_SRC = '/assets/images/graphics/logo.png'
-
 const FAQ = () => {
   const [copiedIndex, setCopiedIndex] = useState(null)
   const faqRef = useRef(null)
@@ -152,10 +150,7 @@ const FAQ = () => {
     <div className="relative z-20 faq-section faq-section--botanical">
       <div ref={faqRef} className="faq-section__inner relative z-10 w-full px-8 sm:px-12 md:px-8 lg:px-16">
         <h3 ref={faqTitleRef} className="relative inline-block px-6 py-3 mb-12 text-center w-full">
-          <span 
-            className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl inline-block leading-none capitalize"
-            style={{ color: '#f7f1ed' }}
-          >
+          <span className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl inline-block leading-none capitalize text-forest">
             Frequently Asked Questions
           </span>
         </h3>
@@ -166,13 +161,13 @@ const FAQ = () => {
               return (
                 <div
                   key={index}
-                  className="border-b border-white/30 pb-6 pt-6 first:pt-0 last:border-b-0"
+                  className="border-b border-gold/35 pb-6 pt-6 first:pt-0 last:border-b-0"
                 >
                   <div className="mb-2">
-                    <p className="text-base sm:text-lg font-albert text-[#f7f1ed] mb-2 faq-question-bold">
+                    <p className="text-base sm:text-lg font-albert text-obsidian mb-2 faq-question-bold">
                       Q: {text}
                     </p>
-                    <p className="text-sm sm:text-base font-albert font-thin text-[#f7f1ed]/90 whitespace-pre-line">
+                    <p className="text-sm sm:text-base font-albert font-thin text-obsidian/90 whitespace-pre-line">
                       A: {parseAnswerWithPhoneNumbers(item.answer)}
                     </p>
                   </div>
@@ -182,16 +177,6 @@ const FAQ = () => {
           </div>
         )}
       </div>
-      <img
-        src={FAQ_MONOGRAM_SRC}
-        alt=""
-        width={180}
-        height={180}
-        className="pointer-events-none absolute bottom-4 right-4 z-[15] h-16 w-auto max-w-[42vw] object-contain opacity-90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] sm:bottom-6 sm:right-6 sm:h-20 md:bottom-8 md:right-10 md:h-24 lg:right-14"
-        loading="lazy"
-        decoding="async"
-        aria-hidden
-      />
     </div>
   )
 }

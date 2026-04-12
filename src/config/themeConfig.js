@@ -89,6 +89,8 @@ export const themeConfig = {
         '--wine': '#6d3d48',
         '--burgundy-dark': '#5c2f3a',
         '--garden-bg': '#f7f1ed',
+        /** Burgundy red for schedule / accents (matches opening “Invited”) */
+        '--burgundy-red': '#722f37',
     }
 }
 

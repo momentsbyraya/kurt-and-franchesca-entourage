@@ -64,12 +64,9 @@ const SaveTheDateCounter = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-8 sm:py-12 md:py-16 lg:py-20"
+      className="relative w-full bg-cover bg-center bg-no-repeat py-8 sm:py-12 md:py-16 lg:py-20 lg-custom:bg-[center_42%]"
       style={{
-        backgroundImage: `url(${prenupImages.countdownBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundImage: `url(${prenupImages.saveTheDateBackground})`,
       }}
     >
       <div className="relative z-20 site-content-width flex flex-col justify-between min-h-[400px] sm:min-h-[500px] md:min-h-[600px] min-[992px]:min-h-[760px]">

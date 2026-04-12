@@ -5,105 +5,99 @@
   },
   "parents": {
     "groom": {
-      "father": "Domingo R. Negrite (+)",
-      "mother": "Marina O. Negrite"
+      "father": "Floro Cantillo",
+      "mother": "Emeteria Cantillo"
     },
     "bride": {
-      "father": "Rodel O. Historillo",
-      "mother": "Rosiel B. Historillo"
+      "father": "Manolito Eusebio",
+      "mother": "Geraldine Eusebio"
     }
   },
   "entourageList": [
     {
-      "category": "Officiating Minister",
-      "names": ["Rev. Miguelito P. Pabilonia, Jr."]
-    },
-    {
-      "category": "Parents of the Groom",
-      "names": [
-        "Domingo R. Negrite (+)",
-        "Santos C. Oliva",
-        "Marina O. Negrite"
-      ]
-    },
-    {
-      "category": "Parents of the Bride",
-      "names": [
-        "Rodel O. Historillo",
-        "Rosiel B. Historillo"
-      ]
-    },
-    {
       "category": "Principal Sponsors",
       "ninong": [
-        "Epitacio B. Mendiola",
-        "Ruel D. Elias",
-        "Aries Martin G. Giron",
-        "Mark Gerad A. Oliva",
-        "Christian O. Buyet",
-        "Nicki Abram Padrez, JP"
+        "Roderick V. Oliveros",
+        "Joselito Poblete Guevara",
+        "Budhir Brian Fajardo",
+        "Manolo Maglabe",
+        "Juanito C. Landrito",
+        "Jonathan C. Enriquez",
+        "Marvin Dee R. Batingal"
       ],
       "ninang": [
-        "Carol Belandres",
-        "Jackie-Anne G. Bayhon",
-        "Evelyn M. Abapo",
-        "Junelyn Kate O. Monge",
-        "Josephine M. Esguerra"
+        "Dra. Eunice Salazar-Abad",
+        "Imelda Inso",
+        "Cristina Amon",
+        "Aireen Maglabe",
+        "Carlota E. Landrito",
+        "Catherine S. Enriquez",
+        "Eula Deeneth R. Batingal"
       ]
     },
     {
-      "category": "Bestman",
-      "names": ["Dom Igon O. Negrite"]
+      "category": "Bestman and Matron of Honor",
+      "bestman": ["Dave Von David"],
+      "matronOfHonor": ["Kanisha Dana Ysabel E. Dimapilis"]
     },
     {
-      "category": "Matron",
-      "names": ["Arlon Joyce H. Saenz"]
+      "category": "Candle",
+      "names": ["Maverick Cantillo", "Noriz Cantillo"]
     },
     {
-      "category": "Maid of Honor",
-      "names": ["Kristine Marife M. De Leon"]
+      "category": "Veil",
+      "names": ["Melizza Ritz Del Mundo", "Kenneth Del Mundo"]
     },
     {
-      "category": "Candle Sponsors",
-      "names": ["Russel Ace J. Popioco", "Wilma G. Baldebar"]
+      "category": "Cord",
+      "names": ["Francine Ann L. Eusebio", "Romano Gabriel S. Eusebio"]
     },
     {
-      "category": "Cord Sponsors",
-      "names": ["Ivan Johnel B Historillo", "Daisy Jean Miranda"]
-    },
-    {
-      "category": "Veil Sponsors",
-      "names": ["Mark Joseph P. Gloria", "Marie Elaine D. Negrete"]
-    },
-    {
-      "category": "Secondary Sponsors",
+      "category": "Groomsmen and Bridesmaids",
       "groomsmen": [
-        "Michael M. Faegane",
-        "Van Darryl A. De Guzman"
+        "Melvin Cantillo",
+        "Tristan Joseph Cantillo",
+        "Jonathan Ariza",
+        "Floyd Derek Rillera",
+        "Elijah Abalos",
+        "Charles Moron",
+        "Dindo Cañete"
       ],
-      "bridesmaid": [
-        "Jasmine Kaye M. Historillo"
+      "bridesmaids": [
+        "Bianca Rosette E. Jarabe",
+        "Shania Alexia S. Enriquez",
+        "Patricia Guillan Balares",
+        "Rayanna Cheska Eugenio",
+        "Marrie Claire S. Recto"
+      ]
+    },
+    {
+      "category": "Little Bridesmaid",
+      "names": ["Carline Brielle L. Eusebio"]
+    },
+    {
+      "category": "Flower Girl",
+      "names": [
+        "Ava Irmara Zielle E. Dimapilis",
+        "Corrine Patrice L. Eusebio",
+        "Caitlin Florina L. Eusebio"
       ]
     },
     {
       "category": "Ring Bearer",
-      "names": ["Moises F. Bajamundi"]
-    },
-    {
-      "category": "Bible Bearer",
-      "names": ["Leone Vasilios Kaeyl Monge"]
+      "names": ["Count Cantillo"]
     },
     {
       "category": "Coin Bearer",
-      "names": ["Gabriel Ron Yohan E. Canimo"]
+      "names": ["Knightmaverick Cantillo"]
     },
     {
-      "category": "Flower Girls",
-      "names": [
-        "Leanh Neriz F. Oliva",
-        "Lauren Gabrielle DL. Garcia",
-        "Audfile Lira P. Alcaraz"
-      ]
+      "category": "Bible Bearer",
+      "names": ["Neil Mackenzie Aziel E. Dimapilis"]
+    },
+    {
+      "category": "Little Bride",
+      "names": ["Cadence Cantillo"]
     }
   ]
 }

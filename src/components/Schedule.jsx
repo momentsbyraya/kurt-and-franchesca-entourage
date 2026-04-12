@@ -1,8 +1,11 @@
 import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { couple, schedule as scheduleData } from '../data'
+import { schedule as scheduleData } from '../data'
+import { themeConfig } from '../config/themeConfig'
 import './pages/Details.css'
+
+const scheduleBurgundy = themeConfig.cssVariables['--burgundy-red']
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
@@ -86,15 +89,19 @@ const Schedule = () => {
             Order of Events
           </span>
         </h3>
-        <p className="text-sm sm:text-base md:text-lg font-albert text-obsidian/85 text-center mt-4 mx-auto px-4 program-description">
+        <p className="text-sm sm:text-base md:text-lg font-albert text-center mt-4 mx-auto px-4 program-description">
           Join us as we celebrate this special day together
         </p>
       </div>
 
       {/* Vertical Timeline */}
       <div ref={timelineRef} className="relative w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto z-10 timeline-container">
-        {/* Central Vertical Line - Light Grey */}
-        <div ref={lineRef} className="absolute left-1/2 top-0 bottom-0 w-px bg-gold/55 transform -translate-x-1/2"></div>
+        {/* Central vertical line */}
+        <div
+          ref={lineRef}
+          className="absolute left-1/2 top-0 bottom-0 w-px transform -translate-x-1/2"
+          style={{ backgroundColor: `${scheduleBurgundy}59` }}
+        />
 
         {/* Timeline Events */}
         <div ref={eventsRef} className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
@@ -108,23 +115,45 @@ const Schedule = () => {
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
                          {event.time}
               </div>
-              <div className="border-b border-dashed border-gold/50 mb-1"></div>
+              <div
+                className="border-b border-dashed mb-1"
+                style={{ borderColor: `${scheduleBurgundy}73` }}
+              />
               <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
                          {event.description}
               </div>
             </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-gold rounded-full border border-forest/20 z-10 shadow-sm"></div>
+            <div
+              className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full z-10 shadow-sm"
+              style={{
+                backgroundColor: scheduleBurgundy,
+                borderWidth: 1,
+                borderStyle: 'solid',
+                borderColor: `${scheduleBurgundy}66`,
+              }}
+            />
                      <div className="w-1/2 pl-6 text-left"></div>
                    </>
                  ) : (
                    <>
                      <div className="w-1/2 pr-6 text-right"></div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-gold rounded-full border border-forest/20 z-10 shadow-sm"></div>
+            <div
+              className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full z-10 shadow-sm"
+              style={{
+                backgroundColor: scheduleBurgundy,
+                borderWidth: 1,
+                borderStyle: 'solid',
+                borderColor: `${scheduleBurgundy}66`,
+              }}
+            />
             <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
                          {event.time}
               </div>
-              <div className="border-b border-dashed border-gold/50 mb-1"></div>
+              <div
+                className="border-b border-dashed mb-1"
+                style={{ borderColor: `${scheduleBurgundy}73` }}
+              />
               <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
                          {event.description}
               </div>

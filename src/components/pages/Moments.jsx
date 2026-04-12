@@ -22,9 +22,9 @@ const Moments = () => {
   const [selectedImage, setSelectedImage] = useState(null)
   const [selectedImageIndex, setSelectedImageIndex] = useState(null)
 
-  const firstGalleryImage = [prenupImages.momentsHero]
+  const firstGalleryImage = [prenupImages.momentsBanner]
 
-  const secondGalleryImages = prenupImages.momentsGrid
+  const secondGalleryImages = prenupImages.momentsGrid ?? []
 
   // Images array for the lightbox (includes all gallery images)
   const lightboxImages = [...firstGalleryImage, ...secondGalleryImages]
@@ -147,7 +147,7 @@ const Moments = () => {
       >
         {/* Image Banner at Top */}
         <ImageBanner
-          src={prenupImages.pool[0]}
+          src={prenupImages.momentsBanner}
           alt="Moments banner"
           title="Love Story"
           subtitle="Our"

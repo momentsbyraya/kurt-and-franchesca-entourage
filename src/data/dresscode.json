@@ -5,10 +5,11 @@
   },
   "sections": [
     {
-      "title": "Formal attire",
+      "title": "",
       "type": "text",
-      "description": "Formal attire in gray, navy blue, pink, or burgundy; please avoid white and light colors.",
-      "image": ""
+      "description": "",
+      "image": "/assets/images/dresscode/guests.png",
+      "imageAlt": "Guest attire"
     }
   ]
 }

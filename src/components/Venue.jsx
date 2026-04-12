@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { venues as venuesData } from '../data'
+import { themeConfig } from '../config/themeConfig'
 import SecondaryButton from './SecondaryButton'
 import ImageLightbox from './ImageLightbox'
 import './pages/Details.css'
@@ -10,7 +11,7 @@ import './pages/Details.css'
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
 
-const CAROUSEL_CYCLE_MS = 3500
+const VENUE_NAME_BURGUNDY = themeConfig.cssVariables['--burgundy-red'] || '#722f37'
 
 const Venue = () => {
   const venueTitleRef = useRef(null)
@@ -19,18 +20,28 @@ const Venue = () => {
   const touchEndX = useRef(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [lightboxImage, setLightboxImage] = useState(null)
-  const [carouselPaused, setCarouselPaused] = useState(false)
-  const pageVisibleRef = useRef(true)
 
   const ceremony = venuesData.ceremony
-
-  const ceremonyPhoto = '/assets/images/venues/for%20envelopes%20%2817%29.png'
+  const reception = venuesData.reception
 
   const venueSlides = [
-    { src: ceremonyPhoto, alt: 'Ceremony venue', venue: ceremony },
-  ]
+    {
+      src: ceremony.ceremonyPhoto,
+      alt: `Ceremony — ${ceremony.name}`,
+      venue: ceremony,
+    },
+    {
+      src: reception.receptionPhoto,
+      alt: `Reception — ${reception.name}`,
+      venue: reception,
+    },
+  ].filter((slide) => slide.src)
 
   const showCarouselChrome = venueSlides.length > 1
+
+  useEffect(() => {
+    setCurrentIndex((i) => Math.min(i, Math.max(0, venueSlides.length - 1)))
+  }, [venueSlides.length])
 
   const nextImage = () => {
     setCurrentIndex((prev) => (prev + 1) % venueSlides.length)
@@ -51,26 +62,6 @@ const Venue = () => {
     if (diff > minSwipe) nextImage()
     else if (diff < -minSwipe) prevImage()
   }
-
-  useEffect(() => {
-    if (venueSlides.length <= 1 || carouselPaused || lightboxImage) return undefined
-
-    const id = window.setInterval(() => {
-      if (!pageVisibleRef.current) return
-      setCurrentIndex((prev) => (prev + 1) % venueSlides.length)
-    }, CAROUSEL_CYCLE_MS)
-
-    return () => window.clearInterval(id)
-  }, [currentIndex, venueSlides.length, carouselPaused, lightboxImage])
-
-  useEffect(() => {
-    const onVisibility = () => {
-      pageVisibleRef.current = !document.hidden
-    }
-    pageVisibleRef.current = !document.hidden
-    document.addEventListener('visibilitychange', onVisibility)
-    return () => document.removeEventListener('visibilitychange', onVisibility)
-  }, [])
 
   useEffect(() => {
     // Venue Title animation
@@ -145,11 +136,7 @@ const Venue = () => {
         <div className="relative overflow-hidden">
           <div className="text-center transition-opacity duration-500 ease-in-out">
             {/* ——— Mobile: Carousel (1 slide) + dynamic location info ——— */}
-            <div
-              className="md:hidden flex flex-col gap-6 items-center"
-              onMouseEnter={() => setCarouselPaused(true)}
-              onMouseLeave={() => setCarouselPaused(false)}
-            >
+            <div className="md:hidden flex flex-col gap-6 items-center">
               <div className="w-full flex justify-center items-center gap-2">
                 {showCarouselChrome && (
                   <button
@@ -218,11 +205,15 @@ const Venue = () => {
               {/* Dynamic content: updates with current slide */}
               <div className="venue-details-mobile w-full flex flex-col gap-2 px-2">
                 <div className="flex flex-col gap-0.5">
-                  <div className="text-lg sm:text-xl font-boska text-center" style={{ color: '#b88917' }}>
+                  <div className="text-lg sm:text-xl font-boska text-center" style={{ color: VENUE_NAME_BURGUNDY }}>
                     {venueSlides[currentIndex].venue.name}
                   </div>
                   <div className="text-sm sm:text-base font-albert font-thin text-forest text-center space-y-0">
-                    <p>Ceremony & Reception: {ceremony.time} onwards</p>
+                    <p>
+                      {venueSlides[currentIndex].venue.details ||
+                        venueSlides[currentIndex].venue.time ||
+                        ''}
+                    </p>
                   </div>
                 </div>
                 <div className="flex justify-center">
@@ -239,11 +230,7 @@ const Venue = () => {
             </div>
 
             {/* ——— Tablet/Desktop: Swipeable carousel ——— */}
-            <div
-              className="hidden md:flex venue-details-desktop flex-col gap-6 md:gap-8 w-full max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto items-center"
-              onMouseEnter={() => setCarouselPaused(true)}
-              onMouseLeave={() => setCarouselPaused(false)}
-            >
+            <div className="hidden md:flex venue-details-desktop flex-col gap-6 md:gap-8 w-full max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto items-center">
               <div className="w-full flex justify-center items-center gap-4">
                 {showCarouselChrome && (
                   <button onClick={prevImage} className="hover:opacity-70" aria-label="Previous image">
@@ -292,15 +279,19 @@ const Venue = () => {
                 </div>
               )}
               <div className="flex flex-col gap-2 text-center">
-                <div className="text-lg sm:text-xl lg:text-2xl font-boska" style={{ color: '#b88917' }}>
-                  {ceremony.name}
+                <div className="text-lg sm:text-xl lg:text-2xl font-boska" style={{ color: VENUE_NAME_BURGUNDY }}>
+                  {venueSlides[currentIndex].venue.name}
                 </div>
                 <div className="text-sm sm:text-base font-albert font-thin text-forest space-y-1">
-                  <p>Ceremony & Reception: {ceremony.time} onwards</p>
+                  <p>
+                    {venueSlides[currentIndex].venue.details ||
+                      venueSlides[currentIndex].venue.time ||
+                      ''}
+                  </p>
                 </div>
                 <div className="flex justify-center mt-2">
                   <SecondaryButton
-                    href={ceremony.googleMapsUrl}
+                    href={venueSlides[currentIndex].venue.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     icon={ArrowRight}

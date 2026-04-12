@@ -1,7 +1,12 @@
 import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
+import { themeConfig } from '../config/themeConfig'
 
 const OPENING_TEXTURE_BG = '/assets/images/graphics/textured-bg-2.png'
+/** Same surface as schedule / order-of-events (themeConfig --secondary-bg) */
+const ENVELOPE_BLUSH = themeConfig.cssVariables['--secondary-bg']
+/** Slightly deeper blush for folds / inset depth */
+const ENVELOPE_SHADOW_TONE = themeConfig.cssVariables['--tan']
 /** Primary blush — opening-screen typography */
 const OPENING_BLUSH = '#b86e7e'
 /** Burgundy red — script “Invited” only */
@@ -87,9 +92,13 @@ function OpeningScreen({ onEnvelopeOpen }) {
   }
 
   return (
-    <div 
+    <div
       ref={openingSectionRef}
       className="fixed inset-0 z-[9999] flex items-center justify-center opening-section"
+      style={{
+        ['--envelope-bg']: ENVELOPE_BLUSH,
+        ['--envelope-shadow']: ENVELOPE_SHADOW_TONE,
+      }}
     >
       <div
         className="absolute inset-0"

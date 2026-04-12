@@ -1,6 +1,6 @@
 {
   "ceremony": {
-    "ceremonyPhoto": "/assets/images/venues/ceremony.jpg",
+    "ceremonyPhoto": "/assets/images/venues/ceremony.JPG",
     "name": "St. Benedict Parish Church",
     "address": "",
     "city": "",
@@ -12,7 +12,7 @@
     "directionsUrl": "https://maps.app.goo.gl/1FBYZh76BC5gnLJJ7"
   },
   "reception": {
-    "receptionPhoto": "/assets/images/venues/reception.png",
+    "receptionPhoto": "/assets/images/venues/reception.PNG",
     "name": "Farm Hills Garden",
     "address": "",
     "city": "",

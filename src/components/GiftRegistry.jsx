@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Gift } from 'lucide-react'
 import { paymentMethods as paymentMethodsData } from '../data'
+import SecondaryButton from './SecondaryButton'
+import GiftModal from './GiftModal'
 
 const GiftRegistry = () => {
-  const { intro, accounts = [], paymentMethods = [] } = paymentMethodsData
+  const [modalOpen, setModalOpen] = useState(false)
+  const { intro, accounts = [] } = paymentMethodsData
 
   return (
     <section
       id="gift"
       data-section="gift"
-      className="w-full pt-16 pb-24 sm:pt-20 sm:pb-28"
+      className="w-full"
     >
       <div className="w-full text-center px-4">
         <h3 className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-none capitalize text-forest">
@@ -20,41 +24,14 @@ const GiftRegistry = () => {
           </p>
         )}
 
-        <div className="mt-10 sm:mt-12 mx-auto max-w-lg text-left space-y-8">
-          {accounts.map((account, index) => (
-            <div
-              key={index}
-              className="rounded-2xl border border-gold/35 bg-white/80 px-5 py-5 shadow-[0_8px_30px_-8px_rgba(184,110,126,0.14)] sm:px-6 sm:py-6"
-            >
-              <h4 className="font-foglihten text-xl sm:text-2xl text-forest tracking-wide mb-3">
-                {account.title}
-              </h4>
-              <ul className="space-y-2 font-albert text-sm sm:text-base text-obsidian/90">
-                {account.lines.map((line, i) => (
-                  <li key={i} className="leading-relaxed">
-                    {line}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div className="mt-10 sm:mt-12 flex justify-center">
+          <SecondaryButton onClick={() => setModalOpen(true)} icon={Gift} className="gift-button">
+            Send gift
+          </SecondaryButton>
         </div>
-
-        {paymentMethods && paymentMethods.length > 0 && (
-          <div className="mt-10 flex flex-wrap justify-center gap-6">
-            {paymentMethods.map((method, index) =>
-              method.image ? (
-                <img
-                  key={index}
-                  src={method.image}
-                  alt={method.name || 'Payment method'}
-                  className="max-w-xs w-full h-auto object-contain rounded-xl border border-gold/25 bg-white p-3"
-                />
-              ) : null
-            )}
-          </div>
-        )}
       </div>
+
+      <GiftModal isOpen={modalOpen} onClose={() => setModalOpen(false)} accounts={accounts} />
     </section>
   )
 }

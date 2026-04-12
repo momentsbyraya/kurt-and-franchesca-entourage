@@ -32,7 +32,7 @@
 
 /* Program Section */
 .program-section {
-  padding: 0 0 4rem 0;
+  padding: 0;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
@@ -48,13 +48,14 @@
 
 .program-title-text {
   line-height: 0.8;
-  color: #b86e7e;
+  color: var(--burgundy-red, #722f37);
   display: block;
   text-align: center;
 }
 
 .program-description {
   width: 80%;
+  color: var(--burgundy-red, #722f37);
 }
 
 /* Date Selector */
@@ -69,15 +70,15 @@
 
 /* Timeline */
 .timeline-container {
-  padding: 1rem;
+  padding: 0 1rem;
 }
 
 .timeline-event-time {
-  color: #a67580;
+  color: var(--burgundy-red, #722f37);
 }
 
 .timeline-event-description {
-  color: #000000;
+  color: var(--burgundy-red, #722f37);
 }
 
 /* Dress Code */
@@ -180,23 +181,11 @@
   background-color: #b86e7e;
 }
 
-/* FAQ — botanical background (same asset as Love Story modal) */
+/* FAQ — blush surface (same as schedule / order of events) */
 .faq-section.faq-section--botanical {
   position: relative;
-  background-color: #1e3020;
-  background-image: url('/assets/images/graphics/Gemini_Generated_Image_dduovmdduovmdduo.png');
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-}
-
-.faq-section.faq-section--botanical::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(184, 110, 126, 0.5);
-  pointer-events: none;
-  z-index: 0;
+  background-color: var(--secondary-bg, #fcecf0);
+  background-image: none;
 }
 
 .faq-section.faq-section--botanical > .faq-section__inner {
@@ -236,64 +225,28 @@
   outline: none;
 }
 
-/* Love story — instant-film polaroid frame */
-.love-story-polaroid {
-  box-shadow:
-    0 1px 2px rgba(184, 110, 126, 0.08),
-    0 8px 24px rgba(184, 110, 126, 0.14),
-    0 2px 6px rgba(0, 0, 0, 0.08);
+/* Love story — polaroid (ace-style layout); click opens lightbox */
+.love-story-polaroid-card {
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-.love-story-polaroid:hover {
+.love-story-polaroid-card:hover {
   box-shadow:
-    0 2px 4px rgba(184, 110, 126, 0.1),
-    0 14px 36px rgba(184, 110, 126, 0.18),
-    0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Summary mode — only the top of the photo peeks out of the frame */
-.love-story-polaroid-peek {
-  user-select: none;
-}
-
-/* Love story teaser — crossfade between images */
-.love-story-teaser-slide {
-  transition: opacity 0.85s ease-in-out;
+    0 10px 28px rgba(0, 0, 0, 0.12),
+    0 4px 10px rgba(184, 110, 126, 0.15);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .love-story-teaser-slide {
+  .love-story-polaroid-card {
     transition-duration: 0.01ms;
   }
 }
 
-/* Love story modal — full-panel botanical background */
-.love-story-modal-panel {
-  background-color: #9d5a6a;
-  background-image: url('/assets/images/graphics/Gemini_Generated_Image_dduovmdduovmdduo.png');
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-}
-
-/* Title row + rule: readable scrim over artwork */
-.love-story-modal-banner {
-  background-color: rgba(0, 0, 0, 0.38);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* Story scroll area — light veil so white copy stays readable on busy leaves */
-.love-story-modal-body {
-  background: rgba(184, 110, 126, 0.42);
-}
-
-/* Cinzel Decorative + uppercase — modal: pale gold; in-page: dark green via --section */
+/* Cinzel Decorative — in-page love story title */
 .love-story-title {
   font-family: 'Cinzel Decorative', serif;
   color: #f0e4e8;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 0.08em;
 }
 
@@ -302,10 +255,4 @@
   text-shadow:
     0 1px 1px rgba(255, 255, 255, 0.5),
     0 1px 2px rgba(184, 110, 126, 0.15);
-}
-
-.love-story-modal-banner .love-story-title {
-  text-shadow:
-    0 1px 1px rgba(0, 0, 0, 0.35),
-    0 0 20px rgba(240, 228, 232, 0.12);
 }

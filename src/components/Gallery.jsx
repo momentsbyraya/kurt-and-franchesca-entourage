@@ -17,7 +17,6 @@ const Gallery = () => {
   const overlayRef = useRef(null)
   const contentRef = useRef(null)
   const galleryImages = prenupImages.gallery
-  const galleryThumbObjectPosition = prenupImages.galleryThumbObjectPosition ?? []
 
   const gridColumnPattern = [
     'span 3',
@@ -166,7 +165,7 @@ const Gallery = () => {
         style={{
           width: '100vw',
           marginLeft: 'calc(-50vw + 50%)',
-          marginRight: 'calc(-50vw + 50%)'
+          marginRight: 'calc(-50vw + 50%)',
         }}
       >
         <div className="relative z-10 w-full px-8 sm:px-12 md:px-8 lg:px-16">
@@ -189,19 +188,28 @@ const Gallery = () => {
           {galleryImages.map((image, index) => {
             const gridColumn = gridColumnForIndex(index)
             const isFullWidthRow = gridColumn === 'span 3'
-            const thumbObjectPosition =
-              galleryThumbObjectPosition[index] ?? 'center center'
+            const galleryTopMd =
+              image.includes('VAN_6583') ||
+              image.includes('VAN_6061') ||
+              image.includes('VAN_6318')
+            const galleryObjectMd = galleryTopMd
+              ? 'md:object-top'
+              : image.includes('VAN_6286')
+                ? 'md:object-bottom'
+                : image.includes('VAN_4833')
+                  ? 'md:object-[center_56%]'
+                  : ''
 
             return (
               <div
-                key={index}
+                key={image}
                 ref={(el) => {
                   imageRefs.current[index] = el
                 }}
                 className={
                   isFullWidthRow
-                    ? 'min-h-[11rem] max-h-[220px] cursor-pointer overflow-hidden sm:min-h-[13rem] sm:max-h-[260px] md:min-h-[15rem] md:max-h-[300px] lg:max-h-[340px]'
-                    : 'max-h-[150px] cursor-pointer overflow-hidden lg:max-h-[250px]'
+                    ? 'min-h-[11rem] max-h-[220px] cursor-pointer overflow-hidden sm:min-h-[13rem] sm:max-h-[260px] md:min-h-[17rem] md:max-h-[400px] lg:min-h-[18rem] lg:max-h-[440px]'
+                    : 'max-h-[150px] cursor-pointer overflow-hidden md:max-h-[260px] lg:max-h-[300px]'
                 }
                 style={{
                   gridColumn,
@@ -215,10 +223,9 @@ const Gallery = () => {
                 <img
                   src={image}
                   alt={`Gallery ${index + 1}`}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  className={`w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300 ${galleryObjectMd}`}
                   style={{
                     height: '100%',
-                    objectPosition: thumbObjectPosition,
                     willChange: 'transform',
                     backfaceVisibility: 'hidden',
                   }}

@@ -1,66 +1,64 @@
-/** Prenup filenames live in /assets/images/prenup/ (spaces & parens encoded for URLs). */
+/**
+ * Prenup photos in /assets/images/prenup/
+ * Sorted list — each file is assigned to a page role (hero, bleeds, love story, etc.).
+ * The home Gallery shows every file in this list; add new filenames here when you add photos.
+ */
+const PRENUP_FILES = [
+  'DSCF1458.jpg',
+  'VAN_4681.jpg',
+  'VAN_4833.jpg',
+  'VAN_5001.jpg',
+  'VAN_5259.jpg',
+  'VAN_5328.jpg',
+  'VAN_5541.jpg',
+  'VAN_6024.jpg',
+  'VAN_6061.jpg',
+  'VAN_6078.jpg',
+  'VAN_6219.jpg',
+  'VAN_6286.jpg',
+  'VAN_6318.jpg',
+  'VAN_6583.jpg',
+  'VAN_6645.jpg',
+].sort()
+
 const prenup = (filename) =>
   `/assets/images/prenup/${encodeURIComponent(filename)}`
 
-const hero = prenup('1st picture.jpeg')
-const fullBleedAfterVenue = prenup('2nd picture.jpeg')
-const fullBleedAfterSchedule = prenup('3rd picture.jpeg')
-const fullBleedAfterLoveStory = prenup('4th picture.jpeg')
-const fullBleedAfterDressCode = prenup('5th picture.jpeg')
+const F = PRENUP_FILES
 
-/** Modal order: Desk Mates → Study Buddies → Best Friends → Furparents → Partners for Life */
-const loveStory = [
-  prenup('Deskmates picture (lovestory section).jpeg'),
-  prenup('Study Buddies picture (love story section).jpeg'),
-  prenup('Bestfriends pictures (love story section).jpeg'),
-  prenup('Furparents pictures (love story section).png'),
-  prenup('Partners for life picture (love story section).jpeg'),
-]
+// 0–14: each index used once
+const hero = prenup('VAN_6078.jpg')
+const fullBleedAfterVenue = prenup(F[2])
+const fullBleedAfterSchedule = prenup(F[3])
+const fullBleedAfterLoveStory = prenup(F[4])
+const fullBleedAfterDressCode = prenup(F[5])
+/** Favicon, OG / Twitter card — same file as full-bleed after dress code */
+const shareThumbnail = prenup('VAN_5328.jpg')
+const countdownBackground = prenup(F[6])
+/** Full-bleed between gift (RSVP block) and love story — same file as countdown bg */
+const betweenGiftAndLoveStory = countdownBackground
+/** Save The Date / countdown section — VAN_4681 */
+const saveTheDateBackground = prenup('VAN_4681.jpg')
+const modalBackground = prenup(F[7])
+const loveStory = F.slice(8, 14).map(prenup) // 6 images → love-story polaroids / lightbox
+/** All prenup images — home Gallery grid + lightbox (order can differ from `F` for display) */
+const gallery = (() => {
+  const urls = [...F.map(prenup)]
+  const swapInGallery = (fileA, fileB) => {
+    const ua = prenup(fileA)
+    const ub = prenup(fileB)
+    const ia = urls.indexOf(ua)
+    const ib = urls.indexOf(ub)
+    if (ia !== -1 && ib !== -1) {
+      ;[urls[ia], urls[ib]] = [urls[ib], urls[ia]]
+    }
+  }
+  swapInGallery('VAN_6286.jpg', 'VAN_6583.jpg')
+  swapInGallery('VAN_6061.jpg', 'VAN_6078.jpg')
+  return urls
+})()
 
-/** Every prenup asset — order: main set → love story → extra gallery shots → save-the-date */
-const gallery = [
-  prenup('1st picture.jpeg'),
-  prenup('2nd picture.jpeg'),
-  prenup('3rd picture.jpeg'),
-  prenup('4th picture.jpeg'),
-  prenup('5th picture.jpeg'),
-  prenup('Deskmates picture (lovestory section).jpeg'),
-  prenup('Study Buddies picture (love story section).jpeg'),
-  prenup('Bestfriends pictures (love story section).jpeg'),
-  prenup('Furparents pictures (love story section).png'),
-  prenup('Partners for life picture (love story section).jpeg'),
-  prenup('include in gallery(1).jpeg'),
-  prenup('include in gallery.jpeg'),
-  prenup('iclude in gallery.jpeg'),
-  prenup('include in gallery3.jpeg'),
-  prenup('Save the date or Countdown picture.jpeg'),
-]
-
-/**
- * Same order as `gallery`: object-position for grid thumbs (object-cover).
- * Tuned from actual frames: top-anchored when heads are high; lower % when subjects sit in bottom half.
- */
-const galleryThumbObjectPosition = [
-  'center top',
-  'center 68%',
-  'center 18%',
-  'center 34%',
-  'center 14%',
-  'center 24%',
-  'center 24%',
-  '78% 22%',
-  'center 44%',
-  '48% 12%',
-  '38% 48%',
-  'center 22%',
-  'center top',
-  'center top',
-  'center 54%',
-]
-
-const countdownBackground = prenup('Save the date or Countdown picture.jpeg')
-
-/** Pool for other features (e.g. Moments grid, preload). Order preserved, duplicates removed. */
+/** Preload: priority URLs first, then full set once (deduped) */
 const pool = [
   ...new Set([
     hero,
@@ -68,27 +66,35 @@ const pool = [
     fullBleedAfterSchedule,
     fullBleedAfterLoveStory,
     fullBleedAfterDressCode,
+    countdownBackground,
+    saveTheDateBackground,
+    modalBackground,
     ...loveStory,
     ...gallery,
-    countdownBackground,
   ]),
 ]
+
+/** Moments page: banner only (grid empty so we don’t repeat home / love photos) */
+const momentsBanner = gallery[0]
+const momentsGrid = []
 
 export const prenupImages = {
   pool,
   hero,
   fullBleedAfterVenue,
   fullBleedAfterSchedule,
+  betweenGiftAndLoveStory,
   fullBleedAfterLoveStory,
   fullBleedAfterDressCode,
   loveStory,
   gallery,
-  galleryThumbObjectPosition,
   countdownBackground,
-  modalBackground: hero,
-  ogImage: hero,
-  favicon: hero,
-  rsvpBackground: fullBleedAfterDressCode,
+  saveTheDateBackground,
+  modalBackground,
+  ogImage: shareThumbnail,
+  favicon: shareThumbnail,
+  /** Legacy aliases — same files as above, no extra disk paths */
+  rsvpBackground: modalBackground,
   fullBleedMain: fullBleedAfterVenue,
   splitA: {
     left: fullBleedAfterVenue,
@@ -102,6 +108,8 @@ export const prenupImages = {
     left: loveStory[0],
     right: loveStory[1],
   },
-  momentsHero: fullBleedAfterSchedule,
-  momentsGrid: [...pool],
+  momentsBanner,
+  momentsGrid,
+  /** @deprecated use momentsBanner — kept for any stale imports */
+  momentsHero: momentsBanner,
 }
