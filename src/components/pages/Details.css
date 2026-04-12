@@ -14,7 +14,7 @@
 
 .venue-title-text {
   line-height: 0.8;
-  color: #5c2438;
+  color: #b86e7e;
 }
 
 /* Venue Image Container */
@@ -48,7 +48,7 @@
 
 .program-title-text {
   line-height: 0.8;
-  color: #5c2438;
+  color: #b86e7e;
   display: block;
   text-align: center;
 }
@@ -83,7 +83,7 @@
 /* Dress Code */
 .dress-code-title-text {
   line-height: 0.8;
-  color: #5c2438;
+  color: #b86e7e;
   white-space: nowrap;
 }
 
@@ -133,7 +133,7 @@
 
 .gift-registry-title-text {
   line-height: 0.8;
-  color: #5c2438;
+  color: #b86e7e;
 }
 
 .gift-button {
@@ -152,7 +152,7 @@
 
 .upload-title-text {
   line-height: 0.8;
-  color: #5c2438;
+  color: #b86e7e;
 }
 
 .upload-qr-container {
@@ -177,7 +177,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #5c2438;
+  background-color: #b86e7e;
 }
 
 /* FAQ — botanical background (same asset as Love Story modal) */
@@ -194,7 +194,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(92, 36, 56, 0.55);
+  background: rgba(184, 110, 126, 0.5);
   pointer-events: none;
   z-index: 0;
 }
@@ -206,7 +206,7 @@
 
 .faq-title-text {
   line-height: 0.8;
-  color: #5c2438;
+  color: #b86e7e;
 }
 
 /* Modal */
@@ -239,16 +239,16 @@
 /* Love story — instant-film polaroid frame */
 .love-story-polaroid {
   box-shadow:
-    0 1px 2px rgba(92, 36, 56, 0.06),
-    0 8px 24px rgba(92, 36, 56, 0.12),
+    0 1px 2px rgba(184, 110, 126, 0.08),
+    0 8px 24px rgba(184, 110, 126, 0.14),
     0 2px 6px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .love-story-polaroid:hover {
   box-shadow:
-    0 2px 4px rgba(92, 36, 56, 0.08),
-    0 14px 36px rgba(92, 36, 56, 0.16),
+    0 2px 4px rgba(184, 110, 126, 0.1),
+    0 14px 36px rgba(184, 110, 126, 0.18),
     0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -270,7 +270,7 @@
 
 /* Love story modal — full-panel botanical background */
 .love-story-modal-panel {
-  background-color: #3f1828;
+  background-color: #9d5a6a;
   background-image: url('/assets/images/graphics/Gemini_Generated_Image_dduovmdduovmdduo.png');
   background-size: cover;
   background-position: center top;
@@ -286,7 +286,7 @@
 
 /* Story scroll area — light veil so white copy stays readable on busy leaves */
 .love-story-modal-body {
-  background: rgba(92, 36, 56, 0.45);
+  background: rgba(184, 110, 126, 0.42);
 }
 
 /* Cinzel Decorative + uppercase — modal: pale gold; in-page: dark green via --section */
@@ -298,10 +298,10 @@
 }
 
 .love-story-title--section {
-  color: #5c2438;
+  color: #b86e7e;
   text-shadow:
     0 1px 1px rgba(255, 255, 255, 0.5),
-    0 1px 2px rgba(92, 36, 56, 0.12);
+    0 1px 2px rgba(184, 110, 126, 0.15);
 }
 
 .love-story-modal-banner .love-story-title {

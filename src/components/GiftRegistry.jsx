@@ -24,7 +24,7 @@ const GiftRegistry = () => {
           {accounts.map((account, index) => (
             <div
               key={index}
-              className="rounded-2xl border border-gold/35 bg-white/80 px-5 py-5 shadow-[0_8px_30px_-8px_rgba(92,36,56,0.12)] sm:px-6 sm:py-6"
+              className="rounded-2xl border border-gold/35 bg-white/80 px-5 py-5 shadow-[0_8px_30px_-8px_rgba(184,110,126,0.14)] sm:px-6 sm:py-6"
             >
               <h4 className="font-foglihten text-xl sm:text-2xl text-forest tracking-wide mb-3">
                 {account.title}

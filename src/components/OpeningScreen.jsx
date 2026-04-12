@@ -2,6 +2,10 @@ import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 
 const OPENING_TEXTURE_BG = '/assets/images/graphics/textured-bg-2.png'
+/** Primary blush — opening-screen typography */
+const OPENING_BLUSH = '#b86e7e'
+/** Burgundy red — script “Invited” only */
+const INVITED_BURGUNDY = '#722f37'
 
 function OpeningScreen({ onEnvelopeOpen }) {
   const envelopeRef = useRef(null)
@@ -97,13 +101,12 @@ function OpeningScreen({ onEnvelopeOpen }) {
         }}
         aria-hidden
       />
-      <div className="absolute inset-0 bg-black/20 z-[1]" />
       <section className="cssletter flex flex-col items-center relative z-10 w-full py-8" style={{ minHeight: 'auto', height: 'auto' }}>
         <div ref={clickMeRef} className="mb-4 sm:mb-6 md:mb-8 lg:mb-10 text-center click-me-container">
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-foglihten uppercase leading-tight" style={{ color: '#EDEDDD' }}>
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-foglihten uppercase leading-tight" style={{ color: OPENING_BLUSH }}>
             YOU ARE CORDIALLY
           </p>
-          <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-tight" style={{ fontFamily: 'Pinyon Script, cursive', color: '#F5F5DC' }}>
+          <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-tight" style={{ fontFamily: 'Pinyon Script, cursive', color: INVITED_BURGUNDY }}>
             Invited
           </p>
         </div>
@@ -133,7 +136,9 @@ function OpeningScreen({ onEnvelopeOpen }) {
           </div>
           {/* Letter that slides up when envelope opens */}
           <div className="envelope-letter envelope-letter-centered">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-gold">You are invited!</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-bold" style={{ color: OPENING_BLUSH }}>
+              You are invited!
+            </p>
             <img 
               src="/assets/images/graphics/cutlery-sketch.png" 
               alt="Cutlery sketch" 
@@ -148,11 +153,11 @@ function OpeningScreen({ onEnvelopeOpen }) {
         <div ref={coupleNameRef} className="mt-4 sm:mt-6 md:mt-8 text-center couple-name-container">
           <p 
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-foglihten uppercase leading-tight"
-            style={{ 
-              color: '#F8F3EA',
+            style={{
+              color: OPENING_BLUSH,
               fontSize: 'clamp(1.5rem, 4vw, 48px)',
               textShadow: 'none',
-              cursor: 'pointer'
+              cursor: 'pointer',
             }}
             onClick={handleEnvelopeClick}
           >

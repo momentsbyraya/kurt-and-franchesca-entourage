@@ -1,6 +1,5 @@
 import React from 'react'
 import Hero from './Hero'
-import GuestMessage from './GuestMessage'
 import Venue from './Venue'
 import Schedule from './Schedule'
 import DressCode from './DressCode'
@@ -29,9 +28,6 @@ const Home = ({ onOpenRSVP }) => {
     <div className="relative w-full bg-sage">
       {/* 1. First page — photo, date & names (Hero; venue not shown) */}
       <Hero />
-
-      {/* 1b. Note to guests — between hero and venue */}
-      <GuestMessage />
 
       {/* 2. Where to go — venue, directions, time */}
       <div

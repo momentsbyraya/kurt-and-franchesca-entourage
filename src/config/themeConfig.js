@@ -1,4 +1,4 @@
-// Blush pink, ivory & deep wine burgundy
+// Primary: blush pink · Accent: soft rose · Deep wine for contrast only
 export const themeConfig = {
     backgrounds: {
         primary: 'bg-forest',
@@ -12,44 +12,44 @@ export const themeConfig = {
 
     text: {
         primary: 'text-forest',
-        secondary: 'text-gold',
-        accent: 'text-gold',
-        muted: 'text-gold/80',
+        secondary: 'text-gold-dark',
+        accent: 'text-gold-dark',
+        muted: 'text-forest/75',
         dark: 'text-forest',
-        theme: 'text-gold',
+        theme: 'text-gold-dark',
         pause: 'text-white',
         custom: 'text-obsidian',
-        light: '#c9959e',
-        lightBlack: '#5c2438',
+        light: '#e8b4c2',
+        lightBlack: '#b86e7e',
         cream: '#f7f1ed',
-        tan: '#c9959e',
-        wine: '#5c2438',
-        burgundyDark: '#5c2438',
-        burntOrange: '#5c2438',
-        sageGreen: '#5c2438',
+        tan: '#e8b8c4',
+        wine: '#6d3d48',
+        burgundyDark: '#6d3d48',
+        burntOrange: '#6d3d48',
+        sageGreen: '#8f5a67',
     },
 
     borders: {
         primary: 'border-forest',
-        secondary: 'border-gold/60',
-        accent: 'border-gold',
-        theme: 'border-gold/40',
-        garden: 'border-gold/40',
+        secondary: 'border-gold-dark/50',
+        accent: 'border-gold-dark',
+        theme: 'border-forest/30',
+        garden: 'border-forest/25',
     },
 
     buttons: {
         primary: 'bg-forest hover:bg-wedding-600',
-        secondary: 'border border-gold hover:border-gold-dark',
-        text: 'text-forest hover:text-white',
-        theme: 'bg-gold hover:bg-gold-dark',
-        garden: 'bg-gold/90 hover:bg-gold',
+        secondary: 'border border-gold-dark hover:border-forest',
+        text: 'text-white hover:text-white',
+        theme: 'bg-gold-dark hover:bg-forest',
+        garden: 'bg-gold-dark/90 hover:bg-gold-dark',
     },
 
     hover: {
         primary: 'hover:bg-wedding-600',
-        secondary: 'hover:border-gold-dark hover:text-white',
-        theme: 'hover:bg-gold-dark',
-        garden: 'hover:bg-gold',
+        secondary: 'hover:border-forest hover:text-forest',
+        theme: 'hover:bg-forest',
+        garden: 'hover:bg-gold-dark',
     },
 
     container: {
@@ -60,11 +60,11 @@ export const themeConfig = {
 
     calendar: {
         weddingDate: '2026-06-05',
-        highlightColor: 'bg-gold',
-        heartColor: 'text-gold',
-        textColor: 'text-forest',
-        headerColor: 'text-gold',
-        dayNamesColor: 'text-gold/90',
+        highlightColor: 'bg-forest',
+        heartColor: 'text-forest',
+        textColor: 'text-obsidian',
+        headerColor: 'text-forest',
+        dayNamesColor: 'text-forest/90',
         background: 'bg-sage',
     },
 
@@ -74,20 +74,20 @@ export const themeConfig = {
     },
 
     cssVariables: {
-        '--primary-bg': '#5c2438',
-        '--secondary-bg': '#c9959e',
-        '--accent-bg': '#5c2438',
-        '--accent-hover': '#a67580',
-        '--primary-text': '#2b1f24',
-        '--secondary-text': '#c9959e',
-        '--accent-text': '#c9959e',
-        '--muted-text': '#a67580',
-        '--border-color': '#4a1d2d',
-        '--custom-theme': '#5c2438',
+        '--primary-bg': '#b86e7e',
+        '--secondary-bg': '#fcecf0',
+        '--accent-bg': '#a86b7d',
+        '--accent-hover': '#8f5a67',
+        '--primary-text': '#4a3e41',
+        '--secondary-text': '#b86e7e',
+        '--accent-text': '#a86b7d',
+        '--muted-text': '#8f5a67',
+        '--border-color': '#d996a8',
+        '--custom-theme': '#b86e7e',
         '--cream': '#f7f1ed',
-        '--tan': '#c9959e',
-        '--wine': '#5c2438',
-        '--burgundy-dark': '#4a1d2d',
+        '--tan': '#e8b8c4',
+        '--wine': '#6d3d48',
+        '--burgundy-dark': '#5c2f3a',
         '--garden-bg': '#f7f1ed',
     }
 }
@@ -114,21 +114,21 @@ export const themePresets = {
         },
         text: {
             primary: 'text-forest',
-            secondary: 'text-gold',
-            accent: 'text-gold',
+            secondary: 'text-gold-dark',
+            accent: 'text-gold-dark',
         }
     },
 
     warmAutumn: {
         backgrounds: {
             primary: 'bg-sage',
-            secondary: 'bg-gold/20',
-            accent: 'bg-gold',
+            secondary: 'bg-forest/15',
+            accent: 'bg-forest',
         },
         text: {
             primary: 'text-forest',
-            secondary: 'text-gold',
-            accent: 'text-gold',
+            secondary: 'text-gold-dark',
+            accent: 'text-gold-dark',
         }
     },
 
@@ -136,14 +136,14 @@ export const themePresets = {
         backgrounds: {
             primary: 'bg-sage',
             secondary: 'bg-white',
-            accent: 'bg-gold',
+            accent: 'bg-forest',
             theme: 'bg-sage',
         },
         text: {
             primary: 'text-forest',
-            secondary: 'text-gold',
-            accent: 'text-gold',
-            garden: 'text-gold',
+            secondary: 'text-gold-dark',
+            accent: 'text-gold-dark',
+            garden: 'text-gold-dark',
         }
     }
 }

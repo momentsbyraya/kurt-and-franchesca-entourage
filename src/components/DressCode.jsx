@@ -216,7 +216,7 @@ const DressCode = () => {
                           >
                             <button
                               type="button"
-                              className="h-10 w-10 shrink-0 rounded-full shadow-[0_2px_10px_rgba(92,36,56,0.12)] outline-none ring-1 ring-forest/15 transition-transform duration-200 hover:scale-[1.04] focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 sm:h-[3.25rem] sm:w-[3.25rem] md:h-14 md:w-14"
+                              className="h-10 w-10 shrink-0 rounded-full shadow-[0_2px_10px_rgba(184,110,126,0.15)] outline-none ring-1 ring-forest/15 transition-transform duration-200 hover:scale-[1.04] focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 sm:h-[3.25rem] sm:w-[3.25rem] md:h-14 md:w-14"
                               style={{ backgroundColor: swatch.color }}
                               aria-label={swatch.name}
                             />
@@ -292,7 +292,7 @@ const DressCode = () => {
                         >
                           <button
                             type="button"
-                            className="h-10 w-10 shrink-0 rounded-full shadow-[0_2px_10px_rgba(92,36,56,0.12)] outline-none ring-1 ring-forest/15 transition-transform duration-200 hover:scale-[1.04] focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 sm:h-[3.25rem] sm:w-[3.25rem] md:h-14 md:w-14"
+                            className="h-10 w-10 shrink-0 rounded-full shadow-[0_2px_10px_rgba(184,110,126,0.15)] outline-none ring-1 ring-forest/15 transition-transform duration-200 hover:scale-[1.04] focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 sm:h-[3.25rem] sm:w-[3.25rem] md:h-14 md:w-14"
                             style={{ backgroundColor: swatch.color }}
                             aria-label={swatch.name}
                           />

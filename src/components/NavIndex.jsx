@@ -171,7 +171,7 @@ const NavIndex = ({ onOpenRSVP }) => {
     <div className="min-h-screen w-full flex items-center justify-center bg-forest overflow-hidden relative">
       {/* Background texture (subtle on forest) */}
       <div className="absolute inset-0 bg-cover bg-no-repeat nav-index-bg opacity-25" />
-      <div className="absolute inset-0 bg-gradient-to-b from-forest via-forest/95 to-[#2a111b]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-forest via-forest/95 to-[#6d4450]" />
       
       <div 
         ref={navRef}

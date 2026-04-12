@@ -29,11 +29,11 @@ export const weddingConfig = {
     message: "Please RSVP by May 24th, 2026"
   },
 
-  // Theme — blush pink, ivory, wine burgundy
+  // Theme — blush pink primary, ivory, wine accent
   theme: {
-    primaryColor: "wine",
-    secondaryColor: "blush",
-    accentColor: "blush",
+    primaryColor: "blush",
+    secondaryColor: "ivory",
+    accentColor: "wine",
     fontFamily: "serif",
     style: "elegant" // Options: elegant, modern, rustic, vintage
   },

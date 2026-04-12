@@ -207,11 +207,11 @@
 .rsvp-text-kindly {
   font-size: clamp(1.5vw, 2.2vw, 2.2vw);
   margin-bottom: 0;
-  color: #5c2438;
+  color: #b86e7e;
 }
 
 .rsvp-text-container {
-  color: #5c2438;
+  color: #b86e7e;
   margin-top: 0;
   line-height: 0.8;
 }
