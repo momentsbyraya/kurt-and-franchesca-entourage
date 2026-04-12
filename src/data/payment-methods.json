@@ -3,11 +3,13 @@
   "accounts": [
     {
       "bankName": "Chinabank Corporation",
+      "brandImage": "/assets/images/monetary-gifts/Chinabank.jpg",
       "accountNumber": "157802040314",
       "accountName": "Cantillo, Francezka Laurabel Eusebio or Cantillo, Earlwin Czar Inso"
     },
     {
       "bankName": "GCash & Maya",
+      "brandImage": "/assets/images/monetary-gifts/gcash%20(1).jpg",
       "accountNumber": "09159173681",
       "accountName": "Francezka Laurabel E. Cantillo"
     }

@@ -151,6 +151,9 @@ const EntourageTextContent = ({
 
         if (block.names?.length) {
           const centered =
+            block.category === 'Candle' ||
+            block.category === 'Veil' ||
+            block.category === 'Cord' ||
             block.category === 'Little Bridesmaid' ||
             block.category === 'Flower Girl' ||
             block.category === 'Ring Bearer' ||

@@ -1,26 +1,87 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { X } from 'lucide-react'
+import { Check, Copy, X } from 'lucide-react'
 
 /**
- * @param {{ bankName: string, accountNumber: string, accountName: string }} account
+ * @param {{ bankName: string, accountNumber: string, accountName: string, brandImage?: string }} account
  */
-const GiftAccountBlock = ({ account }) => (
-  <div className="rounded-xl border border-gold/30 bg-white/90 px-4 py-4 sm:px-5 sm:py-5 space-y-3">
-    <div>
-      <p className="text-xs font-albert font-medium uppercase tracking-wide text-forest/70">Bank name</p>
-      <p className="mt-1 font-albert text-sm sm:text-base text-obsidian font-medium">{account.bankName}</p>
+const GiftAccountBlock = ({ account }) => {
+  const [copied, setCopied] = useState(false)
+
+  const copyNumber = async () => {
+    const n = account.accountNumber?.trim() ?? ''
+    if (!n) return
+    try {
+      await navigator.clipboard.writeText(n)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 2000)
+    } catch {
+      try {
+        const ta = document.createElement('textarea')
+        ta.value = n
+        ta.setAttribute('readonly', '')
+        ta.style.position = 'fixed'
+        ta.style.left = '-9999px'
+        document.body.appendChild(ta)
+        ta.select()
+        document.execCommand('copy')
+        document.body.removeChild(ta)
+        setCopied(true)
+        window.setTimeout(() => setCopied(false), 2000)
+      } catch {
+        /* ignore */
+      }
+    }
+  }
+
+  return (
+    <div className="overflow-hidden rounded-xl border border-gold/30 bg-white/90">
+      <div className="w-full bg-white/40">
+        {account.brandImage ? (
+          <img
+            src={account.brandImage}
+            alt={account.bankName}
+            className="block h-auto w-full object-contain object-center"
+          />
+        ) : (
+          <div className="flex min-h-[3rem] items-center justify-center px-4 py-4 sm:px-5">
+            <p className="text-center font-albert text-base font-semibold uppercase tracking-wide text-obsidian sm:text-lg">
+              {account.bankName}
+            </p>
+          </div>
+        )}
+      </div>
+
+      <div className="h-px w-full shrink-0 bg-gold/25" role="presentation" />
+
+      <div className="space-y-4 px-4 py-4 sm:px-5 sm:py-5">
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <p className="font-albert text-base font-medium tabular-nums text-obsidian sm:text-lg">
+            {account.accountNumber}
+          </p>
+          <button
+            type="button"
+            onClick={copyNumber}
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-gold/35 bg-white/80 text-forest transition-colors hover:bg-white hover:border-gold/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+            aria-label={copied ? 'Copied to clipboard' : `Copy ${account.accountNumber}`}
+          >
+            {copied ? (
+              <Check className="h-4 w-4 text-emerald-700" aria-hidden />
+            ) : (
+              <Copy className="h-4 w-4" aria-hidden />
+            )}
+          </button>
+        </div>
+
+        <div className="border-t border-gold/25" role="presentation" />
+
+        <p className="text-center font-albert text-sm leading-relaxed text-obsidian sm:text-base">
+          {account.accountName}
+        </p>
+      </div>
     </div>
-    <div>
-      <p className="text-xs font-albert font-medium uppercase tracking-wide text-forest/70">Account number</p>
-      <p className="mt-1 font-albert text-sm sm:text-base text-obsidian tabular-nums">{account.accountNumber}</p>
-    </div>
-    <div>
-      <p className="text-xs font-albert font-medium uppercase tracking-wide text-forest/70">Name</p>
-      <p className="mt-1 font-albert text-sm sm:text-base text-obsidian leading-relaxed">{account.accountName}</p>
-    </div>
-  </div>
-)
+  )
+}
 
 const GiftModal = ({ isOpen, onClose, accounts = [] }) => {
   useEffect(() => {

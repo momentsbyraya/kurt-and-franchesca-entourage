@@ -63,11 +63,27 @@ const EntourageModal = ({ isOpen, onClose }) => {
           <X className="w-6 h-6" />
         </button>
 
+        <div className="relative w-full">
+          <img
+            src="/assets/images/graphics/flower-banner-2.png"
+            alt="Flower banner"
+            className="w-full h-auto object-contain pointer-events-none"
+          />
+        </div>
+
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl mb-8 font-boska text-center text-forest">
             Entourage
           </h2>
           <EntourageTextContent className="text-left" />
+        </div>
+
+        <div className="relative w-full">
+          <img
+            src="/assets/images/graphics/flower-banner-3.png"
+            alt="Flower banner"
+            className="w-full h-auto object-contain pointer-events-none"
+          />
         </div>
       </div>
     </div>,

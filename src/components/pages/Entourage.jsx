@@ -564,7 +564,7 @@ const Entourage = () => {
                 <h3 className="text-lg sm:text-xl md:text-2xl imperial-script-regular font-bold mb-8 text-center" style={{ color: '#b86e7e' }}>Secondary sponsors</h3>
 
                 {candleSponsors && (
-                  <div ref={candleSponsorsRef} className="mb-8 flex flex-col gap-1 justify-center items-center">
+                  <div ref={candleSponsorsRef} className="mb-8 flex w-full flex-col items-center justify-center gap-1 text-center">
                     <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-center uppercase" style={{ color: '#b86e7e' }}>Candle</p>
                     {candleSponsors.names && candleSponsors.names.map((name, index) => (
                       <p key={index} className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-forest text-center">{name}</p>
@@ -572,7 +572,7 @@ const Entourage = () => {
                   </div>
                 )}
                 {veilSponsors && (
-                  <div ref={veilSponsorsRef} className="mb-8 flex flex-col gap-1 justify-center items-center">
+                  <div ref={veilSponsorsRef} className="mb-8 flex w-full flex-col items-center justify-center gap-1 text-center">
                     <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-center uppercase" style={{ color: '#b86e7e' }}>Veil</p>
                     {veilSponsors.names && veilSponsors.names.map((name, index) => (
                       <p key={index} className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-forest text-center">{name}</p>
@@ -580,7 +580,7 @@ const Entourage = () => {
                   </div>
                 )}
                 {cordSponsors && (
-                  <div ref={cordSponsorsRef} className="mb-8 flex flex-col gap-1 justify-center items-center">
+                  <div ref={cordSponsorsRef} className="mb-8 flex w-full flex-col items-center justify-center gap-1 text-center">
                     <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-center uppercase" style={{ color: '#b86e7e' }}>Cord</p>
                     {cordSponsors.names && cordSponsors.names.map((name, index) => (
                       <p key={index} className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-forest text-center">{name}</p>
