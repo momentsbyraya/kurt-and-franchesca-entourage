@@ -144,6 +144,20 @@ const EntourageTextContent = ({
                     </p>
                   ))}
                 </div>
+                {!!(block.bridesman?.length || block.bridesmen?.length) && (
+                  <>
+                    <p className={`${labelClass} text-left mt-4`} style={{ color: accentColor }}>
+                      Bridesman (2)
+                    </p>
+                    <div className="space-y-2">
+                      {(block.bridesman || block.bridesmen || []).map((name, i) => (
+                        <p key={`bridesman-${i}`} className={`${nameClassName} text-left`}>
+                          {name}
+                        </p>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           )

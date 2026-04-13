@@ -605,6 +605,16 @@ const Entourage = () => {
                           <p key={index} className="bridesmaids-item text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-forest text-left">{name}</p>
                         ))}
                       </div>
+                      {(secondarySponsors.bridesman || secondarySponsors.bridesmen) && (
+                        <>
+                          <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mt-4 mb-2 text-left uppercase" style={{ color: '#b86e7e' }}>Bridesman (2)</p>
+                          <div className="space-y-1.5">
+                            {(secondarySponsors.bridesman || secondarySponsors.bridesmen || []).map((name, index) => (
+                              <p key={`bridesman-${index}`} className="bridesmaids-item text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-forest text-left">{name}</p>
+                            ))}
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 )}
