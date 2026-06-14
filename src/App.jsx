@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
 import Home from './components/Home'
 import Footer from './components/Footer'
 import RSVPModal from './components/RSVPModal'
 import DynamicTitle from './components/DynamicTitle'
-import EnvelopePage from './components/pages/EnvelopePage'
 import Loader from './components/Loader'
 import ScrollToTop from './components/ScrollToTop'
 import Details from './components/pages/Details'
@@ -18,24 +17,15 @@ import { couple, prenupImages } from './data'
 
 function AppContent() {
   const [isRSVPModalOpen, setIsRSVPModalOpen] = useState(false)
-  const [showInvitation, setShowInvitation] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const { play } = useAudio()
-  const location = useLocation()
-  const navigate = useNavigate()
 
   // Preload critical images and resources
   useEffect(() => {
     const preloadImages = async () => {
       const criticalImages = [
         ...prenupImages.pool,
-        // Envelope page assets
-        '/assets/images/graphics/textured-bg-2.png',
-        '/assets/images/graphics/stamp.png',
-        '/assets/images/graphics/cutlery-sketch.png',
-        '/assets/images/graphics/ring-sketch.png',
-        // NavIndex graphics - all decorative elements
-        '/assets/images/graphics/dusty-blue.png',
+        // Decorative graphics used across sections
         '/assets/images/graphics/flower-1.png',
         '/assets/images/graphics/flower-3.png',
         '/assets/images/graphics/flower-4.png',
@@ -104,7 +94,7 @@ function AppContent() {
         console.warn('Some images failed to load:', imageResults.reason)
       }
 
-      // Brief pause so the browser can settle before showing the envelope page
+      // Brief pause so the browser can settle before showing the invitation
       await new Promise(resolve => setTimeout(resolve, 300))
 
       setIsLoading(false)
@@ -113,13 +103,29 @@ function AppContent() {
     preloadImages()
   }, [])
 
-  const handleEnvelopeOpen = async () => {
-    // Start playing music when invitation is revealed (user interaction allows auto-play)
-    await play()
-    const targetPath = location.pathname === '/' ? '/sponsor' : location.pathname
-    setShowInvitation(true)
-    navigate(targetPath)
-  }
+  // Start background music on the first user interaction (browsers block auto-play
+  // without a user gesture, so we wait for any tap/click/scroll/keypress).
+  useEffect(() => {
+    if (isLoading) return undefined
+
+    let started = false
+    const startAudio = () => {
+      if (started) return
+      started = true
+      play()
+      removeListeners()
+    }
+
+    const events = ['pointerdown', 'click', 'keydown', 'touchstart', 'scroll']
+    const removeListeners = () => {
+      events.forEach((evt) => window.removeEventListener(evt, startAudio))
+    }
+    events.forEach((evt) =>
+      window.addEventListener(evt, startAudio, { once: true, passive: true })
+    )
+
+    return removeListeners
+  }, [isLoading, play])
 
   return (
     <div className="App min-h-screen wedding-gradient">
@@ -137,12 +143,8 @@ function AppContent() {
           <Loader />
         </div>
       )}
-      {/* Envelope page — after loading, before the invitation site */}
-      {!isLoading && !showInvitation && (
-        <EnvelopePage onEnvelopeOpen={handleEnvelopeOpen} />
-      )}
-      {/* Main content - shows after invitation is opened (stamp clicked) */}
-      {!isLoading && showInvitation && (
+      {/* Main content - shows right after the loading screen */}
+      {!isLoading && (
         <>
           <Routes>
             <Route path="/" element={<Navigate to="/sponsor" replace />} />

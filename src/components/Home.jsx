@@ -1,7 +1,7 @@
 import React from 'react'
 import Hero from './Hero'
 import EntourageSection from './EntourageSection'
-import SaveTheDateCounter from './SaveTheDateCounter'
+import RSVPSection from './RSVPSection'
 import GuestMessage from './GuestMessage'
 import './pages/Details.css'
 
@@ -39,8 +39,8 @@ const Home = ({
         />
       </div>
 
-      {/* 12. Save the date & countdown */}
-      <SaveTheDateCounter />
+      {/* 12. RSVP */}
+      <RSVPSection onOpenRSVP={onOpenRSVP} />
     </div>
   )
 }

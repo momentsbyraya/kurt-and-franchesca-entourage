@@ -1,38 +1,130 @@
-import React from 'react'
-import { ArrowRight } from 'lucide-react'
+import React, { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { couple } from '../data'
-import SecondaryButton from './SecondaryButton'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const COFFEE_DARK = '#4a3728'
+const BANNER_SRC = '/assets/images/graphics/for flower-banner (5).png'
 
 const RSVPSection = ({ onOpenRSVP }) => {
-  const deadlineText = couple.rsvpDeadline
+  const contentRef = useRef(null)
+
+  useEffect(() => {
+    if (!contentRef.current) return undefined
+
+    const tween = gsap.fromTo(
+      contentRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    )
+
+    return () => {
+      tween.scrollTrigger?.kill()
+      tween.kill()
+    }
+  }, [])
+
+  const deadline = couple.rsvpDeadline
     ? `${couple.rsvpDeadline.month} ${couple.rsvpDeadline.day}, ${couple.rsvpDeadline.year}`
-    : 'May 4, 2026'
+    : null
 
   return (
     <section
       id="rsvp"
       data-section="rsvp"
-      className="w-full"
+      className="relative w-full overflow-hidden px-6 py-28 sm:py-32 md:py-40"
     >
-      <div className="w-full text-center">
-        <h3 className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-none capitalize text-forest">
-          RSVP
-        </h3>
-        <p className="mt-4 text-sm sm:text-base md:text-lg font-albert text-obsidian/85 max-w-2xl mx-auto leading-relaxed">
-          We&apos;d love to have you with us! Please favor us with a response by{' '}
-          <strong>{deadlineText}</strong>.
-          <br />
-          <span className="mt-2 inline-block sm:mt-2.5">
-            We&apos;ll be finalizing all plans on this date and hope to see you there!
-          </span>
+      {/* Flower Banner - Top (full viewport width) */}
+      <div
+        className="absolute top-0 flex items-center justify-center"
+        style={{ left: 0, width: '100vw' }}
+      >
+        <img
+          src={BANNER_SRC}
+          alt="Flower banner"
+          style={{ width: '100vw', height: 'auto', display: 'block' }}
+        />
+      </div>
+
+      {/* Content */}
+      <div
+        ref={contentRef}
+        className="relative z-20 mx-auto flex max-w-2xl flex-col items-center justify-center py-12 text-center"
+      >
+        <p className="font-script text-2xl opacity-90 sm:text-3xl md:text-4xl" style={{ color: COFFEE_DARK }}>
+          Will you join us?
         </p>
-        {onOpenRSVP && (
-          <div className="mt-8 flex justify-center">
-            <SecondaryButton onClick={onOpenRSVP} icon={ArrowRight}>
-              Respond
-            </SecondaryButton>
-          </div>
+        <h2
+          className="mt-3 font-foglihten text-5xl font-bold tracking-wide sm:text-6xl md:text-7xl"
+          style={{
+            backgroundImage:
+              'linear-gradient(118deg, #6b5420 0%, #9a7829 16%, #d4bc6a 34%, #f0e4b8 48%, #c9a43a 62%, #8a6e28 88%, #5c4818 100%)',
+            backgroundSize: '100% 100%',
+            backgroundRepeat: 'no-repeat',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            color: 'transparent',
+          }}
+        >
+          RSVP
+        </h2>
+
+        <p
+          className="mt-6 max-w-xl font-albert text-[0.9375rem] font-light leading-relaxed sm:text-base md:text-[1.0625rem]"
+          style={{ color: COFFEE_DARK }}
+        >
+          Your presence would mean the world to us. Kindly let us know if you
+          can celebrate this special day with us.
+        </p>
+
+        {deadline && (
+          <p
+            className="mt-3 font-albert text-sm font-medium uppercase tracking-wide sm:text-base"
+            style={{ color: '#6f4e37' }}
+          >
+            Please respond by {deadline}
+          </p>
         )}
+
+        <button
+          type="button"
+          onClick={onOpenRSVP}
+          className="mt-8 inline-flex items-center justify-center rounded-full border border-gold/50 bg-white/80 px-10 py-3 font-albert text-base font-medium uppercase tracking-wide text-forest shadow-sm transition-all duration-300 hover:scale-105 hover:border-gold hover:bg-gold/20"
+        >
+          RSVP Here
+        </button>
+      </div>
+
+      {/* Flower Banner - Bottom (flipped vertically) */}
+      <div
+        className="absolute bottom-0 flex items-center justify-center"
+        style={{ left: 0, width: '100vw' }}
+      >
+        <img
+          src={BANNER_SRC}
+          alt="Flower banner"
+          style={{
+            width: '100vw',
+            height: 'auto',
+            display: 'block',
+            transform: 'scaleY(-1)',
+            transformOrigin: 'center',
+          }}
+        />
       </div>
     </section>
   )
