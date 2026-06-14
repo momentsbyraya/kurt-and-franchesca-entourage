@@ -1,24 +1,27 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import './App.css'
 import Home from './components/Home'
 import Footer from './components/Footer'
 import RSVPModal from './components/RSVPModal'
 import DynamicTitle from './components/DynamicTitle'
-import OpeningScreen from './components/OpeningScreen'
+import EnvelopePage from './components/pages/EnvelopePage'
 import Loader from './components/Loader'
 import ScrollToTop from './components/ScrollToTop'
 import Details from './components/pages/Details'
 import Entourage from './components/pages/Entourage'
 import Moments from './components/pages/Moments'
+import Bridesmaid from './components/pages/Bridesmaid'
+import Groomsmen from './components/pages/Groomsmen'
 import { AudioProvider, useAudio } from './contexts/AudioContext'
 import { couple, prenupImages } from './data'
 
 function AppContent() {
   const [isRSVPModalOpen, setIsRSVPModalOpen] = useState(false)
-  const [showInvitation, setShowInvitation] = useState(false) // Set to false to show opening screen
+  const [showInvitation, setShowInvitation] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const { play } = useAudio()
+  const location = useLocation()
   const navigate = useNavigate()
 
   // Preload critical images and resources
@@ -26,13 +29,17 @@ function AppContent() {
     const preloadImages = async () => {
       const criticalImages = [
         ...prenupImages.pool,
+        // Envelope page assets
+        '/assets/images/graphics/textured-bg-2.png',
+        '/assets/images/graphics/stamp.png',
+        '/assets/images/graphics/cutlery-sketch.png',
+        '/assets/images/graphics/ring-sketch.png',
         // NavIndex graphics - all decorative elements
         '/assets/images/graphics/dusty-blue.png',
         '/assets/images/graphics/flower-1.png',
         '/assets/images/graphics/flower-3.png',
         '/assets/images/graphics/flower-4.png',
-        '/assets/images/graphics/textured-bg-2.png',
-        '/assets/images/graphics/bg-1.png'
+        '/assets/images/graphics/bg-1.png',
       ]
 
       // Preload fonts
@@ -97,69 +104,9 @@ function AppContent() {
         console.warn('Some images failed to load:', imageResults.reason)
       }
 
-      // Additional delay to ensure browser has processed all resources
-      // This helps prevent lag when NavIndex first renders
+      // Brief pause so the browser can settle before showing the envelope page
       await new Promise(resolve => setTimeout(resolve, 300))
 
-      // Wait for hero image to be visible in the viewport
-      const waitForHeroVisible = () => {
-        return new Promise((resolve) => {
-          const checkHero = () => {
-            // Check if we're on the home page
-            if (window.location.pathname === '/' || window.location.pathname === '') {
-              // Look for hero image
-              const heroImg = document.querySelector(`img[src="${prenupImages.hero}"]`)
-              if (heroImg) {
-                // Check if image is loaded and visible
-                if (heroImg.complete && heroImg.naturalHeight > 0) {
-                  // Use Intersection Observer to check if hero is visible
-                  const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                      if (entry.isIntersecting) {
-                        observer.disconnect()
-                        resolve()
-                      }
-                    })
-                  }, { threshold: 0.1 })
-                  
-                  observer.observe(heroImg)
-                  
-                  // Fallback timeout
-                  setTimeout(() => {
-                    observer.disconnect()
-                    resolve()
-                  }, 2000)
-                } else {
-                  // Image not loaded yet, wait for load event
-                  heroImg.onload = () => {
-                    setTimeout(() => resolve(), 100)
-                  }
-                  heroImg.onerror = () => resolve() // Resolve even on error
-                  setTimeout(() => resolve(), 2000) // Fallback timeout
-                }
-              } else {
-                // Hero image not found, resolve anyway
-                resolve()
-              }
-            } else {
-              // Not on home page, resolve immediately
-              resolve()
-            }
-          }
-          
-          // Wait a bit for DOM to be ready
-          if (document.readyState === 'complete') {
-            checkHero()
-          } else {
-            window.addEventListener('load', checkHero)
-            setTimeout(() => resolve(), 3000) // Fallback timeout
-          }
-        })
-      }
-
-      await waitForHeroVisible()
-
-      // Hide loader
       setIsLoading(false)
     }
 
@@ -169,8 +116,9 @@ function AppContent() {
   const handleEnvelopeOpen = async () => {
     // Start playing music when invitation is revealed (user interaction allows auto-play)
     await play()
+    const targetPath = location.pathname === '/' ? '/sponsor' : location.pathname
     setShowInvitation(true)
-    navigate('/')
+    navigate(targetPath)
   }
 
   return (
@@ -189,15 +137,18 @@ function AppContent() {
           <Loader />
         </div>
       )}
-      {/* OpeningScreen - shows after loading, before invitation */}
+      {/* Envelope page — after loading, before the invitation site */}
       {!isLoading && !showInvitation && (
-        <OpeningScreen onEnvelopeOpen={handleEnvelopeOpen} />
+        <EnvelopePage onEnvelopeOpen={handleEnvelopeOpen} />
       )}
       {/* Main content - shows after invitation is opened (stamp clicked) */}
       {!isLoading && showInvitation && (
         <>
           <Routes>
-            <Route path="/" element={<Home onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
+            <Route path="/" element={<Navigate to="/sponsor" replace />} />
+            <Route path="/sponsor" element={<Home onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
+            <Route path="/bridesmaid" element={<Bridesmaid onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
+            <Route path="/groomsmen" element={<Groomsmen onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
             <Route path="/details" element={<Details />} />
             <Route path="/entourage" element={<Entourage />} />
             <Route path="/moments" element={<Moments />} />

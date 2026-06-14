@@ -66,11 +66,11 @@ const Hero = () => {
             <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
           </filter>
           <linearGradient id="topBlushGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(109, 61, 72, 0.88)" />
-            <stop offset="22%" stopColor="rgba(139, 75, 90, 0.55)" />
-            <stop offset="48%" stopColor="rgba(184, 110, 126, 0.28)" />
-            <stop offset="78%" stopColor="rgba(232, 180, 194, 0.08)" />
-            <stop offset="100%" stopColor="rgba(252, 236, 240, 0)" />
+            <stop offset="0%" stopColor="rgba(74, 55, 40, 0.88)" />
+            <stop offset="22%" stopColor="rgba(111, 78, 55, 0.55)" />
+            <stop offset="48%" stopColor="rgba(138, 106, 79, 0.28)" />
+            <stop offset="78%" stopColor="rgba(201, 173, 142, 0.08)" />
+            <stop offset="100%" stopColor="rgba(245, 239, 230, 0)" />
           </linearGradient>
         </defs>
         <rect width="100%" height="100%" fill="url(#topBlushGradient)" filter="url(#heroBlurTop)" />
@@ -88,11 +88,11 @@ const Hero = () => {
             <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
           </filter>
           <linearGradient id="bottomBlushGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(252, 236, 240, 0)" />
-            <stop offset="32%" stopColor="rgba(252, 220, 228, 0.22)" />
-            <stop offset="62%" stopColor="rgba(232, 180, 194, 0.5)" />
-            <stop offset="88%" stopColor="rgba(184, 110, 126, 0.78)" />
-            <stop offset="100%" stopColor="rgba(168, 107, 125, 0.95)" />
+            <stop offset="0%" stopColor="rgba(245, 239, 230, 0)" />
+            <stop offset="32%" stopColor="rgba(231, 211, 189, 0.22)" />
+            <stop offset="62%" stopColor="rgba(201, 173, 142, 0.5)" />
+            <stop offset="88%" stopColor="rgba(111, 78, 55, 0.78)" />
+            <stop offset="100%" stopColor="rgba(138, 106, 79, 0.95)" />
           </linearGradient>
         </defs>
         <rect width="100%" height="100%" fill="url(#bottomBlushGradient)" filter="url(#heroBlurBottom)" />

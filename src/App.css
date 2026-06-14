@@ -22,12 +22,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #b86e7e;
+  background: #6f4e37;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c9959e;
+  background: #5b4636;
 }
 
 /* RSVP Modal scrollbar - dark sage green */
@@ -40,12 +40,12 @@
 }
 
 .rsvp-modal-content::-webkit-scrollbar-thumb {
-  background: #b86e7e;
+  background: #6f4e37;
   border-radius: 4px;
 }
 
 .rsvp-modal-content::-webkit-scrollbar-thumb:hover {
-  background: #c9959e;
+  background: #5b4636;
 }
 
 /* Print styles */
@@ -63,8 +63,8 @@
 :root {
   --envelope-x: 300px;
   --envelope-y: 200px;
-  --envelope-bg: #a86b7d;
-  --envelope-shadow: #8f5a67;
+  --envelope-bg: #8a6a4f;
+  --envelope-shadow: #5b4636;
   --heart-bg: darkred;
   --heart-text: white;
   --letter-font: "Dancing Script", serif;
@@ -394,10 +394,10 @@
     0 4px 12px rgba(184, 110, 126, 0.035);
 }
 
-/* Opening screen — blush copy on the letter */
+/* Opening screen — coffee copy on the letter */
 .opening-section .envelope-letter,
 .opening-section .envelope-letter p {
-  color: #b86e7e;
+  color: #6f4e37;
 }
 
 /* Ensure pulsing animation runs continuously */

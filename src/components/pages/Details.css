@@ -6,30 +6,6 @@
   transform: translateX(100%);
 }
 
-/* Venue Title */
-.venue-title {
-  padding-top: 0;
-  padding-bottom: 0.75rem;
-}
-
-.venue-title-text {
-  line-height: 0.8;
-  color: #b86e7e;
-}
-
-/* Venue Image Container */
-.venue-image-container {
-  aspect-ratio: 1 / 1;
-}
-
-/* On screens 992px and above, venue content container should fit content height */
-@media (min-width: 992px) {
-  .venue-image-container.flex.flex-col {
-    aspect-ratio: auto;
-    height: fit-content;
-  }
-}
-
 /* Program Section */
 .program-section {
   padding: 0;
@@ -38,30 +14,10 @@
   margin-right: calc(-50vw + 50%);
 }
 
-.program-title-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.program-title-text {
-  line-height: 0.8;
-  color: var(--burgundy-red, #722f37);
-  display: block;
-  text-align: center;
-}
-
-.program-description {
-  width: 80%;
-  color: var(--burgundy-red, #722f37);
-}
-
 /* Date Selector */
 .date-month-year {
   font-style: italic;
-  color: #c9959e;
+  color: #8a6a4f;
 }
 
 .heart-day-number {
@@ -74,39 +30,11 @@
 }
 
 .timeline-event-time {
-  color: var(--burgundy-red, #722f37);
+  color: var(--burgundy-red, #6f4e37);
 }
 
 .timeline-event-description {
-  color: var(--burgundy-red, #722f37);
-}
-
-/* Dress Code */
-.dress-code-title-text {
-  line-height: 0.8;
-  color: #b86e7e;
-  white-space: nowrap;
-}
-
-.dress-code-description {
-  color: #000000;
-}
-
-.dress-code-image-container {
-  max-width: 200px;
-  width: 100%;
-}
-
-.dress-code-image {
-  max-height: 300px;
-}
-
-.color-swatch {
-  margin-top: -20px;
-}
-
-.color-swatch:first-child {
-  margin-top: 0;
+  color: var(--burgundy-red, #6f4e37);
 }
 
 /* Color Swatch Tooltip */
@@ -134,7 +62,7 @@
 
 .gift-registry-title-text {
   line-height: 0.8;
-  color: #b86e7e;
+  color: #6f4e37;
 }
 
 .gift-button {
@@ -153,7 +81,7 @@
 
 .upload-title-text {
   line-height: 0.8;
-  color: #b86e7e;
+  color: #6f4e37;
 }
 
 .upload-qr-container {
@@ -172,32 +100,6 @@
   }
 }
 
-/* FAQ Section */
-.faq-section {
-  padding: 4rem 0;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  background-color: #b86e7e;
-}
-
-/* FAQ — blush surface (same as schedule / order of events) */
-.faq-section.faq-section--botanical {
-  position: relative;
-  background-color: var(--secondary-bg, #fcecf0);
-  background-image: none;
-}
-
-.faq-section.faq-section--botanical > .faq-section__inner {
-  position: relative;
-  z-index: 1;
-}
-
-.faq-title-text {
-  line-height: 0.8;
-  color: #b86e7e;
-}
-
 /* Modal */
 .modal-methods-title {
   font-weight: 900;
@@ -206,53 +108,4 @@
 /* Back Button */
 .back-button {
   pointer-events: auto;
-}
-
-/* FAQ Phone Link */
-.faq-phone-link {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-}
-
-.faq-phone-link:hover {
-  text-decoration: none;
-}
-
-.faq-phone-link:active,
-.faq-phone-link:focus {
-  text-decoration: underline;
-  outline: none;
-}
-
-/* Love story — polaroid (ace-style layout); click opens lightbox */
-.love-story-polaroid-card {
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
-}
-
-.love-story-polaroid-card:hover {
-  box-shadow:
-    0 10px 28px rgba(0, 0, 0, 0.12),
-    0 4px 10px rgba(184, 110, 126, 0.15);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .love-story-polaroid-card {
-    transition-duration: 0.01ms;
-  }
-}
-
-/* Cinzel Decorative — in-page love story title */
-.love-story-title {
-  font-family: 'Cinzel Decorative', serif;
-  color: #f0e4e8;
-  text-transform: capitalize;
-  letter-spacing: 0.08em;
-}
-
-.love-story-title--section {
-  color: #b86e7e;
-  text-shadow:
-    0 1px 1px rgba(255, 255, 255, 0.5),
-    0 1px 2px rgba(184, 110, 126, 0.15);
 }

@@ -2,18 +2,13 @@ import React, { useEffect, useRef, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { MapPin, Clock, ArrowLeft, ArrowRight, ChevronDown, UtensilsCrossed, Palette, Users, Mail, Baby, Car, Camera, Gift, Heart } from 'lucide-react'
-import { themeConfig } from '../../config/themeConfig'
-import { faq as faqData } from '../../data'
+import { ArrowLeft } from 'lucide-react'
 import ImageBanner from '../ImageBanner'
 import Divider from '../Divider'
 import Line from '../Line'
 import SecondaryButton from '../SecondaryButton'
 import PhotoSection from '../PhotoSection'
-import Venue from '../Venue'
-import Schedule from '../Schedule'
 import EntourageDetailsSection from '../EntourageDetailsSection'
-import DressCode from '../DressCode'
 import './Details.css'
 
 // Register ScrollTrigger plugin
@@ -21,108 +16,14 @@ gsap.registerPlugin(ScrollTrigger)
 
 const Details = () => {
   const navigate = useNavigate()
-  const [openFaqIndex, setOpenFaqIndex] = useState(null)
   const [copiedIndex, setCopiedIndex] = useState(null)
   const sectionRef = useRef(null)
   const backButtonRef = useRef(null)
   const headerContentRef = useRef(null)
-  const venueRef = useRef(null)
-  const faqRef = useRef(null)
-  const faqTitleRef = useRef(null)
   const photoSectionRef = useRef(null)
   const curvedDivider1Ref = useRef(null)
   const curvedDivider2Ref = useRef(null)
   const curvedDivider3Ref = useRef(null)
-  const faqItems = faqData
-
-  // Helper function to get icon and clean text for FAQ questions
-  const getFaqIconAndText = (question) => {
-    // Map question text patterns to icons
-    const questionIconMap = {
-      'Wedding Ceremony Location': MapPin,
-      'Wedding Reception Location': UtensilsCrossed,
-      'What time is the wedding?': Clock,
-      'What time should I arrive?': Clock,
-      'What is the wedding theme and dress code?': Palette,
-      'Can I bring a plus one?': Users,
-      'What to wear?': Palette,
-      "Where's the reception?": UtensilsCrossed,
-      'Is RSVP required?': Mail,
-      'Are children allowed?': Baby,
-      'Are children invited?': Baby,
-      'Is parking available?': Car,
-      'Will there be parking available?': Car,
-      'What happens after the ceremony?': UtensilsCrossed,
-      'Can guests take photos or videos during the ceremony?': Camera,
-      'Can I take photos during the ceremony?': Camera,
-      'Will there be food and drinks?': UtensilsCrossed,
-      'Is there a gift registry?': Gift,
-      'Do you have a gift registry?': Gift,
-      'Who can I contact for questions on the day?': Mail,
-      'Final Reminder': Heart
-    }
-    
-    // Check for exact match first
-    if (questionIconMap[question]) {
-      return { Icon: questionIconMap[question], text: question }
-    }
-    
-    // Check for partial matches (in case of emoji prefixes or slight variations)
-    for (const [key, Icon] of Object.entries(questionIconMap)) {
-      if (question.includes(key) || key.includes(question.trim())) {
-        return { Icon, text: question.replace(/^[📍🥂⏰🎨👥✉️👶🚗📸🎁❤️]\s*/, '').trim() }
-      }
-    }
-    
-    // Remove any emoji at the start if present
-    const emojiPattern = /^[📍🥂⏰🎨👥✉️👶🚗📸🎁❤️]\s*/
-    const cleanText = question.replace(emojiPattern, '').trim()
-    
-    return { Icon: null, text: cleanText }
-  }
-
-  // Helper function to parse answer text and convert phone numbers to clickable links
-  const parseAnswerWithPhoneNumbers = (answer) => {
-    // Phone number pattern: matches 10-11 digit numbers (Philippine format)
-    const phonePattern = /(\d{10,11})/g
-    
-    const parts = []
-    let lastIndex = 0
-    let match
-    
-    while ((match = phonePattern.exec(answer)) !== null) {
-      // Add text before the phone number
-      if (match.index > lastIndex) {
-        parts.push(answer.substring(lastIndex, match.index))
-      }
-      
-      // Add the phone number as a link
-      const phoneNumber = match[0]
-      // Format phone number for tel: protocol (remove leading 0 and add country code for better compatibility)
-      // Keep original format for display, but use international format for tel: link
-      const telNumber = phoneNumber.startsWith('0') ? `+63${phoneNumber.slice(1)}` : phoneNumber
-      parts.push(
-        <a
-          key={match.index}
-          href={`tel:${telNumber}`}
-          className="faq-phone-link"
-          aria-label={`Call ${phoneNumber}`}
-        >
-          {phoneNumber}
-        </a>
-      )
-      
-      lastIndex = match.index + phoneNumber.length
-    }
-    
-    // Add remaining text after the last phone number
-    if (lastIndex < answer.length) {
-      parts.push(answer.substring(lastIndex))
-    }
-    
-    // If no phone numbers were found, return the original answer
-    return parts.length > 0 ? parts : answer
-  }
 
   // Random background position, rotation, and flip - Base layer (old-book-2)
   const bgStyleBase = useMemo(() => {
@@ -260,47 +161,6 @@ const Details = () => {
       })
     }
 
-    // FAQ section animation - title first, then items one after the other
-    if (faqRef.current && faqTitleRef.current) {
-      // Set initial states
-      gsap.set(faqTitleRef.current, { opacity: 0, y: 30 })
-        
-        ScrollTrigger.create({
-          trigger: faqRef.current,
-          start: "top 80%",
-          onEnter: () => {
-          // 1. Animate title first
-          gsap.to(faqTitleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            onComplete: () => {
-              // 2. After title animation, find and animate items one after the other
-              const faqItemsContainer = faqRef.current.querySelector('.faq-items')
-              if (faqItemsContainer) {
-                const faqItems = Array.from(faqItemsContainer.children).filter(child => child.tagName === 'DIV')
-                
-                if (faqItems.length > 0) {
-                  // Set initial states for items
-                  gsap.set(faqItems, { opacity: 0, y: 30 })
-                  
-                  // Animate items one after the other
-            gsap.to(faqItems, {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              ease: "power2.out",
-                    stagger: 0.2
-            })
-                }
-              }
-          }
-        })
-      }
-      })
-    }
-
     // Cleanup function
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
@@ -340,11 +200,8 @@ const Details = () => {
                   Join us as we exchange our vows
                 </p>
                 <Divider />
-              </div>
             </div>
-
-            {/* Venue Section */}
-            <Venue />
+          </div>
           </div>
         </div>
 
@@ -361,13 +218,6 @@ const Details = () => {
 
       {/* Content */}
       <div className="relative z-20 flex flex-col items-center justify-center pt-12 gap-10 sm:gap-12">
-        <div
-          className="site-content-width w-full rounded-2xl sm:rounded-3xl px-2 sm:px-4"
-          style={{ backgroundColor: themeConfig.cssVariables['--secondary-bg'] }}
-        >
-          <Schedule />
-        </div>
-
         <div className="site-content-width w-full">
           <EntourageDetailsSection />
         </div>
@@ -411,14 +261,6 @@ const Details = () => {
         </svg>
       </div> */}
 
-      {/* Content */}
-      <div className="relative z-20 flex items-center justify-center pt-12">
-        <div className="site-content-width">
-          {/* Dress Code Section */}
-          <DressCode />
-        </div>
-      </div>
-
       {/* Flower Divider - Flipped horizontally and vertically */}
       <div className="relative w-full h-16 sm:h-20 md:h-24 flex items-center justify-center my-8">
         <img 
@@ -430,39 +272,6 @@ const Details = () => {
             transformOrigin: 'center'
           }}
         />
-      </div>
-
-      {/* FAQ Section - Outside container */}
-      <div className="relative z-20 faq-section faq-section--botanical">
-        <div ref={faqRef} className="faq-section__inner relative z-10 w-full px-8 sm:px-12 md:px-8 lg:px-16">
-          <h3 ref={faqTitleRef} className="relative inline-block px-6 py-3 mb-12 text-center w-full">
-            <span className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase text-forest drop-shadow-sm">
-              Frequently Asked Questions
-            </span>
-          </h3>
-          {faqItems && faqItems.faqData && (
-            <div className="faq-items max-w-[600px] mx-auto">
-              {faqItems.faqData.map((item, index) => {
-                const { text } = getFaqIconAndText(item.question)
-                return (
-                  <div
-                    key={index}
-                    className="border-b border-gold/35 pb-6 pt-6 first:pt-0 last:border-b-0"
-                  >
-                    <div className="mb-2">
-                      <p className="text-base sm:text-lg font-albert text-obsidian mb-2 faq-question-bold">
-                        Q: {text}
-                      </p>
-                      <p className="text-sm sm:text-base font-albert font-thin text-obsidian/90 whitespace-pre-line">
-                        A: {parseAnswerWithPhoneNumbers(item.answer)}
-                      </p>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          )}
-        </div>
       </div>
 
       {/* Graphics with horizontal lines */}

@@ -1,11 +1,20 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
+import { useLocation } from 'react-router-dom'
 import { couple, prenupImages } from '../data'
 
 const OG_IMAGE_PATH = prenupImages.ogImage
 const FAVICON_PATH = prenupImages.favicon
 
+const PAGE_TITLES = {
+  '/sponsor': 'Sponsor',
+  '/bridesmaid': 'Bridesmaid',
+  '/groomsmen': 'Groomsmen',
+}
+
 const DynamicTitle = () => {
+  const { pathname } = useLocation()
+
   const weddingDate = new Date(couple.wedding.date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -16,7 +25,7 @@ const DynamicTitle = () => {
   const ogImageAbsolute = origin ? `${origin}${OG_IMAGE_PATH}` : OG_IMAGE_PATH
   const pageUrl = typeof window !== 'undefined' ? window.location.href.split('#')[0] : ''
 
-  const title = `${couple.together}'s Wedding - ${weddingDate}`
+  const title = PAGE_TITLES[pathname] || 'Sponsor'
   const description = `Join us for ${couple.together}'s wedding on ${weddingDate}.`
 
   return (

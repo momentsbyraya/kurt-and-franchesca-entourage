@@ -1,28 +1,28 @@
 {
   "bride": {
-    "firstName": "Francezka Laurabel",
-    "lastName": "S. Eusebio",
-    "fullName": "FRANCEZKA LAURABEL S. EUSEBIO"
+    "firstName": "Franchesca",
+    "lastName": "",
+    "fullName": "FRANCHESCA"
   },
   "groom": {
-    "firstName": "Earlwin Czar I.",
-    "lastName": "Cantillo",
-    "fullName": "EARLWIN CZAR I. CANTILLO"
+    "firstName": "Kurt",
+    "lastName": "",
+    "fullName": "KURT"
   },
-  "together": "Earlwin & Francezka",
-  "nickname": "Earlwin & Francezka",
+  "together": "Kurt & Franchesca",
+  "nickname": "Kurt & Franchesca",
   "wedding": {
-    "date": "2026-06-05",
+    "date": "2026-11-09",
     "time": "2:00 PM",
-    "dayOfWeek": "Friday",
-    "month": "June",
-    "day": "5",
+    "dayOfWeek": "Monday",
+    "month": "November",
+    "day": "9",
     "year": "2026"
   },
   "rsvpDeadline": {
-    "date": "2026-05-24",
-    "month": "May",
-    "day": "24",
+    "date": "2026-10-26",
+    "month": "October",
+    "day": "26",
     "year": "2026"
   },
   "rsvpFormUrl": "https://forms.gle/Batx8bEHr1td7yMS9",

@@ -4,7 +4,7 @@
 // This file imports data from JSON files to avoid duplication
 // Update the JSON files in src/data/ to modify wedding information
 
-import { couple, venues } from '../data'
+import { couple } from '../data'
 
 export const weddingConfig = {
   // Basic Wedding Information - imported from couple.json
@@ -17,25 +17,22 @@ export const weddingConfig = {
   // Wedding Details - imported from couple.json
   wedding: couple.wedding,
 
-  // Venue Information - imported from venues.json
-  venue: venues,
-
   // RSVP Information
   rsvp: {
-    deadline: "2026-05-24",
+    deadline: "2026-10-26",
     email: "",
     phone: "",
     website: "",
-    message: "Please RSVP by May 24th, 2026"
+    message: "Please RSVP by October 26th, 2026"
   },
 
-  // Theme — blush pink primary, ivory, wine accent
+  // Theme — rustic brown / coffee
   theme: {
-    primaryColor: "blush",
-    secondaryColor: "ivory",
-    accentColor: "wine",
+    primaryColor: "coffee",
+    secondaryColor: "cream",
+    accentColor: "mocha",
     fontFamily: "serif",
-    style: "elegant" // Options: elegant, modern, rustic, vintage
+    style: "rustic" // Options: elegant, modern, rustic, vintage
   },
 
   // Photos and Media
@@ -52,7 +49,7 @@ export const weddingConfig = {
 
   // Additional Information
   details: {
-    hashtag: "#EarlwinAndFrancezka2026",
+    hashtag: "#KurtAndFranchesca2026",
     website: "",
     registry: "",
     message: "We're excited to celebrate our special day with you!",

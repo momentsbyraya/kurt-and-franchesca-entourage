@@ -180,7 +180,7 @@ body {
   }
   
   .text-gradient {
-    background: linear-gradient(135deg, #b86e7e 0%, #e8b4c2 100%);
+    background: linear-gradient(135deg, #6f4e37 0%, #c9ad8e 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -223,10 +223,6 @@ body {
   /* Albert Sans font for countdown numbers */
   .font-albert {
     font-family: 'Albert Sans', sans-serif !important;
-  }
-  
-  .faq-question-bold {
-    font-weight: 600 !important;
   }
   
   /* Poppins font */

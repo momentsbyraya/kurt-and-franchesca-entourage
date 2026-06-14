@@ -1,4 +1,4 @@
-// Primary: blush pink · Accent: soft rose · Deep wine for contrast only
+// Primary: coffee brown · Accent: latte/tan · Deep espresso for contrast only
 export const themeConfig = {
     backgrounds: {
         primary: 'bg-forest',
@@ -19,14 +19,14 @@ export const themeConfig = {
         theme: 'text-gold-dark',
         pause: 'text-white',
         custom: 'text-obsidian',
-        light: '#e8b4c2',
-        lightBlack: '#b86e7e',
-        cream: '#f7f1ed',
-        tan: '#e8b8c4',
-        wine: '#6d3d48',
-        burgundyDark: '#6d3d48',
-        burntOrange: '#6d3d48',
-        sageGreen: '#8f5a67',
+        light: '#c9ad8e',
+        lightBlack: '#8a6a4f',
+        cream: '#f5efe6',
+        tan: '#d9c2a6',
+        wine: '#6f4e37',
+        burgundyDark: '#4a3728',
+        burntOrange: '#8a6a4f',
+        sageGreen: '#6f4e37',
     },
 
     borders: {
@@ -59,7 +59,7 @@ export const themeConfig = {
     },
 
     calendar: {
-        weddingDate: '2026-06-05',
+        weddingDate: '2026-11-09',
         highlightColor: 'bg-forest',
         heartColor: 'text-forest',
         textColor: 'text-obsidian',
@@ -74,23 +74,23 @@ export const themeConfig = {
     },
 
     cssVariables: {
-        '--primary-bg': '#b86e7e',
-        '--secondary-bg': '#fcecf0',
-        '--accent-bg': '#a86b7d',
-        '--accent-hover': '#8f5a67',
-        '--primary-text': '#4a3e41',
-        '--secondary-text': '#b86e7e',
-        '--accent-text': '#a86b7d',
-        '--muted-text': '#8f5a67',
-        '--border-color': '#d996a8',
-        '--custom-theme': '#b86e7e',
-        '--cream': '#f7f1ed',
-        '--tan': '#e8b8c4',
-        '--wine': '#6d3d48',
-        '--burgundy-dark': '#5c2f3a',
-        '--garden-bg': '#f7f1ed',
-        /** Burgundy red for schedule / accents (matches opening “Invited”) */
-        '--burgundy-red': '#722f37',
+        '--primary-bg': '#6f4e37',
+        '--secondary-bg': '#f3ebdd',
+        '--accent-bg': '#8a6a4f',
+        '--accent-hover': '#5b4636',
+        '--primary-text': '#3b2f2a',
+        '--secondary-text': '#6f4e37',
+        '--accent-text': '#8a6a4f',
+        '--muted-text': '#6f4e37',
+        '--border-color': '#c4a484',
+        '--custom-theme': '#6f4e37',
+        '--cream': '#f5efe6',
+        '--tan': '#d9c2a6',
+        '--wine': '#6f4e37',
+        '--burgundy-dark': '#4a3728',
+        '--garden-bg': '#f5efe6',
+        /** Coffee accent for schedule / accents (matches opening “Invited”) */
+        '--burgundy-red': '#6f4e37',
     }
 }
 

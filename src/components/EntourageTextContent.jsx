@@ -13,7 +13,7 @@ const EntourageTextContent = ({
   className = '',
   nameClassName = 'text-[9px] sm:text-[13px] md:text-[15px] font-poppins uppercase text-forest',
 }) => {
-  const accentColor = accentColorProp ?? themeConfig.text.burgundyDark ?? '#6d3d48'
+  const accentColor = accentColorProp ?? themeConfig.text.burgundyDark ?? '#4a3728'
   const labelClass =
     'text-[10px] sm:text-sm md:text-base alice-regular mb-2 uppercase'
   const sectionTitleClass = 'text-base sm:text-lg imperial-script-regular mb-4 text-center'

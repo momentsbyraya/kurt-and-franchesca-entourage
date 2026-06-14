@@ -256,7 +256,7 @@ const NavIndex = ({ onOpenRSVP }) => {
             <div 
               ref={polaroidRef}
                className="bg-white relative polaroid-container border-8 flex flex-col p-2"
-               style={{ borderColor: '#c9959e', transform: 'none' }}
+               style={{ borderColor: '#8a6a4f', transform: 'none' }}
              >
               {/* Date, Month, Year at Top */}
               <div className="flex justify-between items-center w-full mb-2">
