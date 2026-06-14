@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
-import { couple, prenupImages } from '../data'
+import { couple } from '../data'
 
 const Hero = () => {
   const coupleTogetherRef = useRef(null)
@@ -45,11 +45,11 @@ const Hero = () => {
   const heroAlt = couple.together.replace('&', 'and')
 
   return (
-    <div className="relative w-full overflow-hidden bg-forest" style={{ height: '100vh' }}>
+    <div className="relative w-full overflow-hidden bg-[#f5efe6]" style={{ height: '100vh' }}>
       <img
-        src={prenupImages.hero}
+        src="/assets/images/hero-watercolor-couple.png"
         alt={heroAlt}
-        className="pointer-events-none absolute inset-0 h-full w-full max-w-none object-cover object-top select-none md:object-[center_22%] lg-custom:object-[center_45%]"
+        className="pointer-events-none absolute inset-0 h-full w-full max-w-none object-cover object-[40%_center] select-none"
         fetchPriority="high"
         decoding="async"
         draggable={false}
@@ -66,10 +66,9 @@ const Hero = () => {
             <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
           </filter>
           <linearGradient id="topBlushGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(74, 55, 40, 0.88)" />
-            <stop offset="22%" stopColor="rgba(111, 78, 55, 0.55)" />
-            <stop offset="48%" stopColor="rgba(138, 106, 79, 0.28)" />
-            <stop offset="78%" stopColor="rgba(201, 173, 142, 0.08)" />
+            <stop offset="0%" stopColor="rgba(245, 239, 230, 0.92)" />
+            <stop offset="35%" stopColor="rgba(245, 239, 230, 0.6)" />
+            <stop offset="70%" stopColor="rgba(245, 239, 230, 0.25)" />
             <stop offset="100%" stopColor="rgba(245, 239, 230, 0)" />
           </linearGradient>
         </defs>
@@ -89,10 +88,9 @@ const Hero = () => {
           </filter>
           <linearGradient id="bottomBlushGradient" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="rgba(245, 239, 230, 0)" />
-            <stop offset="32%" stopColor="rgba(231, 211, 189, 0.22)" />
-            <stop offset="62%" stopColor="rgba(201, 173, 142, 0.5)" />
-            <stop offset="88%" stopColor="rgba(111, 78, 55, 0.78)" />
-            <stop offset="100%" stopColor="rgba(138, 106, 79, 0.95)" />
+            <stop offset="40%" stopColor="rgba(245, 239, 230, 0.35)" />
+            <stop offset="72%" stopColor="rgba(245, 239, 230, 0.72)" />
+            <stop offset="100%" stopColor="rgba(245, 239, 230, 0.96)" />
           </linearGradient>
         </defs>
         <rect width="100%" height="100%" fill="url(#bottomBlushGradient)" filter="url(#heroBlurBottom)" />
@@ -102,8 +100,8 @@ const Hero = () => {
         <div className="mx-auto max-w-4xl text-center">
           <p
             ref={coupleTogetherRef}
-            className="font-foglihten text-4xl leading-tight text-[#F8F3EA] sm:text-5xl md:text-6xl lg-custom:text-5xl xl:text-6xl 2xl:text-7xl"
-            style={{ textShadow: '0 1px 3px rgba(0,0,0,0.45), 0 0 24px rgba(0,0,0,0.2)' }}
+            className="font-foglihten text-4xl leading-tight text-[#4a3728] sm:text-5xl md:text-6xl lg-custom:text-5xl xl:text-6xl 2xl:text-7xl"
+            style={{ textShadow: '0 1px 6px rgba(245,239,230,0.9), 0 0 22px rgba(245,239,230,0.7)' }}
           >
             {couple.together}
           </p>
@@ -114,8 +112,8 @@ const Hero = () => {
         <div className="mx-auto max-w-4xl text-center">
           <p
             ref={dateRef}
-            className="font-foglihten text-3xl tracking-wide text-white sm:text-4xl md:text-5xl lg:text-6xl"
-            style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5), 0 0 18px rgba(0,0,0,0.2)' }}
+            className="font-foglihten text-3xl tracking-wide text-[#4a3728] sm:text-4xl md:text-5xl lg:text-6xl"
+            style={{ textShadow: '0 1px 6px rgba(245,239,230,0.9), 0 0 18px rgba(245,239,230,0.7)' }}
           >
             {formatDate()}
           </p>

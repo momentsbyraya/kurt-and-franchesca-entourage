@@ -337,14 +337,13 @@ const NavIndex = ({ onOpenRSVP }) => {
               }
             }}
           >
-            {/* Kindly RSVP Text */}
+            {/* Confirm / Say Yes Text */}
             <div className="flex-1 flex flex-col items-center justify-center px-4 py-4">
               <p className="nanum-myeongjo-regular text-center uppercase rsvp-text-kindly text-forest">
                 Kindly
               </p>
               <p className="text-center rsvp-text-container">
-                <span className="imperial-script-regular rsvp-text-r">R</span>
-                <span className="nanum-myeongjo-regular rsvp-text-svp">SVP</span>
+                <span className="imperial-script-regular rsvp-text-svp">Confirm</span>
               </p>
             </div>
           </div>

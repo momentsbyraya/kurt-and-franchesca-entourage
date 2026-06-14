@@ -1,15 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
-import { ExternalLink, X } from 'lucide-react'
-import { couple, prenupImages } from '../data'
-
-const RSVP_FORM_URL =
-  couple.rsvpFormUrl || 'https://forms.gle/Batx8bEHr1td7yMS9'
-
-const RSVP_FORM_EMBED_URL =
-  couple.rsvpGoogleFormEmbedUrl ||
-  'https://docs.google.com/forms/d/e/1FAIpQLSfR86MQDJlaDf_TEg83nvoi4ZrRdMujcgn31BS0oVYZDgkr7Q/viewform?embedded=true'
+import { X } from 'lucide-react'
+import { prenupImages } from '../data'
 
 const RSVPModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null)
@@ -97,38 +90,22 @@ const RSVPModal = ({ isOpen, onClose }) => {
       >
         <header className="flex shrink-0 items-center justify-between gap-4 px-4 py-3 sm:px-6 sm:py-4 border-b border-gold/25 bg-sage/95 backdrop-blur-md">
           <h2 className="text-xl sm:text-2xl font-leckerli font-light text-forest">
-            RSVP
+            Confirm Your Yes
           </h2>
           <button
             type="button"
             onClick={handleClose}
             className="p-2 text-forest hover:bg-gold/20 rounded-full transition-colors duration-200"
-            aria-label="Close RSVP form"
+            aria-label="Close confirmation form"
           >
             <X className="w-6 h-6" />
           </button>
         </header>
 
-        <div className="flex-1 min-h-0 flex flex-col bg-sage/90 backdrop-blur-sm">
-          <div className="w-full flex-1 min-h-0 border-0 rsvp-modal-content flex flex-col px-2 pt-2 pb-2 sm:px-4 sm:pt-3 sm:pb-2">
-            <iframe
-              title="RSVP — Google Form"
-              src={RSVP_FORM_EMBED_URL}
-              className="h-full min-h-[min(70vh,560px)] w-full flex-1 rounded-md border border-gold/20 bg-white shadow-inner"
-              loading="lazy"
-            />
-          </div>
-          <div className="shrink-0 flex flex-wrap items-center justify-center gap-2 border-t border-gold/20 px-4 py-3 sm:px-6 sm:py-4">
-            <a
-              href={RSVP_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-white/80 px-4 py-2.5 text-sm font-albert text-forest shadow-sm transition-colors hover:bg-gold/15 hover:border-gold/60"
-            >
-              <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
-              Open form in browser
-            </a>
-          </div>
+        <div className="flex-1 min-h-0 flex flex-col items-center justify-center bg-sage/90 backdrop-blur-sm px-6 py-12 text-center">
+          <p className="font-leckerli text-2xl sm:text-3xl text-forest">
+            To be added
+          </p>
         </div>
       </div>
     </div>,

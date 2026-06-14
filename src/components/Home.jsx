@@ -1,7 +1,6 @@
 import React from 'react'
 import Hero from './Hero'
 import EntourageSection from './EntourageSection'
-import RSVPSection from './RSVPSection'
 import GuestMessage from './GuestMessage'
 import './pages/Details.css'
 
@@ -11,7 +10,12 @@ const Home = ({
   entourageImage = '/assets/images/entourage/sponsor.png',
   entourageLeadIn = 'Will you be our',
   entourageRole = 'Principal Sponsor?',
-  entourageImageHeightClass = 'h-[82%]',
+  entourageRoleSizeClass,
+  introEyebrow = 'With hearts full of gratitude',
+  introParagraphs = [
+    'Because you have guided us with your wisdom and blessed us with your love, we humbly ask you to stand as our Principal Sponsor.',
+    'It would be an honor to have you witness and bless our union as we say \u201CI\u00A0do.\u201D',
+  ],
 }) => {
   return (
     <div className="relative w-full bg-sage">
@@ -19,7 +23,7 @@ const Home = ({
       <Hero />
 
       {/* Guest message */}
-      <GuestMessage />
+      <GuestMessage eyebrow={introEyebrow} paragraphs={introParagraphs} />
 
       {/* 2. Entourage */}
       <div
@@ -35,12 +39,10 @@ const Home = ({
           image={entourageImage}
           leadIn={entourageLeadIn}
           role={entourageRole}
-          imageHeightClass={entourageImageHeightClass}
+          roleSizeClass={entourageRoleSizeClass}
+          onRespond={onOpenRSVP}
         />
       </div>
-
-      {/* 12. RSVP */}
-      <RSVPSection onOpenRSVP={onOpenRSVP} />
     </div>
   )
 }

@@ -65,7 +65,7 @@ const RSVPSection = ({ onOpenRSVP }) => {
         className="relative z-20 mx-auto flex max-w-2xl flex-col items-center justify-center py-12 text-center"
       >
         <p className="font-script text-2xl opacity-90 sm:text-3xl md:text-4xl" style={{ color: COFFEE_DARK }}>
-          Will you join us?
+          It would be our honor
         </p>
         <h2
           className="mt-3 font-foglihten text-5xl font-bold tracking-wide sm:text-6xl md:text-7xl"
@@ -80,15 +80,23 @@ const RSVPSection = ({ onOpenRSVP }) => {
             color: 'transparent',
           }}
         >
-          RSVP
+          Will You Say Yes?
         </h2>
+
+        {/* Small ornamental divider */}
+        <div className="mt-5 flex items-center justify-center gap-3" aria-hidden>
+          <span className="h-px w-10 sm:w-14" style={{ backgroundColor: 'rgba(122, 95, 60, 0.45)' }} />
+          <span className="text-lg" style={{ color: '#b08d3e' }}>&#10047;</span>
+          <span className="h-px w-10 sm:w-14" style={{ backgroundColor: 'rgba(122, 95, 60, 0.45)' }} />
+        </div>
 
         <p
           className="mt-6 max-w-xl font-albert text-[0.9375rem] font-light leading-relaxed sm:text-base md:text-[1.0625rem]"
           style={{ color: COFFEE_DARK }}
         >
-          Your presence would mean the world to us. Kindly let us know if you
-          can celebrate this special day with us.
+          Standing beside us as part of our entourage would mean the world to
+          us. Kindly let us know if you&rsquo;ll accept this special role on our
+          big day.
         </p>
 
         {deadline && (
@@ -96,7 +104,7 @@ const RSVPSection = ({ onOpenRSVP }) => {
             className="mt-3 font-albert text-sm font-medium uppercase tracking-wide sm:text-base"
             style={{ color: '#6f4e37' }}
           >
-            Please respond by {deadline}
+            Kindly confirm by {deadline}
           </p>
         )}
 
@@ -105,7 +113,7 @@ const RSVPSection = ({ onOpenRSVP }) => {
           onClick={onOpenRSVP}
           className="mt-8 inline-flex items-center justify-center rounded-full border border-gold/50 bg-white/80 px-10 py-3 font-albert text-base font-medium uppercase tracking-wide text-forest shadow-sm transition-all duration-300 hover:scale-105 hover:border-gold hover:bg-gold/20"
         >
-          RSVP Here
+          Confirm Your Yes
         </button>
       </div>
 

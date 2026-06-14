@@ -1,19 +1,10 @@
-import { useRef, useEffect } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { couple } from '../data'
+import ScrollReveal from './ScrollReveal'
 import './GuestMessage.css'
-
-gsap.registerPlugin(ScrollTrigger)
 
 /** Rustic brown / coffee — body copy */
 const mossPrimary = '#4a3728'
 const mossSecondary = '#6f4e37'
-
-/** Vintage invitation graphic — optional watermark (encoded path) */
-const vintageInvitationSrc = `/assets/images/graphics/${encodeURIComponent(
-  'Copy of Yellow and Green Vintage Wedding Invitation.png'
-)}`
 
 function VintageDivider({ idSuffix = 'a' }) {
   const gid = `guest-msg-gold-${idSuffix}`
@@ -129,50 +120,21 @@ function CornerFloralsBottomLeft() {
   )
 }
 
-function GuestMessage() {
-  const rootRef = useRef(null)
+const DEFAULT_EYEBROW = 'With hearts full of love'
+const DEFAULT_PARAGRAPHS = [
+  'Because you have shared in our lives through our friendship and love, we invite you to join us as we celebrate our wedding day.',
+  'Your presence would mean the world to us as we say \u201CI\u00A0do.\u201D',
+]
 
-  useEffect(() => {
-    const el = rootRef.current
-    if (!el) return undefined
-
-    // Opacity-only: avoid transform on this ancestor — it makes background-clip
-    // gradient text + filters look like a “moving shine” during the tween.
-    const tween = gsap.fromTo(
-      el,
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 0.7,
-        ease: 'power2.out',
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 88%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    )
-
-    return () => {
-      tween.scrollTrigger?.kill()
-      tween.kill()
-    }
-  }, [])
-
+function GuestMessage({
+  eyebrow = DEFAULT_EYEBROW,
+  paragraphs = DEFAULT_PARAGRAPHS,
+}) {
   return (
     <section
-      ref={rootRef}
       className="guest-message-section-full relative w-full"
       aria-labelledby="guest-message-heading"
     >
-      <img
-        src={vintageInvitationSrc}
-        alt=""
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-[0.03]"
-        loading="lazy"
-        decoding="async"
-      />
       <CornerFloralsTopRight />
       <CornerFloralsBottomLeft />
       <div className="relative z-10 mx-auto w-full px-4 py-14 sm:py-16 md:py-20">
@@ -181,51 +143,51 @@ function GuestMessage() {
             <h2 id="guest-message-heading" className="sr-only">
               A message for our guests
             </h2>
-            <div className="guest-message-inner mb-6 flex justify-center sm:mb-8">
+            <ScrollReveal className="guest-message-inner mb-7 flex justify-center sm:mb-9">
               <img
                 src="/assets/images/entourage/initials.png"
                 alt={`${couple.together} monogram`}
-                className="h-28 w-auto max-w-[min(16rem,70vw)] object-contain sm:h-32 md:h-36"
+                className="h-24 w-auto max-w-[min(14rem,62vw)] object-contain sm:h-28 md:h-32"
                 loading="lazy"
                 decoding="async"
               />
-            </div>
+            </ScrollReveal>
+            {eyebrow && (
+              <ScrollReveal
+                className="guest-message-inner"
+                opacityOnly
+                delay={0.1}
+              >
+                <p className="guest-message-eyebrow mx-auto mb-6 text-center text-[0.78rem] uppercase sm:mb-7 sm:text-[0.82rem]">
+                  {eyebrow}
+                </p>
+              </ScrollReveal>
+            )}
             <div
-              className="guest-message-inner flex flex-col gap-4 text-center font-albert font-light sm:gap-5 md:gap-6"
-              style={{ lineHeight: 1.8 }}
+              className="guest-message-inner flex flex-col gap-4 text-center font-light sm:gap-5"
+              style={{ lineHeight: 1.5, fontFamily: "'Ms Madi', cursive" }}
             >
-              <p
-                className="text-[0.9375rem] sm:text-[1rem] md:text-[1.0625rem]"
-                style={{ color: mossSecondary }}
-              >
-                Because you have shared in our lives
-                <br />
-                through our friendship and love, we,
-              </p>
-              <p
-                className="guest-message-names mx-auto my-8 max-w-[20ch] text-[2.35rem] sm:my-10 sm:text-[2.75rem] md:my-12 md:text-[3.05rem] lg:text-[3.2rem]"
-                style={{ letterSpacing: '0.08em' }}
-              >
-                {couple.together}
-              </p>
-              <p
-                className="text-[0.9375rem] sm:text-[1rem] md:text-[1.0625rem]"
-                style={{ color: mossPrimary }}
-              >
-                invite you to join us as we celebrate our wedding day.
-              </p>
-              <p
-                className="text-[0.9375rem] sm:text-[1rem] md:text-[1.0625rem]"
-                style={{ color: mossPrimary }}
-              >
-                Your presence would mean the world to us as we
-                <br />
-                say &ldquo;I do.&rdquo;
-              </p>
+              {paragraphs.map((text, i) => (
+                <ScrollReveal key={text} delay={0.15 + i * 0.12}>
+                  <p
+                    className={
+                      i === 0
+                        ? 'mx-auto max-w-[26ch] text-[1.75rem] sm:text-[2rem] md:text-[2.35rem]'
+                        : 'mx-auto max-w-[24ch] text-[1.6rem] sm:text-[1.85rem] md:text-[2.1rem]'
+                    }
+                    style={{ color: i === 0 ? mossPrimary : mossSecondary }}
+                  >
+                    {text}
+                  </p>
+                </ScrollReveal>
+              ))}
             </div>
-            <div className="guest-message-inner mt-7 sm:mt-9">
+            <ScrollReveal
+              className="guest-message-inner mt-8 sm:mt-10"
+              delay={0.35}
+            >
               <VintageDivider idSuffix="bot" />
-            </div>
+            </ScrollReveal>
           </article>
         </div>
       </div>

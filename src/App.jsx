@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Home from './components/Home'
+import Hero from './components/Hero'
 import Footer from './components/Footer'
 import RSVPModal from './components/RSVPModal'
 import DynamicTitle from './components/DynamicTitle'
 import Loader from './components/Loader'
 import ScrollToTop from './components/ScrollToTop'
+import WatermarkOverlay from './components/WatermarkOverlay'
 import Details from './components/pages/Details'
 import Entourage from './components/pages/Entourage'
 import Moments from './components/pages/Moments'
@@ -147,7 +149,7 @@ function AppContent() {
       {!isLoading && (
         <>
           <Routes>
-            <Route path="/" element={<Navigate to="/sponsor" replace />} />
+            <Route path="/" element={<Hero />} />
             <Route path="/sponsor" element={<Home onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
             <Route path="/bridesmaid" element={<Bridesmaid onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
             <Route path="/groomsmen" element={<Groomsmen onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
@@ -159,6 +161,7 @@ function AppContent() {
         </>
       )}
       <RSVPModal isOpen={isRSVPModalOpen} onClose={() => setIsRSVPModalOpen(false)} />
+      <WatermarkOverlay />
     </div>
   )
 }
