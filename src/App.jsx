@@ -14,6 +14,8 @@ import Entourage from './components/pages/Entourage'
 import Moments from './components/pages/Moments'
 import Bridesmaid from './components/pages/Bridesmaid'
 import Groomsmen from './components/pages/Groomsmen'
+import Bestman from './components/pages/Bestman'
+import MaidOfHonor from './components/pages/MaidOfHonor'
 import { AudioProvider, useAudio } from './contexts/AudioContext'
 import { couple, prenupImages } from './data'
 
@@ -153,6 +155,8 @@ function AppContent() {
             <Route path="/sponsor" element={<Home onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
             <Route path="/bridesmaid" element={<Bridesmaid onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
             <Route path="/groomsmen" element={<Groomsmen onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
+            <Route path="/bestman" element={<Bestman onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
+            <Route path="/maidofhonor" element={<MaidOfHonor onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
             <Route path="/details" element={<Details />} />
             <Route path="/entourage" element={<Entourage />} />
             <Route path="/moments" element={<Moments />} />

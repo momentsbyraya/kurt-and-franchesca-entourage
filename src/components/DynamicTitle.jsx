@@ -10,6 +10,8 @@ const PAGE_TITLES = {
   '/sponsor': 'Sponsor',
   '/bridesmaid': 'Bridesmaid',
   '/groomsmen': 'Groomsmen',
+  '/bestman': 'Best Man',
+  '/maidofhonor': 'Maid of Honor',
 }
 
 const DynamicTitle = () => {
