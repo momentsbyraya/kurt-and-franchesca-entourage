@@ -8,7 +8,6 @@ import RSVPModal from './components/RSVPModal'
 import DynamicTitle from './components/DynamicTitle'
 import Loader from './components/Loader'
 import ScrollToTop from './components/ScrollToTop'
-import WatermarkOverlay from './components/WatermarkOverlay'
 import Details from './components/pages/Details'
 import Entourage from './components/pages/Entourage'
 import Moments from './components/pages/Moments'
@@ -165,7 +164,6 @@ function AppContent() {
         </>
       )}
       <RSVPModal isOpen={isRSVPModalOpen} onClose={() => setIsRSVPModalOpen(false)} />
-      <WatermarkOverlay />
     </div>
   )
 }
