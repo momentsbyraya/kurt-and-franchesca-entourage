@@ -7,6 +7,7 @@ const removeMiddleInitial = (name) =>
 
 /**
  * Hardcoded entourage from `entourage.json` — modal + details page.
+ For pushing
  */
 const EntourageTextContent = ({
   accentColor: accentColorProp,
