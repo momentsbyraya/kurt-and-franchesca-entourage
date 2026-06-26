@@ -9,8 +9,8 @@ const Groomsmen = ({ onOpenRSVP }) => {
       entourageImage="/assets/images/entourage/groomsmen.png"
       introEyebrow="Brothers for life"
       introParagraphs={[
-        'Through every adventure and milestone, you have stood beside me as a true brother and friend.',
-        'Will you stand with me once more as I say \u201CI\u00A0do\u201D?',
+        'You\u2019ve had my back through every win, every loss, and everything in between \u2014 no questions asked.',
+        'Stand with me as I say \u201CI\u00A0do.\u201D',
       ]}
       entourageLeadIn="Will you be my"
       entourageRole="Groomsman?"

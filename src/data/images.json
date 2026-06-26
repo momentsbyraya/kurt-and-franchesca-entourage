@@ -1,5 +1,5 @@
 {
-  "hero": "/assets/images/hero-couple.jpg",
+  "hero": "/assets/images/hero-watercolor-couple.png",
   "couple": {
     "couple1": "/assets/images/couple-1.jpg",
     "couple2": "/assets/images/couple-2.jpg",
@@ -14,5 +14,5 @@
     "church": "/assets/images/venues/church.svg",
     "reception": "/assets/images/venues/reception.svg"
   },
-  "favicon": "/assets/images/favicon.png"
+  "favicon": "/assets/images/hero-watercolor-couple.png"
 } 

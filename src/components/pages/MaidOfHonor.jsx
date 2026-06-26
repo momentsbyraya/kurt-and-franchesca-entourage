@@ -7,10 +7,10 @@ const MaidOfHonor = ({ onOpenRSVP }) => {
       title="Maid of Honor"
       onOpenRSVP={onOpenRSVP}
       entourageImage="/assets/images/entourage/bridesmaid.png"
-      introEyebrow="With all my heart"
+      introEyebrow="Forever grateful"
       introParagraphs={[
-        'Because you have shared in my laughter, my tears, and my dearest memories, I cannot imagine this day without you beside me.',
-        'Will you stand with me and share in my joy as I say \u201CI\u00A0do\u201D?',
+        'You have held my hand through it all \u2014 the highs, the lows, and everything in between.',
+        'I would be honored to have you as my Maid of Honor when I say \u201CI\u00A0do.\u201D',
       ]}
       entourageLeadIn="Will you be my"
       entourageRole="Maid of Honor?"

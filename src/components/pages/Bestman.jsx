@@ -7,10 +7,10 @@ const Bestman = ({ onOpenRSVP }) => {
       title="Best Man"
       onOpenRSVP={onOpenRSVP}
       entourageImage="/assets/images/entourage/groomsmen.png"
-      introEyebrow="Brothers for life"
+      introEyebrow="Through it all"
       introParagraphs={[
-        'Through every adventure and milestone, you have stood beside me as a true brother and friend.',
-        'Will you stand with me once more as I say \u201CI\u00A0do\u201D?',
+        'From the old days to right now, you\u2019ve been there \u2014 steady, solid, and real.',
+        'Walk with me as my Best Man on the day I take this next step.',
       ]}
       entourageLeadIn="Will you be my"
       entourageRole="Best Man?"

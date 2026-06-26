@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
-import { couple } from '../data'
+import { couple, prenupImages } from '../data'
 
 const Hero = () => {
   const coupleTogetherRef = useRef(null)
@@ -47,7 +47,7 @@ const Hero = () => {
   return (
     <div className="relative w-full overflow-hidden bg-[#f5efe6]" style={{ height: '100vh' }}>
       <img
-        src="/assets/images/hero-watercolor-couple.png"
+        src={prenupImages.hero}
         alt={heroAlt}
         className="pointer-events-none absolute inset-0 h-full w-full max-w-none object-cover object-[40%_center] select-none"
         fetchPriority="high"

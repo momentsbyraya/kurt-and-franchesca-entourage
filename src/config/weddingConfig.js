@@ -37,7 +37,7 @@ export const weddingConfig = {
 
   // Photos and Media
   photos: {
-    hero: "/assets/images/hero-couple.jpg",
+    hero: "/assets/images/hero-watercolor-couple.png",
     gallery: [
       "/assets/images/couple-1.jpg",
       "/assets/images/couple-2.jpg",

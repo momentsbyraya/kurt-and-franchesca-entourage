@@ -1,22 +1,13 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
-import { useLocation } from 'react-router-dom'
 import { couple, prenupImages } from '../data'
 
 const OG_IMAGE_PATH = prenupImages.ogImage
 const FAVICON_PATH = prenupImages.favicon
 
-const PAGE_TITLES = {
-  '/sponsor': 'Sponsor',
-  '/bridesmaid': 'Bridesmaid',
-  '/groomsmen': 'Groomsmen',
-  '/bestman': 'Best Man',
-  '/maidofhonor': 'Maid of Honor',
-}
+const SITE_TITLE_SUFFIX = 'Sponsors and Entourage Invitation'
 
 const DynamicTitle = () => {
-  const { pathname } = useLocation()
-
   const weddingDate = new Date(couple.wedding.date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -27,14 +18,14 @@ const DynamicTitle = () => {
   const ogImageAbsolute = origin ? `${origin}${OG_IMAGE_PATH}` : OG_IMAGE_PATH
   const pageUrl = typeof window !== 'undefined' ? window.location.href.split('#')[0] : ''
 
-  const title = PAGE_TITLES[pathname] || 'Sponsor'
+  const title = `${couple.together} - ${SITE_TITLE_SUFFIX}`
   const description = `Join us for ${couple.together}'s wedding on ${weddingDate}.`
 
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
-      <link rel="icon" type="image/jpeg" href={FAVICON_PATH} />
+      <link rel="icon" type="image/png" href={FAVICON_PATH} />
       <link rel="apple-touch-icon" href={FAVICON_PATH} />
 
       <meta property="og:type" content="website" />
@@ -43,7 +34,7 @@ const DynamicTitle = () => {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={ogImageAbsolute} />
       <meta property="og:image:secure_url" content={ogImageAbsolute} />
-      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image:type" content="image/png" />
       <meta property="og:image:alt" content={couple.together.replace('&', 'and')} />
       <meta property="og:locale" content="en_US" />
 

@@ -24,16 +24,18 @@ const PRENUP_FILES = [
 const prenup = (filename) =>
   `/assets/images/prenup/${encodeURIComponent(filename)}`
 
+const heroWatercolor = '/assets/images/hero-watercolor-couple.png'
+
 const F = PRENUP_FILES
 
 // 0–14: each index used once
-const hero = prenup('VAN_6078.jpg')
+const hero = heroWatercolor
 const fullBleedAfterVenue = prenup(F[2])
 const fullBleedAfterSchedule = prenup(F[3])
 const fullBleedAfterLoveStory = prenup(F[4])
 const fullBleedAfterDressCode = prenup(F[5])
-/** Favicon, OG / Twitter card — same file as full-bleed after dress code */
-const shareThumbnail = prenup('VAN_5328.jpg')
+/** Favicon, OG / Twitter card — watercolor hero illustration */
+const shareThumbnail = heroWatercolor
 const countdownBackground = prenup(F[6])
 /** Full-bleed between gift (RSVP block) and love story — same file as countdown bg */
 const betweenGiftAndLoveStory = countdownBackground
